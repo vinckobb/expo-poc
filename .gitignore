@@ -58,9 +58,17 @@ xcuserdata
 
 # VSCode
 .history/
+.vscode/settings.json
+.vscode/tasks.json
+
+# Github
+.github/
 
 # Android
 android/
+
+# iOS
+ios/
 
 # Local
 _local*
