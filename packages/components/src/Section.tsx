@@ -1,7 +1,8 @@
 import { View, StyleSheet, ViewStyle } from "react-native";
-import { Text } from "./Text";
 import { ReactNode } from "react";
 import { StyleProp } from "react-native";
+
+import { Text } from "./Text";
 
 type Props = {
   title: string;
