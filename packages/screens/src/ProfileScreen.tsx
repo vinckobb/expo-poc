@@ -1,7 +1,7 @@
 import { ScrollView, View } from "react-native";
 import { Header, Section, Card, Text, Button } from "@monorepo/components";
 
-export default function ProfileScreen() {
+export function ProfileScreen() {
   return (
     <View style={{ flex: 1 }}>
       <Header title="Profile" />

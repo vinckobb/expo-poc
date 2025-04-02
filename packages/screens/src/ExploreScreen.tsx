@@ -8,7 +8,7 @@ type ExploreStackParamList = {
   ExploreDetail: undefined;
 };
 
-export default function ExploreScreen() {
+export function ExploreScreen() {
   const navigation =
     useNavigation<NativeStackNavigationProp<ExploreStackParamList>>();
 

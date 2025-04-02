@@ -1,7 +1,7 @@
 import { ScrollView, View } from "react-native";
 import { Button, Card, Header, Section, Text } from "@monorepo/components";
 
-export default function ExploreDetailScreen() {
+export function ExploreDetailScreen() {
   return (
     <View style={{ flex: 1 }}>
       <Header title="POI Detail" />

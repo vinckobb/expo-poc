@@ -1,8 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import {Header} from "@monorepo/components";
-
-import ExploreScreen from "../screens/ExploreScreen";
-import ExploreDetailScreen from "../screens/ExploreDetailScreen";
+import {ExploreDetailScreen, ExploreScreen} from "@monorepo/screens";
 
 const Stack = createNativeStackNavigator();
 

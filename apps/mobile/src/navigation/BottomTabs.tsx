@@ -1,8 +1,8 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import HomeScreen from "../screens/HomeScreen";
-import ProfileScreen from "../screens/ProfileScreen";
-import ExploreStack from "./ExploreStack";
 import { Ionicons } from "@expo/vector-icons";
+import { HomeScreen, ProfileScreen } from "@monorepo/screens";
+
+import ExploreStack from "./ExploreStack";
 
 const Tab = createBottomTabNavigator();
 
