@@ -15,8 +15,8 @@
   ],
   "scripts": {
     "dev": "tsup --watch --silent",
-    "lint": "eslint --ext js,ts,tsx .",
-    "test": "jest",
+    "dev:android": "npm run dev",
+    "dev:ios": "npm run dev",
     "build": "tsup --clean"
   },
   "dependencies": {
