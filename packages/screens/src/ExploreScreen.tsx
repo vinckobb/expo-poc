@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { Platform, View } from "react-native";
+import { View } from "react-native";
 import { Header, Map } from "@monorepo/components";
 import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
@@ -10,14 +9,7 @@ type ExploreStackParamList = {
 };
 
 export function ExploreScreen() {
-  let navigation = {
-    navigate: (screen: any) => {}
-  };
-  useEffect(() => {
-    if (Platform.OS !== "web") {
-      navigation = useNavigation<NativeStackNavigationProp<ExploreStackParamList>>();
-    }
-  }, []);
+  const navigation = useNavigation<NativeStackNavigationProp<ExploreStackParamList>>();
 
   return (
     <View style={{ flex: 1 }}>

@@ -3,14 +3,25 @@
   "name": "@monorepo/constants",
   "version": "0.0.0",
   "main": "./build/index.js",
-  "types": "./src/index.ts",
-  "react-native": "./src/index.ts",
+  "module": "./build/index.mjs",
+  "types": "./build/index.d.ts",
+  "exports": {
+    ".": {
+      "react-native": {
+        "ios": "./build/index.ios.js",
+        "android": "./build/index.android.js",
+        "default": "./build/index.js"
+      },
+      "web": "./build/index.web.js",
+      "default": "./build/index.web.js"
+    }
+  },
   "files": [
     "build",
     "src"
   ],
   "scripts": {
-    "dev": "tsup --watch --silent",
+    "dev": "tsup --watch --silent --config ../../tsup.config.ts",
     "dev:android": "npm run dev",
     "dev:ios": "npm run dev",
     "build": "tsup --clean"
@@ -22,25 +33,5 @@
   "peerDependencies": {
     "react": "*",
     "react-native": "*"
-  },
-  "peerDependenciesMeta": {
-    "react-native": {
-      "optional": true
-    },
-    "react-native-web": {
-      "optional": true
-    }
-  },
-  "tsup": {
-    "entry": [
-      "src/index.ts"
-    ],
-    "outDir": "build",
-    "sourcemap": true,
-    "dts": true,
-    "external": [
-      "react",
-      "react-native"
-    ]
   }
 }
