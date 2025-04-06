@@ -1,43 +1,6 @@
 {
-  "private": true,
   "name": "@monorepo/hooks",
+  "private": true,
   "version": "0.0.0",
-  "main": "./build/index.js",
-  "module": "./build/index.mjs",
-  "types": "./build/index.d.ts",
-  "exports": {
-    ".": {
-      "react-native": {
-        "ios": "./build/index.ios.js",
-        "android": "./build/index.android.js",
-        "default": "./build/index.js"
-      },
-      "web": "./build/index.web.js",
-      "default": "./build/index.web.js"
-    }
-  },
-  "files": [
-    "build",
-    "src"
-  ],
-  "scripts": {
-    "dev": "tsup --watch --silent --config ../../tsup.config.ts",
-    "dev:android": "npm run dev",
-    "dev:ios": "npm run dev",
-    "build": "tsup --clean"
-  },
-  "dependencies": {
-    "@monorepo/constants": "*"
-  },
-  "devDependencies": {
-    "@tsconfig/recommended": "^1.0.8",
-    "@types/react": "~18.3.18",
-    "react": "18.3.1",
-    "react-native": "0.76.7",
-    "tsup": "^8.3.5"
-  },
-  "peerDependencies": {
-    "react": "*",
-    "react-native": "*"
-  }
+  "main": "src/index.ts"
 }

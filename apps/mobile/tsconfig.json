@@ -1,16 +1,8 @@
 {
-  "extends": "expo/tsconfig.base",
-  "compilerOptions": {
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "paths": {
-      "@/*": [
-        "./*"
-      ]
-    }
-  },
+  "extends": "../../tsconfig.json",
   "include": [
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "nativewind-env.d.ts"
   ]
 }

@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "noUncheckedIndexedAccess": true,
+    "baseUrl": "./packages",
+    "paths": {
+      "@monorepo/components/*": [
+        "./components/*"
+      ],
+      "@monorepo/constants/*": [
+        "./constants/*"
+      ],
+      "@monorepo/hooks/*": [
+        "./hooks/*"
+      ],
+      "@monorepo/screens/*": [
+        "./screens/*"
+      ],
+      "@monorepo/shared/*": [
+        "./shared/*"
+      ],
+      "@monorepo/theme/*": [
+        "./theme/*"
+      ],
+    },
+    "jsx": "react-jsx"
+  },
+  "exclude": [
+    "node_modules",
+    "packages/*/node_modules",
+    "packages/*/dist"
+  ],
+  "extends": "expo/tsconfig.base"
+}

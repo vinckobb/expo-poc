@@ -1,34 +1,26 @@
-// Learn more https://docs.expo.dev/guides/monorepos
-const { getDefaultConfig } = require('expo/metro-config');
-const { FileStore } = require('metro-cache');
-const path = require('path');
-const projectRoot = __dirname;
-const monorepoRoot = path.resolve(projectRoot, '../..');
+// Learn more https://docs.expo.io/guides/customizing-metro
+const { getDefaultConfig } = require("expo/metro-config");
+const { withNativeWind } = require('nativewind/metro');
+const path = require("path");
 
-// Create the default Expo config for Metro
-// This includes the automatic monorepo configuration for workspaces
-// See: https://docs.expo.dev/guides/monorepos/#automatic-configuration
+// Find the workspace root, this can be replaced with `find-yarn-workspace-root`
+const workspaceRoot = path.resolve(__dirname, "../..");
+const projectRoot = __dirname;
+
 const config = getDefaultConfig(projectRoot);
 
-config.watchFolders = [monorepoRoot];
+// 1. Watch all files within the monorepo
+config.watchFolders = [workspaceRoot];
+// 2. Let Metro know where to resolve packages, and in what order
 config.resolver.nodeModulesPaths = [
-  path.resolve(projectRoot, 'node_modules'),
-  path.resolve(monorepoRoot, 'node_modules'),
+  path.resolve(projectRoot, "node_modules"),
+  path.resolve(workspaceRoot, "node_modules")
 ];
-
-config.resolver.unstable_enablePackageExports = true;
+// 3. Force Metro to resolve (sub)dependencies only from the `nodeModulesPaths`
+config.resolver.disableHierarchicalLookup = true;
 
 config.resolver.platforms = ['ios', 'android', 'web'];
 
-// Use turborepo to restore the cache when possible
-config.cacheStores = [
-  new FileStore({ root: path.join(__dirname, 'node_modules', '.cache', 'metro') }),
-];
-
-// Force Metro to resolve react and react-dom from the monorepo root
-config.resolver.extraNodeModules = {
-  react: path.resolve(monorepoRoot, 'node_modules/react'),
-  'react-dom': path.resolve(monorepoRoot, 'node_modules/react-dom'),
-};
-
-module.exports = config;
+module.exports = withNativeWind(config, {
+  input: './global.css'
+});

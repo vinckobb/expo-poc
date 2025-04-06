@@ -1,3 +1,4 @@
+import '../global.css';
 import {
   NavigationContainer,
   DarkTheme as NavigationDarkTheme,

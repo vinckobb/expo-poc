@@ -1,35 +1,26 @@
 {
-    "$schema": "https://turbo.build/schema.v2.json",
-    "ui": "tui",
-    "globalEnv": ["ANDROID_HOME"],
-    "tasks": {
-      "lint": {
-        "outputs": []
-      },
-      "test": {
-        "dependsOn": ["build"],
-        "inputs": ["**/*.{ts,tsx,js,jsx}"]
-      },
-      "build": {
-        "dependsOn": ["^build"],
-        "outputs": [
-          "build/**",
-          "node_modules/.cache/metro/**"
-        ]
-      },
-      "dev": {
-        "cache": false,
-        "persistent": true,
-        "dependsOn": ["^build"]
-      },
-      "dev:android": {
-        "cache": false,
-        "persistent": true
-      },
-      "dev:ios": {
-        "cache": false,
-        "persistent": true
-      }
+  "$schema": "https://turbo.build/schema.v2.json",
+  "globalEnv": ["ANDROID_HOME"],
+  "ui": "tui",
+  "tasks": {
+    "build": {
+      "outputs": [".next/**", "!.next/cache/**"],
+      "dependsOn": ["^build"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "dev:android": {
+      "cache": false,
+      "persistent": true
+    },
+    "dev:ios": {
+      "cache": false,
+      "persistent": true
+    },
+    "clean": {
+      "cache": false
     }
   }
-  
+}

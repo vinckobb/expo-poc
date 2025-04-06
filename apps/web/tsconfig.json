@@ -1,10 +1,9 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "forceConsistentCasingInFileNames": true,
+    "jsxImportSource": "nativewind",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -21,21 +20,7 @@
         "name": "next"
       }
     ],
-    "baseUrl": ".",
-    "paths": {
-      "@/*": [
-        "./*"
-      ]
-    },
-    "target": "ES2017"
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "tailwind.config.js"],
+  "exclude": ["node_modules"]
 }
