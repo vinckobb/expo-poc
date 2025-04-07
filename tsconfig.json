@@ -24,6 +24,9 @@
       "@monorepo/theme/*": [
         "./theme/*"
       ],
+      "@monorepo/utils/*": [
+        "./utils/*"
+      ],
     },
     "jsx": "react-jsx"
   },
