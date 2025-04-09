@@ -7,6 +7,7 @@
   ],
   "scripts": {
     "dev": "turbo dev",
+    "dev:web": "turbo dev:web",
     "dev:android": "turbo dev:android",
     "dev:ios": "turbo dev:ios",
     "build": "turbo build",

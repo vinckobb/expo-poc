@@ -1,9 +1,12 @@
 import { ScrollView, View } from "react-native";
+import { useColorScheme } from "nativewind";
 import { Header, Section, Card, Text, Button } from "@monorepo/components";
 
 export function ProfileScreen() {
+  const { toggleColorScheme } = useColorScheme();
+
   return (
-    <View style={{ flex: 1 }}>
+    <View className="dark:bg-gray-700" style={{flex: 1}}>
       <Header title="Profile" />
 
       <ScrollView
@@ -13,12 +16,12 @@ export function ProfileScreen() {
       >
         <Section title="User Info">
           <Card>
-            <Text variant="subtitle" style={{ marginBottom: 4 }}>
+            <Text variant="subtitle" className="mb-4">
               Name
             </Text>
             <Text variant="body">John Doe</Text>
 
-            <Text variant="subtitle" style={{ marginTop: 12, marginBottom: 4 }}>
+            <Text variant="subtitle" className="mt-6 mb-4">
               Email
             </Text>
             <Text variant="body">john.doe@example.com</Text>
@@ -26,19 +29,19 @@ export function ProfileScreen() {
         </Section>
 
         <Section title="Settings">
-          <Card style={{ marginBottom: 12 }}>
-            <Text variant="body" style={{ marginBottom: 8 }}>
+          <Card className="mb-6">
+            <Text variant="body" className="mb-4">
               App Theme
             </Text>
             <Button
               title="Switch Theme"
               variant="secondary"
-              onPress={() => alert("Toggle theme")}
+              onPress={() => toggleColorScheme() }
             />
           </Card>
 
           <Card>
-            <Text variant="body" style={{ marginBottom: 8 }}>
+            <Text variant="body" className="mb-4">
               Danger zone
             </Text>
             <Button

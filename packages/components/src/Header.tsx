@@ -18,7 +18,7 @@ export function Header({
   style,
 }: Props) {
   return (
-    <SafeAreaView edges={["top"]} style={[styles.safeArea, style]}>
+    <SafeAreaView edges={["top"]}>
       <View style={styles.container}>
         <Text variant="title">{title}</Text>
         {rightLabel && onRightPress && (

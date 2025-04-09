@@ -3,7 +3,7 @@ import { Button, Card, Header, Section, Text } from "@monorepo/components";
 
 export function ExploreDetailScreen() {
   return (
-    <View style={{ flex: 1 }}>
+    <View className="dark:bg-gray-700" style={{flex: 1}}>
       <Header title="POI Detail" />
 
       <ScrollView

@@ -1,9 +1,10 @@
 "use client";
 
+import "./globals.css";
 import { Geist, Geist_Mono } from "next/font/google";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import "./globals.css";
-import Link from "next/link";
+
+import {Navbar} from "../components/navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,24 +26,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="side-menu">
-          <ul>
-            <li>
-              <Link href="/">Home</Link>
-            </li>
-            <li>
-              <Link href="/profile">Profile</Link>
-            </li>
-            <li>
-              <Link href="/explore">Explore</Link>
-            </li>
-          </ul>
-        </div>
-        <div className="content">
-          <SafeAreaProvider>
-            {children}
-          </SafeAreaProvider>
-        </div>
+        <Navbar></Navbar>
+
+        <SafeAreaProvider>
+          {children}
+        </SafeAreaProvider>
       </body>
     </html>
   );

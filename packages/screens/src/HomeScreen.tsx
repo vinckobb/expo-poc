@@ -3,7 +3,7 @@ import { Header, Section, Card, Text, Button } from "@monorepo/components";
 
 export function HomeScreen() {
   return (
-    <View style={{ flex: 1 }}>
+    <View className="dark:bg-gray-700 flex" style={{flex: 1}}>
       <Header title="Home" />
 
       <ScrollView
@@ -22,14 +22,14 @@ export function HomeScreen() {
         </Section>
 
         <Section title="Actions">
-          <Card style={{ marginBottom: 12 }}>
-            <Text variant="subtitle" style={{ marginBottom: 8 }}>
+          <Card className="mb-6">
+            <Text variant="subtitle" className="mb-4">
               Quick Action
             </Text>
             <Button title="Do something" onPress={() => alert("Action!")} />
           </Card>
 
-          <Card>
+          <Card variant="secondary">
             <Text variant="subtitle" style={{ marginBottom: 8 }}>
               Another Thing
             </Text>

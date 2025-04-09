@@ -6,7 +6,7 @@
 
 @source "../../../packages";
 
-:root {
+/* :root {
   --background: #ffffff;
   --foreground: #171717;
 }
@@ -16,7 +16,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
+} */
 /* 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -26,13 +26,5 @@
 } */
 
 body {
-  background: var(--background);
-  color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
-
-  display: flex;
-}
-
-.content {
-  flex: 1;
 }

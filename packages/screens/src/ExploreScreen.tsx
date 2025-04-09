@@ -12,7 +12,7 @@ export function ExploreScreen() {
   const navigation = useNavigation<NativeStackNavigationProp<ExploreStackParamList>>();
 
   return (
-    <View style={{ flex: 1 }}>
+    <View className="dark:bg-gray-700">
       <Header title="Explore" />
       <Map onMarkerPress={() => navigation.navigate("ExploreDetail")} />
     </View>
