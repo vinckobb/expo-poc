@@ -5,6 +5,11 @@
 @import "tailwindcss/utilities.css";
 
 @source "../../../packages";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --css-interop-darkMode: class dark;
+}
 
 /* :root {
   --background: #ffffff;
