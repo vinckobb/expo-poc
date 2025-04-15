@@ -1,4 +1,4 @@
-import '../global.css';
+import "../global.css";
 import {
   NavigationContainer,
   DarkTheme as NavigationDarkTheme,
@@ -6,19 +6,19 @@ import {
 } from "@react-navigation/native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { useColorScheme } from "@monorepo/hooks";
-
-import BottomTabs from "./navigation/BottomTabs";
+import { Text } from "react-native";
+import AppRoutes from "./navigation/AppRoutes";
 
 export default function App() {
   const colorScheme = useColorScheme();
-  console.log('colorScheme', colorScheme);
+  console.log("colorScheme", colorScheme);
   const navTheme =
     colorScheme === "dark" ? NavigationDarkTheme : NavigationLightTheme;
 
   return (
     <SafeAreaProvider>
       <NavigationContainer theme={navTheme}>
-        <BottomTabs />
+        <AppRoutes />
       </NavigationContainer>
     </SafeAreaProvider>
   );
