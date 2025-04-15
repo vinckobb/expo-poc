@@ -1,9 +1,9 @@
 import { ScrollView, View } from "react-native";
-import { Header, Section, Card, Text, Button } from "@monorepo/components";
+import { Header, Section, Card, Text, Button, Theme } from "@monorepo/components";
 
 export function HomeScreen() {
   return (
-    <View className="dark:bg-gray-700 flex" style={{flex: 1}}>
+    <View className="dark:bg-secondary-500 flex" style={{flex: 1}}>
       <Header title="Home" />
 
       <ScrollView
@@ -40,6 +40,44 @@ export function HomeScreen() {
             />
           </Card>
         </Section>
+
+        <Theme name="brand">
+          <Section title="Themed section with brand">
+            <Card>
+              <Text variant="body">
+                This section is in brand colors
+              </Text>
+              <Button
+                title="Branded button"
+                variant="primary"
+                onPress={() => alert("Branded action")}
+              />
+            </Card>
+          </Section>
+        </Theme>
+
+        <Theme name="christmas">
+          <Section title="Themed section with christmas">
+            <Card>
+              <Text variant="body">
+                This section is in christmas colors
+              </Text>
+              <Button
+                title="Christmas button"
+                className="mb-4"
+                variant="primary"
+                onPress={() => alert("Christmas action")}
+              />
+              <Theme name="brand">
+                <Button
+                  title="Brand button inside christmas theme"
+                  variant="primary"
+                  onPress={() => alert("Christmas action")}
+                />
+              </Theme>
+            </Card>
+          </Section>
+        </Theme>
       </ScrollView>
     </View>
   );

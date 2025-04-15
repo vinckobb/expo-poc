@@ -3,15 +3,18 @@ import {
   NavigationContainer
 } from "@react-navigation/native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { View } from '@monorepo/components';
 
 import BottomTabs from "./navigation/BottomTabs";
 
 export default function App() {  
   return (
-    <SafeAreaProvider>
-      <NavigationContainer>
-        <BottomTabs />
-      </NavigationContainer>
-    </SafeAreaProvider>
+    <View style={{flex: 1}}>
+      <SafeAreaProvider>
+        <NavigationContainer>
+          <BottomTabs />
+        </NavigationContainer>
+      </SafeAreaProvider>
+    </View>
   );
 }

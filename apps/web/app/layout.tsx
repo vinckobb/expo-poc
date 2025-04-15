@@ -29,7 +29,7 @@ export default function RootLayout({
         <Navbar></Navbar>
 
         <SafeAreaProvider>
-          {children}
+            {children}
         </SafeAreaProvider>
       </body>
     </html>

@@ -1,4 +1,5 @@
-import { View, Text } from "react-native";
+import { Text } from "../Text";
+import { View } from "../View";
 
 export function Map({ onMarkerPress }: { onMarkerPress: () => void }) {
   return (

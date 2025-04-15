@@ -1,6 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "target": "ES2017",
     "forceConsistentCasingInFileNames": true,
     "jsxImportSource": "nativewind",
     "lib": ["dom", "dom.iterable", "esnext"],

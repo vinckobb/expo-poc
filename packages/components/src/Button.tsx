@@ -12,16 +12,16 @@ type ButtonVariant = {
 
 const variantStyles: Record<Variant, ButtonVariant> = {
   default: {
-    className: "p-4 rounded-full",
-    textClassName: "text-center",
+    className: "py-4 px-6 rounded-md",
+    textClassName: "text-center font-bold",
   },
   primary: {
-    className: "bg-blue-600 dark:bg-gray-100",
-    textClassName: "text-white dark:text-black",
+    className: "bg-primary-400 dark:bg-white",
+    textClassName: "text-white dark:text-primary-400",
   },
   secondary: {
-    className: "border border-solid border-blue-600 dark:border-gray-100",
-    textClassName: "text-blue-600 dark:text-white",
+    className: "border border-solid border-primary-400 dark:border-white",
+    textClassName: "text-primary-400 dark:text-white",
   }
 };
 

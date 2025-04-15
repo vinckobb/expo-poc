@@ -1,1 +1,1 @@
-export * from './ButtonStyles';
+export * from './tailwind.config';
