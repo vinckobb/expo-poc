@@ -42,6 +42,7 @@ export function withTailwindConfig(content?: string[]): Config {
       }
     },
     plugins: [
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ({ addBase }: any) =>
         addBase({
           ":root": {
