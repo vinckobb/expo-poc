@@ -1,5 +1,6 @@
 import { View } from "react-native";
-import { Header, Map, Text } from "@monorepo/components";
+import { Header, Text } from "@monorepo/components";
+import { Map } from "@monorepo/components/map";
 
 export function ExploreScreen() {
   return (

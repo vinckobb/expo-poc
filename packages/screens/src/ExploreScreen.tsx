@@ -1,5 +1,6 @@
 import { View } from "react-native";
-import { Header, Map } from "@monorepo/components";
+import { Header } from "@monorepo/components";
+import { Map } from "@monorepo/components/map";
 import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
