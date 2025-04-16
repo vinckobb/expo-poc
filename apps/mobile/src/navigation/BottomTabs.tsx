@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
-import { HomeScreen, ProfileScreen } from "@monorepo/screens";
+import { GluestackDemoScreen, HomeScreen, ProfileScreen } from "@monorepo/screens";
 
 import ExploreStack from "./ExploreStack";
 
@@ -17,6 +17,7 @@ export default function BottomTabs() {
           if (route.name === "Home") iconName = "home";
           else if (route.name === "Explore") iconName = "search";
           else if (route.name === "Profile") iconName = "person";
+          else if (route.name === "Gluestack") iconName = "color-wand-outline";
 
           return <Ionicons name={iconName} size={size} color={color} />;
         },
@@ -27,6 +28,7 @@ export default function BottomTabs() {
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Explore" component={ExploreStack} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
+      <Tab.Screen name="Gluestack" component={GluestackDemoScreen} />
     </Tab.Navigator>
   );
 }

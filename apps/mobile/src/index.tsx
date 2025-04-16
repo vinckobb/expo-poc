@@ -3,18 +3,20 @@ import {
   NavigationContainer
 } from "@react-navigation/native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { View } from '@monorepo/components';
+import { GluestackUIProvider, View } from '@monorepo/components';
 
 import BottomTabs from "./navigation/BottomTabs";
 
 export default function App() {  
   return (
-    <View style={{flex: 1}}>
-      <SafeAreaProvider>
-        <NavigationContainer>
-          <BottomTabs />
-        </NavigationContainer>
-      </SafeAreaProvider>
-    </View>
+    <GluestackUIProvider>
+      <View style={{flex: 1}}>
+        <SafeAreaProvider>
+          <NavigationContainer>
+            <BottomTabs />
+          </NavigationContainer>
+        </SafeAreaProvider>
+      </View>
+    </GluestackUIProvider>
   );
 }

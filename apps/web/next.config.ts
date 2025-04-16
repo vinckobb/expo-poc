@@ -1,6 +1,7 @@
 import { Configuration, DefinePlugin } from 'webpack';
+import { withGluestackUI } from "@gluestack/ui-next-adapter";
 
-module.exports = {
+module.exports = withGluestackUI({
   reactStrictMode: true,
   transpilePackages: [
     // you need to list `react-native` because `react-native-web` is aliased to `react-native`.
@@ -54,4 +55,4 @@ module.exports = {
     );
     return config;
   },
-}
+});

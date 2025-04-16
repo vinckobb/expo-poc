@@ -14,6 +14,9 @@ export function Navbar() {
         <li>
           <Link href="/explore">Explore</Link>
         </li>
+        <li>
+          <Link href="/gluestack">Gluestack</Link>
+        </li>
       </ul>
     </div>
   );

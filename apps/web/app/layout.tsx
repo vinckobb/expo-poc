@@ -3,6 +3,7 @@
 import "./globals.css";
 import { Geist, Geist_Mono } from "next/font/google";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { GluestackUIProvider } from "@monorepo/components";
 
 import {Navbar} from "../components/navbar";
 
@@ -26,11 +27,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar></Navbar>
+        <GluestackUIProvider>
+          <Navbar></Navbar>
 
-        <SafeAreaProvider>
-            {children}
-        </SafeAreaProvider>
+          <SafeAreaProvider>
+              {children}
+          </SafeAreaProvider>
+        </GluestackUIProvider>
       </body>
     </html>
   );
