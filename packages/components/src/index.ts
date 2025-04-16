@@ -1,4 +1,3 @@
-export * from './map';
 export * from './Button';
 export * from './Card';
 export * from './Header';

@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import { ViewStyle, StyleProp } from "react-native";
 
 import { View } from "./View";
 import {classNameMerge} from "@monorepo/utils/src";

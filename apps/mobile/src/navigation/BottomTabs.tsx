@@ -11,8 +11,8 @@ export default function BottomTabs() {
     <Tab.Navigator
       screenOptions={({ route }) => ({
         headerShown: true,
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconName: any;
+        tabBarIcon: ({ color, size }) => {
+          let iconName: keyof typeof Ionicons.glyphMap = "add";
 
           if (route.name === "Home") iconName = "home";
           else if (route.name === "Explore") iconName = "search";

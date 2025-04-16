@@ -15,7 +15,6 @@ export function Header({
   title,
   rightLabel,
   onRightPress,
-  style,
 }: Props) {
   return (
     <SafeAreaView edges={["top"]}>

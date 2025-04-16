@@ -17,6 +17,7 @@ interface ThemeDefinition {
 interface ThemeProps {
   name: ThemeName;
   children: ReactNode;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   style?: any;
 }
 
