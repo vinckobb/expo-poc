@@ -1,9 +1,12 @@
-import type { Action as LoginViewModelAction } from "../../screens/Login/LoginViewModel";
-import type { Action as SMSVerificationViewModelAction } from "../../screens/SMSVerification/SMSVerificationViewModel";
-import type { LoginRouter } from "./LoginRouter";
+import { LoginFlowController } from "./interfaces/LoginFlowController.interface";
+import { LoginFlowRouter } from "./interfaces/LoginFlowRouter.interface";
 
-export class LoginFlowController {
-  constructor(private router: LoginRouter) {}
+// ViewModel actions
+import type { Action as LoginViewModelAction } from "../../screens/Login/LoginViewModel";
+import type { Action as SMSVerificationViewModelAction } from "../../screens/SMS Verification/SMSVerificationViewModel";
+
+export class LoginFlowControllerImpl implements LoginFlowController {
+  constructor(private router: LoginFlowRouter) {}
 
   start() {
     console.log("Login flow started");
@@ -14,18 +17,34 @@ export class LoginFlowController {
   }
 
   handleLoginAction(action: LoginViewModelAction) {
+    console.log("submitPhone pressed");
+
     switch (action.type) {
-      case "submitPhone":
-        // this.router.navigateToSmsVerification(action.phone);
+      case "successfulLogin":
+        this.router.openSMSVerification();
+        break;
+
+      case "passwordRecovery":
+        this.router.openPasswordRecovery();
+        break;
+
+      case "registration":
+        this.router.openRegistration();
         break;
     }
   }
 
   handleSMSVerificationAction(action: SMSVerificationViewModelAction) {
     switch (action.type) {
-      case "submitCode":
-        // this.router.navigateToSmsVerification(action.phone);
+      case "successfulSMSConfirmation":
+        // this.router.openLoginSuccsess();
+        // GUARD: Temp code [@dmitry.kovalev]
+        this.router.openHome();
         break;
     }
+  }
+
+  handleSuccessfulLoginFlow() {
+    this.router.openHome();
   }
 }

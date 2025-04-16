@@ -51,10 +51,6 @@
     },
     "jsx": "react-jsx"
   },
-  "exclude": [
-    "node_modules",
-    "packages/*/node_modules",
-    "packages/*/dist"
-  ],
+  "exclude": ["node_modules", "packages/*/node_modules", "packages/*/dist"],
   "extends": "expo/tsconfig.base"
 }

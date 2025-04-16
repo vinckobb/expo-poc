@@ -1,4 +1,7 @@
+import { Params as LoginParams } from "../../screens/Login";
+import { Params as SMSVerificationParams } from "../../screens/SMS Verification";
+
 export type LoginParamList = {
-  Login: undefined;
-  SMSVerification: { phone: string };
+  Login: LoginParams;
+  SMSVerification: SMSVerificationParams;
 };

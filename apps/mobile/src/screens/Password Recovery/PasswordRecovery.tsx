@@ -1,5 +1,4 @@
-import React from "react";
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, SafeAreaView } from "react-native";
 import { PasswordRecoveryViewModel } from "./PasswordRecoveryViewModel";
 
 type PasswordRecoveryProps = {
@@ -12,10 +11,12 @@ export default function PasswordRecovery({
   email,
 }: PasswordRecoveryProps) {
   return (
-    <View>
-      <Text>Password Recovery</Text>
-      <Text>{email}</Text>
-      <Button title="Ďalej" onPress={viewModel.onButtonPress} />
-    </View>
+    <SafeAreaView>
+      <View>
+        <Text>Password Recovery</Text>
+        <Text>{email}</Text>
+        <Button title="Ďalej" onPress={() => viewModel.onActionButton()} />
+      </View>
+    </SafeAreaView>
   );
 }

@@ -6,7 +6,7 @@ import {
 } from "@react-navigation/native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { useColorScheme } from "@monorepo/hooks";
-import { Text } from "react-native";
+
 import AppRoutes from "./navigation/AppRoutes";
 
 export default function App() {
