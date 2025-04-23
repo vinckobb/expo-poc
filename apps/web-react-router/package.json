@@ -1,0 +1,34 @@
+{
+  "name": "@monorepo/react-poc-web-react-router",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "start": "vite preview"
+  },
+  "dependencies": {
+    "@monorepo/components": "*",
+    "@monorepo/screens": "*",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-native": "0.76.7",
+    "react-native-web": "~0.19.13",
+    "react-router": "~7.5.1",
+    "react-native-safe-area-context": "4.12.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9",
+    "postcss": "^8",
+    "prettier": "^3.3.2",
+    "tailwindcss": "~3.4.1",
+    "typescript": "^5",
+    "vite": "^6.3.1",
+    "vite-tsconfig-paths": "~5.1.4"
+  }
+}
