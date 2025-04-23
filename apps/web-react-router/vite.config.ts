@@ -1,15 +1,23 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
-  plugins: [react({
-    jsxRuntime: 'automatic',
-    jsxImportSource: 'nativewind',
-  })],
+  plugins: [
+    react({
+      jsxRuntime: 'automatic',
+      jsxImportSource: 'nativewind',
+    }),
+    tsconfigPaths(),
+  ],
   optimizeDeps: {
     include: [
       '@monorepo/screens',
       '@monorepo/components',
+      '@monorepo/constants',
+      '@monorepo/hooks',
+      '@monorepo/theme',
+      '@monorepo/utils',
     ],
     esbuildOptions: {
       resolveExtensions: [".json", ".web.js", ".web.ts", ".web.tsx", ".js", ".ts", ".tsx"],
@@ -22,6 +30,6 @@ export default defineConfig({
     alias: {
       'react-native': 'react-native-web',
     },
-		extensions: [".json", ".web.js", ".web.ts", ".web.tsx", ".js", ".ts", ".tsx"],
+    extensions: [".json", ".web.js", ".web.ts", ".web.tsx", ".js", ".ts", ".tsx"],
   },
 })
