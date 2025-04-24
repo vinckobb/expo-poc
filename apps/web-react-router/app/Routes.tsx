@@ -27,6 +27,13 @@ export const router = createBrowserRouter([
           return {Component: Explore};
         }
       },
+      {
+        path: 'gluestack',
+        lazy: async () => {
+          const {Gluestack} = await import('./routes/Gluestack');
+          return {Component: Gluestack};
+        }
+      },
     ]
   },
 ]);

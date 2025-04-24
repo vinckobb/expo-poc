@@ -15,6 +15,9 @@ export default function BaseLayout() {
           <li>
             <Link to="/explore">Explore</Link>
           </li>
+          <li>
+            <Link to="/gluestack">Gluestack</Link>
+          </li>
         </ul>
       </div>
       <Outlet />

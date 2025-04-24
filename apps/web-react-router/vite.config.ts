@@ -17,10 +17,10 @@ export default defineConfig({
       '@monorepo/constants',
       '@monorepo/hooks',
       '@monorepo/theme',
-      '@monorepo/utils',
+      '@monorepo/utils'
     ],
     esbuildOptions: {
-      resolveExtensions: [".json", ".web.js", ".web.ts", ".web.tsx", ".js", ".ts", ".tsx"],
+      resolveExtensions: ['.json', '.web.js', '.web.ts', '.web.tsx', '.js', '.jsx', '.ts', '.tsx'],
       loader: {
         '.js': 'jsx',
       }
@@ -29,7 +29,8 @@ export default defineConfig({
   resolve: {
     alias: {
       'react-native': 'react-native-web',
+      'react-native-svg': 'react-native-svg-web'
     },
-    extensions: [".json", ".web.js", ".web.ts", ".web.tsx", ".js", ".ts", ".tsx"],
+    extensions: ['.json', '.web.js', '.web.ts', '.web.tsx', '.js', '.jsx', '.ts', '.tsx'],
   },
 })
