@@ -1,5 +1,5 @@
 import { ScrollView, View } from "react-native";
-import { ButtonGluestack, ButtonText, Header } from "@monorepo/components";
+import { Button, ButtonText, Header } from "@monorepo/components";
 
 export function GluestackDemoScreen() {
 
@@ -12,9 +12,9 @@ export function GluestackDemoScreen() {
           padding: 20,
         }}
       >
-        <ButtonGluestack>
-            <ButtonText>Test</ButtonText>
-        </ButtonGluestack>
+        <Button size="md" variant="solid" action="primary">
+          <ButtonText>Hello World!</ButtonText>
+        </Button>
       </ScrollView>
     </View>
   );

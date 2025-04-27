@@ -2,7 +2,7 @@ import { View, StyleSheet, ViewStyle, Platform, StyleProp } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { Text } from "./Text";
-import { Button } from "./Button";
+import { LegacyButton } from "./Button";
 
 type Props = {
   title: string;
@@ -21,7 +21,7 @@ export function Header({
       <View style={styles.container}>
         <Text variant="title">{title}</Text>
         {rightLabel && onRightPress && (
-          <Button
+          <LegacyButton
             title={rightLabel}
             onPress={onRightPress}
             variant="secondary"

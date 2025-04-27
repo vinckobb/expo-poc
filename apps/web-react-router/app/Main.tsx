@@ -4,9 +4,12 @@ import { router } from './Routes';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import './index.css';
+import {GluestackUIProvider} from '@monorepo/components';
 
 createRoot(document.getElementById('root')!).render(
-  <SafeAreaProvider>
-    <RouterProvider router={router} />
-  </SafeAreaProvider>
+  <GluestackUIProvider>
+    <SafeAreaProvider>
+      <RouterProvider router={router} />
+    </SafeAreaProvider>
+  </GluestackUIProvider>
 )

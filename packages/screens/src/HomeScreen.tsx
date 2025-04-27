@@ -1,5 +1,5 @@
 import { ScrollView, View } from "react-native";
-import { Header, Section, Card, Text, Button, Theme } from "@monorepo/components";
+import { Header, Section, Card, Text, LegacyButton, Theme } from "@monorepo/components";
 
 export function HomeScreen() {
   return (
@@ -26,14 +26,14 @@ export function HomeScreen() {
             <Text variant="subtitle" className="mb-4">
               Quick Action
             </Text>
-            <Button title="Do something" onPress={() => alert("Action!")} />
+            <LegacyButton title="Do something" onPress={() => alert("Action!")} />
           </Card>
 
           <Card variant="secondary">
             <Text variant="subtitle" style={{ marginBottom: 8 }}>
               Another Thing
             </Text>
-            <Button
+            <LegacyButton
               title="Press me too"
               variant="secondary"
               onPress={() => alert("Secondary action")}
@@ -47,7 +47,7 @@ export function HomeScreen() {
               <Text variant="body">
                 This section is in brand colors
               </Text>
-              <Button
+              <LegacyButton
                 title="Branded button"
                 variant="primary"
                 onPress={() => alert("Branded action")}
@@ -62,14 +62,14 @@ export function HomeScreen() {
               <Text variant="body">
                 This section is in christmas colors
               </Text>
-              <Button
+              <LegacyButton
                 title="Christmas button"
                 className="mb-4"
                 variant="primary"
                 onPress={() => alert("Christmas action")}
               />
               <Theme name="brand">
-                <Button
+                <LegacyButton
                   title="Brand button inside christmas theme"
                   variant="primary"
                   onPress={() => alert("Christmas action")}

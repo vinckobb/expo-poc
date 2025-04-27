@@ -33,7 +33,7 @@ type Props = {
   textClassName?: string;
 };
 
-export function Button({
+export function LegacyButton({
   title,
   onPress,
   variant = "primary",

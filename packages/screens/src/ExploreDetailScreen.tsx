@@ -1,5 +1,5 @@
 import { ScrollView, View } from "react-native";
-import { Button, Card, Header, Section, Text } from "@monorepo/components";
+import { LegacyButton, Card, Header, Section, Text } from "@monorepo/components";
 
 export function ExploreDetailScreen() {
   return (
@@ -28,7 +28,7 @@ export function ExploreDetailScreen() {
 
         <Section title="Actions">
           <Card>
-            <Button
+            <LegacyButton
               title="Open in Maps"
               onPress={() => alert("Opening map...")}
               variant="primary"

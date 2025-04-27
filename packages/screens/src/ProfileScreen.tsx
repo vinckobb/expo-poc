@@ -1,6 +1,6 @@
 import { ScrollView, View } from "react-native";
 import { useColorScheme } from "nativewind";
-import { Header, Section, Card, Text, Button } from "@monorepo/components";
+import { Header, Section, Card, Text, LegacyButton } from "@monorepo/components";
 
 export function ProfileScreen() {
   const { toggleColorScheme } = useColorScheme();
@@ -33,7 +33,7 @@ export function ProfileScreen() {
             <Text variant="body" className="mb-4">
               App Theme
             </Text>
-            <Button
+            <LegacyButton
               title="Switch Theme"
               variant="secondary"
               onPress={() => toggleColorScheme() }
@@ -44,7 +44,7 @@ export function ProfileScreen() {
             <Text variant="body" className="mb-4">
               Danger zone
             </Text>
-            <Button
+            <LegacyButton
               title="Logout"
               variant="primary"
               onPress={() => alert("Logging out")}
