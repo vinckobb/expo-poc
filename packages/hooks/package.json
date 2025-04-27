@@ -2,5 +2,9 @@
   "name": "@monorepo/hooks",
   "private": true,
   "version": "0.0.0",
-  "main": "src/index.ts"
+  "main": "src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/*/index.ts"
+  }
 }

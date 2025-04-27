@@ -10,6 +10,7 @@
   "dependencies": {
     "@monorepo/components": "*",
     "@monorepo/screens": "*",
+    "@monorepo/typescript-config": "*",
     "@expo/next-adapter": "^6.0.0",
     "next": "15.2.4",
     "react": "18.3.1",
