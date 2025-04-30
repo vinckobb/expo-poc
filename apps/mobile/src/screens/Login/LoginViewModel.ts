@@ -5,7 +5,7 @@ export type Action =
   | { type: "passwordRecovery" }
   | { type: "registration" };
 
-export type Params = {};
+export type Params = undefined;
 
 export class LoginViewModel implements BaseViewModel {
   private onAction: ((action: Action) => void) | undefined;

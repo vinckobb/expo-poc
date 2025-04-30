@@ -1,20 +1,21 @@
-import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type { LoginParamList } from "./paramList";
 import { LoginFlowRouter } from "./interfaces/LoginFlowRouter.interface";
 import { LoginFlowRouterDelegate } from "./interfaces/LoginFlowRouterDelegate.interface";
+import { NavigationProp } from "@react-navigation/native";
 
-export class LoginFlowRouterImpl implements LoginFlowRouter {
+export class LoginFlowRouterImpl<T extends LoginParamList> implements LoginFlowRouter {
   constructor(
-    private nav: NativeStackNavigationProp<LoginParamList>,
+    private nav: NavigationProp<T>,
     private delegate?: LoginFlowRouterDelegate
   ) {}
 
   openLogin() {
+    this.nav.navigate("Login", undefined);
     console.log("Navigating to login");
   }
 
   openSMSVerification() {
-    this.nav.navigate("SMSVerification", { phoneNumber: "1234567" });
+    this.nav.navigate("SMSVerification", undefined);
   }
 
   openPasswordRecovery() {

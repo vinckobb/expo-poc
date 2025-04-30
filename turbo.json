@@ -1,7 +1,7 @@
 {
   "$schema": "https://turbo.build/schema.v2.json",
   "globalEnv": ["ANDROID_HOME"],
-  "ui": "tui",
+  "ui": "stream",
   "tasks": {
     "build": {
       "outputs": [".next/**", "!.next/cache/**"],

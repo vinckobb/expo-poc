@@ -10,6 +10,7 @@ export class LoginFlowControllerImpl implements LoginFlowController {
 
   start() {
     console.log("Login flow started");
+    this.router.openLogin();
   }
 
   dispose() {

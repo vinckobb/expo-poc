@@ -9,14 +9,24 @@ import {
 import { Home, HomeViewModel } from "../screens/Home";
 
 import { LoginFlow, LoginFlowRouterDelegate } from "../login";
+import { LoginParamList } from "../login/navigation/paramList";
+
+import { createLoginFlowScreens } from "../login/navigation/LoginFlow";
 
 export type RootStackParamList = {
   Welcome: undefined;
   LoginFlow: undefined;
-  SMSValidation: { phoneNumber: string };
   PasswordRecovery: { email: string };
   Home: undefined;
-};
+} & LoginParamList;
+
+export type RootStackNavigator = ReturnType<
+  typeof createNativeStackNavigator<RootStackParamList>
+>;
+
+type LoginStackNavigator = ReturnType<
+  typeof createNativeStackNavigator<LoginParamList>
+>;
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -40,21 +50,18 @@ export default function AppRoutes() {
   };
 
   return (
-    <Stack.Navigator initialRouteName="Welcome" screenOptions={{ headerShown: false }}>
+    <Stack.Navigator
+      initialRouteName="Welcome"
+      screenOptions={{ headerShown: true }}
+    >
       <Stack.Screen
         name="Welcome"
         children={() => {
           const viewModel = new WelcomeViewModel(() =>
-            navigation.navigate("LoginFlow")
+            navigation.navigate("Login", {})
           );
           // viewModel.onAction = () => navigation.navigate("Login");
           return <Welcome viewModel={viewModel} />;
-        }}
-      />
-      <Stack.Screen
-        name="LoginFlow"
-        children={() => {
-          return <LoginFlow delegate={loginFlowDelegate} />;
         }}
       />
       <Stack.Screen
@@ -80,6 +87,11 @@ export default function AppRoutes() {
           return <Home viewModel={viewModel} />;
         }}
       />
+      {createLoginFlowScreens<RootStackParamList>(
+        Stack,
+        navigation,
+        loginFlowDelegate
+      )}
     </Stack.Navigator>
   );
 }

@@ -1,66 +1,48 @@
-// LoginFlow.tsx
-import React, { useRef, useEffect } from "react";
-import {
-  createNativeStackNavigator,
-  NativeStackNavigationProp,
-} from "@react-navigation/native-stack";
-import { LoginFlowControllerImpl } from "./LoginFlowController";
-import { LoginFlowRouterImpl } from "./LoginFlowRouter";
+import { NavigationProp } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { LoginParamList } from "./paramList";
 import { LoginFlowRouterDelegate } from "./interfaces/LoginFlowRouterDelegate.interface";
-import type { LoginParamList } from "./paramList";
+import { SMSVerificationScreen, LoginScreen } from "../screens";
+import { LoginFlowScreenProvider } from "./LoginFlowScreenProvider";
 
-import * as Screens from "../screens";
-
-const Stack = createNativeStackNavigator<LoginParamList>();
-
-type LoginFlowProps = { delegate: LoginFlowRouterDelegate };
-
-export const LoginFlow: React.FC<LoginFlowProps> = ({ delegate }) => {
-  const controllerRef = useRef<LoginFlowControllerImpl | null>(null);
-
-  const getController = (
-    navigation: NativeStackNavigationProp<LoginParamList>
-  ) => {
-    if (!controllerRef.current) {
-      controllerRef.current = new LoginFlowControllerImpl(
-        new LoginFlowRouterImpl(navigation, delegate)
-      );
-      controllerRef.current.start();
-    }
-    return controllerRef.current!;
-  };
-
-  useEffect(() => {
-    return () => {
-      controllerRef.current?.dispose?.();
-    };
-  }, []);
-
+export function createLoginFlowScreens<T extends LoginParamList>(
+  Stack: ReturnType<typeof createNativeStackNavigator<T>>,
+  navigation: NavigationProp<T>,
+  loginFlowRouterDelegate: LoginFlowRouterDelegate
+) {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: true }}>
-      <Stack.Screen name="Login">
-        {({ navigation, route }) => {
-          const controller = getController(navigation);
-          return (
-            <Screens.LoginScreen
-              controller={controller}
-              params={route.params}
-            />
-          );
-        }}
-      </Stack.Screen>
-
-      <Stack.Screen name="SMSVerification">
-        {({ navigation, route }) => {
-          const controller = getController(navigation);
-          return (
-            <Screens.SMSVerificationScreen
-              controller={controller}
-              params={route.params}
-            />
-          );
-        }}
-      </Stack.Screen>
-    </Stack.Navigator>
+    <Stack.Group>
+      <Stack.Screen
+        name="Login"
+        children={() => (
+          <LoginFlowScreenProvider
+            navigation={navigation}
+            routerDelegate={loginFlowRouterDelegate}
+            screenName="Login"
+          >
+            {(controller) => (
+              <LoginScreen controller={controller} params={undefined} />
+            )}
+          </LoginFlowScreenProvider>
+        )}
+      />
+      <Stack.Screen
+        name="SMSVerification"
+        children={() => (
+          <LoginFlowScreenProvider
+            navigation={navigation}
+            routerDelegate={loginFlowRouterDelegate}
+            screenName="SMSVerification"
+          >
+            {(controller) => (
+              <SMSVerificationScreen
+                controller={controller}
+                params={undefined}
+              />
+            )}
+          </LoginFlowScreenProvider>
+        )}
+      />
+    </Stack.Group>
   );
-};
+}

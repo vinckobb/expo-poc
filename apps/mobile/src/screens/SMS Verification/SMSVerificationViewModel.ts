@@ -2,7 +2,7 @@ import { BaseViewModel } from "../../navigation/types/BaseViewModel";
 
 export type Action = { type: "successfulSMSConfirmation" };
 
-export type Params = {};
+export type Params = undefined;
 
 export class SMSVerificationViewModel implements BaseViewModel {
   private onAction: ((action: Action) => void) | undefined;
