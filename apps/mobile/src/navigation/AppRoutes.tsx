@@ -1,14 +1,13 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 import { Welcome, WelcomeViewModel } from "../screens/Welcome";
-import { Login, LoginViewModel } from "../screens/Login";
 import {
   PasswordRecovery,
   PasswordRecoveryViewModel,
 } from "../screens/Password Recovery";
 import { Home, HomeViewModel } from "../screens/Home";
 
-import { LoginFlow, LoginFlowRouterDelegate } from "../login";
+import { LoginFlowRouterDelegate } from "../login";
 import { LoginParamList } from "../login/navigation/paramList";
 
 import { createLoginFlowScreens } from "../login/navigation/LoginFlow";
@@ -58,7 +57,7 @@ export default function AppRoutes() {
         name="Welcome"
         children={() => {
           const viewModel = new WelcomeViewModel(() =>
-            navigation.navigate("Login", {})
+            navigation.navigate("Login")
           );
           // viewModel.onAction = () => navigation.navigate("Login");
           return <Welcome viewModel={viewModel} />;
