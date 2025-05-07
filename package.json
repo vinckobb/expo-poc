@@ -10,6 +10,7 @@
     "dev:android": "turbo dev:android",
     "dev:ios": "turbo dev:ios",
     "build": "turbo build",
+    "test": "turbo test",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "clean": "turbo run clean && rm -rf node_modules"
@@ -23,7 +24,8 @@
     "husky": "~9.1.7",
     "eslint": "~9.24.0",
     "eslint-plugin-react": "~7.37.5",
-    "prettier": "^3.3.2"
+    "prettier": "^3.3.2",
+    "ts-node": "^10.9.2"
   },
   "packageManager": "npm@9.8.1"
 }
