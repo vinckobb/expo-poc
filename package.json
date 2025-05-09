@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "turbo dev",
     "dev:android": "turbo dev:android",
-    "dev:ios": "turbo dev:ios",
+    "dev:ios": "turbo --log-prefix=none dev:ios",
     "build": "turbo build",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
