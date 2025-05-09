@@ -2,7 +2,7 @@
   "private": true,
   "name": "@monorepo/react-poc",
   "workspaces": [
-    "mock-server/",
+    "mock-server",
     "apps/*",
     "packages/*"
   ],

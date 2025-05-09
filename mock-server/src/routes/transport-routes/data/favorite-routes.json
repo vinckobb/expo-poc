@@ -1,0 +1,22 @@
+[
+  {
+    "id": "b476d8fd-1d5e-4f30-8afa-1f7adf43529b",
+    "routeId": "5",
+    "position": 1
+  },
+  {
+    "id": "ef9d59ba-5345-4a61-8916-5c4c929bdf75",
+    "routeId": "8",
+    "position": 2
+  },
+  {
+    "id": "45e0e48d-589d-4dca-870f-46803893781f",
+    "routeId": "9",
+    "position": 3
+  },
+  {
+    "id": "e26f669b-19d4-4030-921c-5877383cf27c",
+    "routeId": "1",
+    "position": 4
+  }
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "id": "1",
+    "number": "39",
+    "name": "Patrónka - Cintorín Slávičie",
+    "startPoint": "Patrónka",
+    "endPoint": "Cintorín Slávičie",
+    "color": "#e74c3c"
+  },
+  {
+    "id": "2",
+    "number": "4",
+    "name": "Zlaté Piesky - Karlova Ves",
+    "startPoint": "Zlaté Piesky",
+    "endPoint": "Karlova Ves",
+    "color": "#3498db"
+  },
+  {
+    "id": "3",
+    "number": "83",
+    "name": "Letisko - Dúbravka",
+    "startPoint": "Letisko",
+    "endPoint": "Dúbravka",
+    "color": "#2ecc71"
+  },
+  {
+    "id": "4",
+    "number": "21",
+    "name": "Devín - Račianske mýto",
+    "startPoint": "Devín",
+    "endPoint": "Račianske mýto",
+    "color": "#f39c12"
+  },
+  {
+    "id": "5",
+    "number": "202",
+    "name": "Hlavná stanica - Rusovce",
+    "startPoint": "Hlavná stanica",
+    "endPoint": "Rusovce",
+    "color": "#9b59b6"
+  },
+  {
+    "id": "6",
+    "number": "7",
+    "name": "Rača - Dolné hony",
+    "startPoint": "Rača",
+    "endPoint": "Dolné hony",
+    "color": "#1abc9c"
+  },
+  {
+    "id": "7",
+    "number": "9",
+    "name": "Astronomická - Železná studienka",
+    "startPoint": "Astronomická",
+    "endPoint": "Železná studienka",
+    "color": "#d35400"
+  },
+  {
+    "id": "8",
+    "number": "5",
+    "name": "Nové SND - Bosákova",
+    "startPoint": "Nové SND",
+    "endPoint": "Bosákova",
+    "color": "#8e44ad"
+  },
+  {
+    "id": "9",
+    "number": "31",
+    "name": "Trnavské mýto - Cintorín Vrakuňa",
+    "startPoint": "Trnavské mýto",
+    "endPoint": "Cintorín Vrakuňa",
+    "color": "#16a085"
+  },
+  {
+    "id": "10",
+    "number": "53",
+    "name": "Vajnory - Michalská",
+    "startPoint": "Vajnory",
+    "endPoint": "Michalská",
+    "color": "#c0392b"
+  },
+  {
+    "id": "11",
+    "number": "70",
+    "name": "Podunajské Biskupice - Hlavná stanica",
+    "startPoint": "Podunajské Biskupice",
+    "endPoint": "Hlavná stanica",
+    "color": "#2980b9"
+  },
+  {
+    "id": "12",
+    "number": "95",
+    "name": "Petržalka - Nové mesto",
+    "startPoint": "Petržalka",
+    "endPoint": "Nové mesto",
+    "color": "#27ae60"
+  },
+  {
+    "id": "13",
+    "number": "203",
+    "name": "Most SNP - Čunovo",
+    "startPoint": "Most SNP",
+    "endPoint": "Čunovo",
+    "color": "#f1c40f"
+  },
+  {
+    "id": "14",
+    "number": "59",
+    "name": "Mariánka - Lamač",
+    "startPoint": "Mariánka",
+    "endPoint": "Lamač",
+    "color": "#7f8c8d"
+  },
+  {
+    "id": "15",
+    "number": "63",
+    "name": "Avion - Slovnaft",
+    "startPoint": "Avion",
+    "endPoint": "Slovnaft",
+    "color": "#34495e"
+  }
+]
