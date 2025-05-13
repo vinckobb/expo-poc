@@ -1,17 +1,20 @@
 import { ScrollView, View } from "react-native";
+import { useTranslation } from "react-i18next";
 import { Button, Card, Header, Section, Text } from "@monorepo/components";
 
 export function ExploreDetailScreen() {
+  const { t } = useTranslation();
+
   return (
     <View style={{ flex: 1 }}>
-      <Header title="POI Detail" />
+      <Header title={t("explore.detail.title")} />
 
       <ScrollView
         contentContainerStyle={{
           padding: 20,
         }}
       >
-        <Section title="Place Info">
+        <Section title={t("explore.detail.placeinfo.title")}>
           <Card>
             <Text variant="title" style={{ marginBottom: 8 }}>
               Central Park
@@ -26,10 +29,10 @@ export function ExploreDetailScreen() {
           </Card>
         </Section>
 
-        <Section title="Actions">
+        <Section title={t("explore.detail.actions.title")}>
           <Card>
             <Button
-              title="Open in Maps"
+              title={t("explore.detail.actions.action.title")}
               onPress={() => alert("Opening map...")}
               variant="primary"
             />

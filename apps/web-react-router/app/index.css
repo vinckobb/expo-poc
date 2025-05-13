@@ -4,4 +4,30 @@ nav {
   justify-content: center;
   gap: 1em;
 }
-  
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+  background-color: #072C66;
+  color: white;
+}
+
+.header .logo {
+  font-weight: bold;
+}
+
+.header .language-selector {
+  text-transform: uppercase;
+  display: flex;
+  gap: 1em;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  font-weight: bold;
+}

@@ -1,0 +1,76 @@
+{
+    "home": {
+        "title": "Domov",
+        "link": "Domov",
+        "welcome": {
+            "title": "Vitajte",
+            "body": "Toto je ukážková domovská obrazovka. Môžete si tu vytvoriť čokoľvek chcete."
+        },
+        "actions": {
+            "title": "Akcie",
+            "action": {
+                "title": "Stlač ma"
+            },
+            "secondary": {
+                "action": {
+                    "title": "Stlač ma tiež"
+                }
+            }
+        }
+    },
+    "profile": {
+        "link": "Profil",
+        "title": "Profil",
+        "userinfo": {
+            "title": "Používateľské informácie",
+            "name": "Meno",
+            "email": "Email"
+        },
+        "settings": {
+            "title": "Nastavenia",
+            "theme": {
+                "title": "Téma",
+                "action": {
+                    "title": "Prepnúť tému"
+                }
+            },
+            "language": {
+                "title": "Jazyk",
+                "action": {
+                    "title": "Prepnúť jazyk"
+                }
+            },
+            "dangerzone": {
+                "title": "Nebezpečná zóna",
+                "action": {
+                    "title": "Odhlásiť sa"
+                }
+            }
+        }
+    },
+    "explore": {
+        "link": "Preskúmať",
+        "title": "Preskúmať",
+        "actions": {
+            "action": {
+                "title": "Zobraziť viac"
+            }
+        },
+        "web": "Text dostupný iba na webe.",
+        "detail": {
+            "title": "POI Detail",
+            "placeinfo": {
+                "title": "Informácie o mieste"
+            },
+            "actions": {
+                "title": "Akcie",
+                "action": {
+                    "title": "Otvoriť v Mapách"
+                }
+            }
+        }
+    },
+    "notsupported": {
+        "web": "Táto funkčnosť nie je podporovaná na webe."
+    }
+}

@@ -4,6 +4,7 @@ import { router } from './Routes';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import './index.css';
+import '@monorepo/i18n';
 
 createRoot(document.getElementById('root')!).render(
   <SafeAreaProvider>

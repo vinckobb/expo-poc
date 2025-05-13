@@ -2,7 +2,9 @@
 
 import { Geist, Geist_Mono } from "next/font/google";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { useTranslation } from "react-i18next";
 import "./globals.css";
+import "@monorepo/i18n";
 import Link from "next/link";
 
 const geistSans = Geist({
@@ -20,6 +22,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { t } = useTranslation();
+
   return (
     <html lang="en">
       <body
@@ -28,13 +32,13 @@ export default function RootLayout({
         <div className="side-menu">
           <ul>
             <li>
-              <Link href="/">Home</Link>
+              <Link href="/">{t("home.link")}</Link>
             </li>
             <li>
-              <Link href="/profile">Profile</Link>
+              <Link href="/profile">{t("profile.link")}</Link>
             </li>
             <li>
-              <Link href="/explore">Explore</Link>
+              <Link href="/explore">{t("explore.link")}</Link>
             </li>
           </ul>
         </div>

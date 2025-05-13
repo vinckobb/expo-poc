@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import { HomeScreen, ProfileScreen } from "@monorepo/screens";
@@ -7,6 +8,8 @@ import ExploreStack from "./ExploreStack";
 const Tab = createBottomTabNavigator();
 
 export default function BottomTabs() {
+  const { t } = useTranslation();
+
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -14,9 +17,9 @@ export default function BottomTabs() {
         tabBarIcon: ({ color, size }) => {
           let iconName: keyof typeof Ionicons.glyphMap = "add";
 
-          if (route.name === "Home") iconName = "home";
-          else if (route.name === "Explore") iconName = "search";
-          else if (route.name === "Profile") iconName = "person";
+          if (route.name === "home") iconName = "home";
+          else if (route.name === "explore") iconName = "search";
+          else if (route.name === "profile") iconName = "person";
 
           return <Ionicons name={iconName} size={size} color={color} />;
         },
@@ -24,9 +27,9 @@ export default function BottomTabs() {
         tabBarInactiveTintColor: "gray",
       })}
     >
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Explore" component={ExploreStack} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
+      <Tab.Screen name="home" options={{title: t("home.title")}} component={HomeScreen} />
+      <Tab.Screen name="explore" options={{title: t("explore.title")}} component={ExploreStack} />
+      <Tab.Screen name="profile" options={{title: t("profile.title")}} component={ProfileScreen} />
     </Tab.Navigator>
   );
 }

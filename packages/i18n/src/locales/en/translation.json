@@ -1,0 +1,78 @@
+{
+    "home": {
+        "title": "Home",
+        "link": "Home",
+        "welcome": {
+            "title": "Welcome",
+            "body": "This is a sample home screen. You can build whatever you want here."
+        },
+        "actions": {
+            "title": {
+                "title": "Actions"
+            },
+            "action": {
+                "title": "Press me"
+            },
+            "secondary": {
+                "action": {
+                    "title": "Press me too"
+                }
+            }
+        }
+    },
+    "profile": {
+        "link": "Profile",
+        "title": "Profile",
+        "userinfo": {
+            "title": "User Info",
+            "name": "Name",
+            "email": "Email"
+        },
+        "settings": {
+            "title": "Settings",
+            "theme": {
+                "title": "Theme",
+                "action": {
+                    "title": "Switch Theme"
+                }
+            },
+            "language": {
+                "title": "Language",
+                "action": {
+                    "title": "Switch Language"
+                }
+            },
+            "dangerzone": {
+                "title": "Danger Zone",
+                "action": {
+                    "title": "Logout"
+                }
+            }
+        }
+    },
+    "explore": {
+        "link": "Explore",
+        "title": "Explore",
+        "actions": {
+            "action": {
+                "title": "Show more"
+            }
+        },
+        "web": "Text only available on web.",
+        "detail": {
+            "title": "POI Detail",
+            "placeinfo": {
+                "title": "Place Info"
+            },
+            "actions": {
+                "title": "Actions",
+                "action": {
+                    "title": "Open in Maps"
+                }
+            }
+        }
+    },
+    "notsupported": {
+        "web": "This functionality is not supported on web."
+    }
+}

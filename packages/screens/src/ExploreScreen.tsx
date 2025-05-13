@@ -1,4 +1,5 @@
 import { View } from "react-native";
+import { useTranslation } from "react-i18next";
 import { Header } from "@monorepo/components";
 import { Map } from "@monorepo/components/map";
 import { useNavigation } from "@react-navigation/native";
@@ -11,10 +12,11 @@ type ExploreStackParamList = {
 
 export function ExploreScreen() {
   const navigation = useNavigation<NativeStackNavigationProp<ExploreStackParamList>>();
+  const { t } = useTranslation();
 
   return (
     <View style={{ flex: 1 }}>
-      <Header title="Explore" />
+      <Header title={t("explore.title")} />
       <Map onMarkerPress={() => navigation.navigate("ExploreDetail")} />
     </View>
   );
