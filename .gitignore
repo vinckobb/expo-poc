@@ -64,11 +64,5 @@ xcuserdata
 # Github
 .github/
 
-# Android
-android/
-
-# iOS
-ios/
-
 # Local
 _local*

@@ -4,7 +4,6 @@
   "main": "App.tsx",
   "version": "1.0.0",
   "scripts": {
-    "dev": "expo start",
     "dev:android": "expo run:android",
     "dev:ios": "expo run:ios",
     "android": "expo run:android",
