@@ -1,53 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "@monorepo/typescript-config/react-library.json",
-  "compilerOptions": {
-    "baseUrl": "../../packages",
-    "paths": {
-      "@monorepo/components": [
-        "./components/src/index.ts"
-      ],
-      "@monorepo/components/*": [
-        "./components/src/*/index.ts"
-      ],
-      "@monorepo/constants": [
-        "./constants/src/index.ts"
-      ],
-      "@monorepo/constants/*": [
-        "./constants/src/*/index.ts"
-      ],
-      "@monorepo/hooks/": [
-        "./hooks/src/index.ts"
-      ],
-      "@monorepo/hooks/*": [
-        "./hooks/src/*/index.ts"
-      ],
-      "@monorepo/screens": [
-        "./screens/src/index.ts"
-      ],
-      "@monorepo/screens/*": [
-        "./screens/src/*/index.ts"
-      ],
-      "@monorepo/shared": [
-        "./shared/src/index.ts"
-      ],
-      "@monorepo/shared/*": [
-        "./shared/src/*/index.ts"
-      ],
-      "@monorepo/theme": [
-        "./theme/src/index.ts"
-      ],
-      "@monorepo/theme/*": [
-        "./theme/*"
-      ],
-      "@monorepo/utils/": [
-        "./utils/src/index.ts"
-      ],
-      "@monorepo/utils/*": [
-        "./utils/*/src/index.ts"
-      ]
-    }
-  },
   "include": [
     "**/*.ts",
     "**/*.tsx",
