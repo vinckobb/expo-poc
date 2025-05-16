@@ -6,7 +6,10 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "turbo dev",
+    "dev": "npm run dev:web",
+    "dev:web": "turbo dev:web",
+    "dev-expo:android": "turbo dev-expo:android",
+    "dev-expo:ios": "turbo dev-expo:ios",
     "dev:android": "turbo dev:android",
     "dev:ios": "turbo dev:ios",
     "build": "turbo build",

@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:web": "npm run dev",
     "build": "tsc -b && vite build",
     "start": "vite preview",
     "test": "jest"
