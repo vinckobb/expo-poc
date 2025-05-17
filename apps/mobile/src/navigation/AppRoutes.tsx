@@ -20,6 +20,7 @@ import { Routes } from "../reactQueryPlayground/Routes";
 import { RoutesViewModel } from "../reactQueryPlayground/RoutesViewModel";
 import { RouteDetails } from "../reactQueryPlayground/RouteDetails";
 import { RouteDetailsViewModel } from "../reactQueryPlayground/RouteDetailsViewModel";
+import { HomeShellDemo } from "../shellPlayground/HomeShellDemo";
 
 export type RootStackParamList = {
   Welcome: undefined;
@@ -29,6 +30,7 @@ export type RootStackParamList = {
   Routes: undefined;
   FavoriteRoutes: undefined;
   RouteDetails: { routeId: string };
+  ShellDemo: undefined;
 } & LoginParamList;
 
 export type RootStackNavigator = ReturnType<
@@ -82,7 +84,7 @@ export default function AppRoutes() {
         name="Welcome"
         children={() => {
           const viewModel = new WelcomeViewModel(() =>
-            navigation.navigate("Routes")
+            navigation.navigate("ShellDemo")
           );
           return <Welcome viewModel={viewModel} />;
         }}
@@ -173,6 +175,15 @@ export default function AppRoutes() {
 
           return <RouteDetails viewModel={viewModel} />;
         }}
+      />
+
+      <Stack.Screen
+        name="ShellDemo"
+        options={{
+          title: "Shell Demo",
+          headerShown: false,
+        }}
+        component={HomeShellDemo}
       />
 
       {createLoginFlowScreens<RootStackParamList>(
