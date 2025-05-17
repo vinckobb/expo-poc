@@ -1,2 +1,2 @@
-export { default as Welcome } from "./Welcome";
-export { WelcomeViewModel } from "./WelcomeViewModel";
+export * from "./Welcome";
+export * from "./WelcomeViewModel";

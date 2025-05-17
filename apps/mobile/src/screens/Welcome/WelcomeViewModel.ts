@@ -1,13 +1,22 @@
-export class WelcomeViewModel {
-  private onAction: (() => void) | undefined;
+export type Action =
+  | { type: "login" }
+  | { type: "home" }
 
-  constructor(onAction: () => void) {
+export class WelcomeViewModel {
+  private onAction: ((action: Action) => void) | undefined;
+
+  constructor(onAction: (action: Action) => void) {
     this.onAction = onAction;
   }
 
-  onActionButton() {
+  onHomeButton() {
     console.log("WelcomeViewModel: onActionButton");
-    this.onAction?.();
+    this.onAction?.({ type: "home" });
+  }
+
+  onLoginButton() {
+    console.log("WelcomeViewModel: onActionButton");
+    this.onAction?.({ type: "login" });
   }
 
   dispose(): void {

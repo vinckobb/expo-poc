@@ -21,17 +21,21 @@ import { RoutesViewModel } from "../reactQueryPlayground/RoutesViewModel";
 import { RouteDetails } from "../reactQueryPlayground/RouteDetails";
 import { RouteDetailsViewModel } from "../reactQueryPlayground/RouteDetailsViewModel";
 import { HomeShellDemo } from "../shellPlayground/HomeShellDemo";
+import {
+  createWelcomeFlowScreens,
+  WelcomeFlowRouterDelegate,
+  WelcomeParamList,
+} from "../features/welcome";
 
 export type RootStackParamList = {
-  Welcome: undefined;
-  LoginFlow: undefined;
   PasswordRecovery: { email: string };
   Home: undefined;
   Routes: undefined;
   FavoriteRoutes: undefined;
   RouteDetails: { routeId: string };
   ShellDemo: undefined;
-} & LoginParamList;
+} & LoginParamList &
+  WelcomeParamList;
 
 export type RootStackNavigator = ReturnType<
   typeof createNativeStackNavigator<RootStackParamList>
@@ -59,6 +63,20 @@ export default function AppRoutes() {
     },
   };
 
+  const welcomeFlowDelegate: WelcomeFlowRouterDelegate = {
+    openHome: () => {
+      console.log("Navigate to home");
+      navigation.reset({
+        index: 0,
+        routes: [{ name: "Home" }],
+      });
+    },
+    openLogin: () => {
+      console.log("Navigate to login");
+      navigation.navigate("Login");
+    },
+  };
+
   const handleRouteSelected = (routeId: string) => {
     navigation.navigate("RouteDetails", { routeId });
   };
@@ -81,15 +99,6 @@ export default function AppRoutes() {
       screenOptions={{ headerShown: true }}
     >
       <Stack.Screen
-        name="Welcome"
-        children={() => {
-          const viewModel = new WelcomeViewModel(() =>
-            navigation.navigate("ShellDemo")
-          );
-          return <Welcome viewModel={viewModel} />;
-        }}
-      />
-      <Stack.Screen
         name="PasswordRecovery"
         children={({ route }) => {
           const viewModel = new PasswordRecoveryViewModel(() =>
@@ -107,7 +116,8 @@ export default function AppRoutes() {
         name="Home"
         children={() => {
           const viewModel = new HomeViewModel(() =>
-            console.log("Final screen reached")
+            // console.log("Final screen reached")
+            navigation.navigate("Welcome")
           );
           return <Home viewModel={viewModel} />;
         }}
@@ -190,6 +200,12 @@ export default function AppRoutes() {
         Stack,
         navigation,
         loginFlowDelegate
+      )}
+
+      {createWelcomeFlowScreens<RootStackParamList>(
+        Stack,
+        navigation,
+        welcomeFlowDelegate
       )}
     </Stack.Navigator>
   );

@@ -1,7 +1,7 @@
 import { View, Text, Button, SafeAreaView } from "react-native";
 import { WelcomeViewModel } from "./WelcomeViewModel";
 
-export default function Welcome({
+export function Welcome({
   viewModel,
 }: {
   viewModel: WelcomeViewModel;
@@ -9,8 +9,11 @@ export default function Welcome({
   return (
     <SafeAreaView>
       <View>
-        <Text>Welcome</Text>
-        <Button title="Dalej" onPress={() => viewModel.onActionButton()} />
+        <Text style={{ fontSize: 32, fontWeight: "bold", textAlign: "center", marginVertical: 24 }}>
+          Vitaj
+        </Text>
+        <Button title="Login" onPress={() => viewModel.onLoginButton()} />
+        <Button title="Home" onPress={() => viewModel.onHomeButton()} />
       </View>
     </SafeAreaView>
   );
