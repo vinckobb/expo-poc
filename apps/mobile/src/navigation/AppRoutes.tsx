@@ -1,17 +1,11 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 import { useQueryClient } from "@tanstack/react-query";
-import { Welcome, WelcomeViewModel } from "../screens/Welcome";
 import {
   PasswordRecovery,
   PasswordRecoveryViewModel,
 } from "../screens/Password Recovery";
 import { Home, HomeViewModel } from "../screens/Home";
-
-import { LoginFlowRouterDelegate } from "../login";
-import { LoginParamList } from "../login/navigation/paramList";
-
-import { createLoginFlowScreens } from "../login/navigation/LoginFlow";
 
 import { FavoriteRoutes } from "../reactQueryPlayground/FavoriteRoutes";
 import { createFavoriteRoutesViewModel } from "../reactQueryPlayground/FavoriteRoutesViewModel";
@@ -26,6 +20,11 @@ import {
   WelcomeFlowRouterDelegate,
   WelcomeParamList,
 } from "../features/welcome";
+import {
+  createLoginFlowScreens,
+  LoginFlowRouterDelegate,
+  LoginParamList,
+} from "../features/login";
 
 export type RootStackParamList = {
   PasswordRecovery: { email: string };
