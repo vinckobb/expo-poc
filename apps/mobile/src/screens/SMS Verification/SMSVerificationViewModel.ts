@@ -1,10 +1,10 @@
-import { BaseViewModel } from "../../navigation/types/BaseViewModel";
+import { ViewModel } from "../../navigation/types/ViewModel";
 
 export type Action = { type: "successfulSMSConfirmation" };
 
 export type Params = undefined;
 
-export class SMSVerificationViewModel implements BaseViewModel {
+export class SMSVerificationViewModel implements ViewModel {
   private onAction: ((action: Action) => void) | undefined;
 
   constructor(params: Params, onAction: (action: Action) => void) {
@@ -17,7 +17,7 @@ export class SMSVerificationViewModel implements BaseViewModel {
   }
 
   dispose(): void {
-    console.log("SMSVerificationViewModel: dispose");
+    console.log("SMSVerificationViewModel dispose");
     this.onAction = undefined;
   }
 }

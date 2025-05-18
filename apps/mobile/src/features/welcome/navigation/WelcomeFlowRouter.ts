@@ -1,16 +1,15 @@
-import type { WelcomeParamList } from "./types/paramList";
-import { WelcomeFlowRouter } from "./types/WelcomeFlowRouter.interface";
-import { WelcomeFlowRouterDelegate } from "./types/WelcomeFlowRouterDelegate.interface";
 import { NavigationProp } from "@react-navigation/native";
 
-export class WelcomeFlowRouterImpl<T extends WelcomeParamList>
-  implements WelcomeFlowRouter
+import * as Flow from "./Flow";
+
+export class WelcomeFlowRouterImpl<T extends Flow.ParamList>
+  implements Flow.Router
 {
   static readonly displayName: string = "WelcomeFlowRouterImpl";
 
   constructor(
     private nav: NavigationProp<T>,
-    private delegate?: WelcomeFlowRouterDelegate
+    private delegate?: Flow.Delegate
   ) {}
 
   openWelcome() {

@@ -18,7 +18,7 @@ export class AboutViewModel {
   }
 
   dispose(): void {
-    console.log("AboutViewModel: dispose");
+    console.log("AboutViewModel dispose");
     this.onAction = undefined;
   }
 }

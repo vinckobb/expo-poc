@@ -1,2 +1,2 @@
-export { WelcomeScreen } from "./Welcome.screen";
-export { AboutScreen } from "./About.screen";
+export * from "./Welcome.screen";
+export * from "./About.screen";

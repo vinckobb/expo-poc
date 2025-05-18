@@ -1,4 +1,5 @@
 import { NavigationProp } from "@react-navigation/native";
+import { FlowController } from "./FlowController";
 
 export interface RouterClass<
   TParamList extends Record<string, object | undefined>,
@@ -12,25 +13,30 @@ export interface RouterClass<
   ): TRouter;
 }
 
-export interface ControllerClass<TController, TRouter> {
+export interface ControllerClass<TController extends FlowController, TRouter> {
   readonly displayName: string;
   new (router: TRouter): TController;
 }
 
-export interface ResourceState<TRouter, TController> {
+export interface ResourceState<TRouter, TController extends FlowController> {
   routerInstance: TRouter | null;
   controllerInstance: TController | null;
   activeScreens: number;
 }
 
-export interface ResourceStateManager<TRouter, TController> {
+export interface ResourceStateManager<
+  TRouter,
+  TController extends FlowController,
+> {
   getState(): ResourceState<TRouter, TController>;
   updateState(state: ResourceState<TRouter, TController>): void;
   resetState(): void;
 }
 
-export class InstanceResourceStateManager<TRouter, TController>
-  implements ResourceStateManager<TRouter, TController>
+export class FlowResourceStateManager<
+  TRouter,
+  TController extends FlowController,
+> implements ResourceStateManager<TRouter, TController>
 {
   private state: ResourceState<TRouter, TController> = {
     routerInstance: null,
@@ -47,6 +53,8 @@ export class InstanceResourceStateManager<TRouter, TController>
   }
 
   resetState(): void {
+    console.log("Flow state will be reset");
+    this.state.controllerInstance?.dispose?.();
     this.state = {
       routerInstance: null,
       controllerInstance: null,
@@ -58,7 +66,7 @@ export class InstanceResourceStateManager<TRouter, TController>
 export abstract class FlowResourceManager<
   TParamList extends Record<string, object | undefined>,
   TRouter,
-  TController,
+  TController extends FlowController,
   TRouterDelegate,
 > {
   private stateManager: ResourceStateManager<TRouter, TController>;
@@ -89,7 +97,7 @@ export abstract class FlowResourceManager<
     };
     this.stateManager.updateState(newState);
     console.log(
-      `📊 Screen unregistered. Active screens: ${newState.activeScreens}`
+      `Screen unregistered. Active screens: ${newState.activeScreens}`
     );
 
     if (newState.activeScreens <= 0) {
@@ -104,7 +112,7 @@ export abstract class FlowResourceManager<
     const state = this.stateManager.getState();
     if (!state.routerInstance) {
       const RouterClass = this.getRouterClass();
-      console.log(`🔄 Creating new ${RouterClass.displayName} instance`);
+      console.log(`Creating new ${RouterClass.displayName} instance`);
       const routerInstance = new RouterClass(navigation, delegate);
       this.stateManager.updateState({
         ...state,
@@ -125,7 +133,7 @@ export abstract class FlowResourceManager<
     const state = this.stateManager.getState();
     if (!state.controllerInstance && state.routerInstance) {
       const ControllerClass = this.getControllerClass();
-      console.log(`🔄 Creating new ${ControllerClass.displayName} instance`);
+      console.log(`Creating new ${ControllerClass.displayName} instance`);
       const controllerInstance = new ControllerClass(state.routerInstance);
 
       this.stateManager.updateState({
@@ -144,7 +152,7 @@ export abstract class FlowResourceManager<
   }
 
   cleanup(): void {
-    console.log("🧹 Cleaning up flow resources");
+    console.log("Cleaning up flow resources");
     this.stateManager.resetState();
   }
 

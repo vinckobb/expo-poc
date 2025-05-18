@@ -1,51 +1,20 @@
 import { NavigationProp } from "@react-navigation/native";
-import { WelcomeParamList } from "./types/paramList";
-import { WelcomeFlowRouterDelegate } from "./types/WelcomeFlowRouterDelegate.interface";
-import { WelcomeFlowController } from "./types/WelcomeFlowController.interface";
-import { WelcomeFlowResourceManager } from "./WelcomeFlowResourceManager";
 import { FlowScreenProvider } from "../../../navigation/types/FlowScreenProvider";
-import { useEffect, useRef } from "react";
 
-export function useWelcomeFlowRegisterScreen<T extends WelcomeParamList>() {
-  const manager = WelcomeFlowResourceManager.getInstance<T>();
-  const isRegisteredRef = useRef(false);
+import * as Flow from "./Flow";
 
-  useEffect(() => {
-    if (!isRegisteredRef.current) {
-      manager.registerScreen();
-      isRegisteredRef.current = true;
-    }
-
-    return () => {
-      if (isRegisteredRef.current) {
-        manager.unregisterScreen();
-        isRegisteredRef.current = false;
-      }
-    };
-  }, []);
-}
-
-export function useWelcomeFlowController<T extends WelcomeParamList>(
-  navigation: NavigationProp<T>,
-  routerDelegate: WelcomeFlowRouterDelegate
-) {
-  const manager = WelcomeFlowResourceManager.getInstance<T>();
-  manager.setupRouter(navigation, routerDelegate);
-  return manager.getController();
-}
-
-export function WelcomeFlowScreenProvider<T extends WelcomeParamList>({
+export function WelcomeFlowScreenProvider<T extends Flow.ParamList>({
   navigation,
   routerDelegate,
   screenName,
   children,
 }: {
   navigation: NavigationProp<T>;
-  routerDelegate: WelcomeFlowRouterDelegate;
+  routerDelegate: Flow.Delegate;
   screenName: string;
-  children: (controller: WelcomeFlowController) => JSX.Element;
+  children: (controller: Flow.Controller) => JSX.Element;
 }) {
-  const manager = WelcomeFlowResourceManager.getInstance<T>();
+  const manager = Flow.ResourceManager.getInstance<T>();
 
   return (
     <FlowScreenProvider

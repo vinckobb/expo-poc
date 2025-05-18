@@ -1,10 +1,10 @@
 import { useMemo, useEffect } from "react";
 import { LoginFlowController } from "../navigation/interfaces/LoginFlowController.interface";
-import { BaseViewModel } from "../../navigation/types/BaseViewModel";
+import { ViewModel } from "../../navigation/types/ViewModel";
 
 export function createBaseScreen<
   TParams,
-  TViewModel extends BaseViewModel,
+  TViewModel extends ViewModel,
   TAction,
 >(
   Component: React.ComponentType<{ viewModel: TViewModel }>,

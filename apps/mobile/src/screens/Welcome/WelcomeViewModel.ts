@@ -20,7 +20,7 @@ export class WelcomeViewModel {
   }
 
   dispose(): void {
-    console.log("WelcomeViewModel: dispose");
+    console.log("WelcomeViewModel dispose");
     this.onAction = undefined;
   }
 }

@@ -11,7 +11,7 @@ export class HomeViewModel {
   }
 
   dispose(): void {
-    console.log("HomeViewModel: dispose");
+    console.log("HomeViewModel dispose");
     this.onAction = undefined;
   }
 }

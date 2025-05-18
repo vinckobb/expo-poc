@@ -1,4 +1,4 @@
-import { BaseViewModel } from "../../navigation/types/BaseViewModel";
+import { ViewModel } from "../../navigation/types/ViewModel";
 
 export type Action =
   | { type: "successfulLogin" }
@@ -7,7 +7,7 @@ export type Action =
 
 export type Params = undefined;
 
-export class LoginViewModel implements BaseViewModel {
+export class LoginViewModel implements ViewModel {
   private onAction: ((action: Action) => void) | undefined;
 
   constructor(params: Params, onAction: (action: Action) => void) {
@@ -28,7 +28,7 @@ export class LoginViewModel implements BaseViewModel {
   }
 
   dispose(): void {
-    console.log("LoginViewModel: dispose");
+    console.log("LoginViewModel dispose");
     this.onAction = undefined;
   }
 }

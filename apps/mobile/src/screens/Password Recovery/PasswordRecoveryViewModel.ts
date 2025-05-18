@@ -1,4 +1,4 @@
-import { BaseViewModel } from "../../navigation/types/BaseViewModel";
+import { ViewModel } from "../../navigation/types/ViewModel";
 
 export class PasswordRecoveryViewModel {
   private onAction: (() => void) | undefined;
@@ -13,7 +13,7 @@ export class PasswordRecoveryViewModel {
   }
 
   dispose(): void {
-    console.log("PasswordRecoveryViewModel: dispose");
+    console.log("PasswordRecoveryViewModel dispose");
     this.onAction = undefined;
   }
 }

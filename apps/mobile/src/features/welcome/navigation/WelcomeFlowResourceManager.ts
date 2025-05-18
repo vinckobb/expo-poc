@@ -1,66 +1,36 @@
 import {
   ControllerClass,
-  FlowResourceManager,
-  ResourceState,
-  ResourceStateManager,
   RouterClass,
+  FlowResourceManager,
+  FlowResourceStateManager,
 } from "../../../navigation/types/FlowResourceManager";
-import { WelcomeFlowController as Controller } from "./types/WelcomeFlowController.interface";
-import { WelcomeFlowRouter as Router } from "./types/WelcomeFlowRouter.interface";
-import { WelcomeFlowRouterDelegate as Delegate } from "./types/WelcomeFlowRouterDelegate.interface";
-import { WelcomeParamList as ParamList } from "./types/paramList";
-import { WelcomeFlowControllerImpl } from "./WelcomeFlowController";
-import { WelcomeFlowRouterImpl } from "./WelcomeFlowRouter";
 
-class FlowResourceStateManager
-  implements ResourceStateManager<Router, Controller>
-{
-  private static state: ResourceState<Router, Controller> = {
-    routerInstance: null,
-    controllerInstance: null,
-    activeScreens: 0,
-  };
+import * as Flow from "./Flow";
 
-  getState() {
-    return FlowResourceStateManager.state;
-  }
-
-  updateState(state: typeof FlowResourceStateManager.state): void {
-    FlowResourceStateManager.state = state;
-  }
-
-  resetState(): void {
-    FlowResourceStateManager.state = {
-      routerInstance: null,
-      controllerInstance: null,
-      activeScreens: 0,
-    };
-  }
-}
-
-class FlowResourceManagerImpl<T extends ParamList> extends FlowResourceManager<
-  T,
-  Router,
-  Controller,
-  Delegate
-> {
-  private static stateManager = new FlowResourceStateManager();
+export class FlowResourceManagerImpl<
+  T extends Flow.ParamList,
+> extends FlowResourceManager<T, Flow.Router, Flow.Controller, Flow.Delegate> {
+  private static stateManager = new FlowResourceStateManager<
+    Flow.Router,
+    Flow.Controller
+  >();
 
   private constructor() {
     super(FlowResourceManagerImpl.stateManager);
   }
 
-  static getInstance<P extends ParamList>(): FlowResourceManagerImpl<P> {
+  static getInstance<P extends Flow.ParamList>(): FlowResourceManagerImpl<P> {
     return new FlowResourceManagerImpl<P>();
   }
 
-  protected getRouterClass(): RouterClass<T, Router, Delegate> {
-    return WelcomeFlowRouterImpl;
+  protected getRouterClass(): RouterClass<T, Flow.Router, Flow.Delegate> {
+    return Flow.RouterImpl;
   }
 
-  protected getControllerClass(): ControllerClass<Controller, Router> {
-    return WelcomeFlowControllerImpl;
+  protected getControllerClass(): ControllerClass<
+    Flow.Controller,
+    Flow.Router
+  > {
+    return Flow.ControllerImpl;
   }
 }
-
-export { FlowResourceManagerImpl as WelcomeFlowResourceManager };

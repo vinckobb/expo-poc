@@ -1,21 +1,37 @@
-import { createBaseScreen } from "../../../navigation/types/FlowBaseScreen";
-import { About, AboutViewModel, Action } from "../../../screens/About";
-import { WelcomeParamList } from "../navigation/types/paramList";
-import { WelcomeFlowController } from "../navigation/types/WelcomeFlowController.interface";
-
-type ParamsType = WelcomeParamList["About"];
-
-export const AboutScreen = createBaseScreen<
-  ParamsType,
-  AboutViewModel,
+import { createFlowScreen } from "../../../navigation/types/FlowScreen";
+import {
+  About as View,
+  AboutViewModel as ViewModel,
   Action,
-  WelcomeFlowController
+} from "../../../screens/About";
+
+import * as Flow from "../navigation/Flow";
+
+type Dependencies = {
+  apiClient?: object;
+  analytics?: object;
+  featureFlags?: object;
+};
+
+type Config = {
+  showDebugInfo?: boolean;
+};
+
+type ParamsType = {
+  params: Flow.ParamList["About"];
+  deps?: Dependencies;
+  config?: Config;
+};
+
+export type { Action as AboutViewModelAction };
+
+export const AboutScreen = createFlowScreen<
+  ParamsType,
+  ViewModel,
+  Action,
+  Flow.Controller
 >(
-  About,
-  class WelcomeViewModelWrapper extends AboutViewModel {
-    constructor(params: ParamsType, onAction: (action: Action) => void) {
-      super(onAction);
-    }
-  },
+  View,
+  (params, onAction) => new ViewModel(onAction),
   (controller, action) => controller.handleAboutAction(action)
 );

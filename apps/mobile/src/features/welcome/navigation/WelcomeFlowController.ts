@@ -1,23 +1,12 @@
-import { WelcomeFlowController } from "./types/WelcomeFlowController.interface";
-import { WelcomeFlowRouter } from "./types/WelcomeFlowRouter.interface";
+import * as Flow from "./Flow";
 
 // ViewModel actions
-import type { Action as WelcomeViewModelAction } from "../../../screens/Welcome";
-import { Action as AboutViewModelAction } from "../../../screens/About";
+import { WelcomeViewModelAction, AboutViewModelAction } from "../screens";
 
-export class WelcomeFlowControllerImpl implements WelcomeFlowController {
+export class WelcomeFlowControllerImpl implements Flow.Controller {
   static readonly displayName: string = "WelcomeFlowControllerImpl";
 
-  constructor(private router: WelcomeFlowRouter) {}
-
-  start() {
-    console.log("Welcome flow started");
-    this.router.openWelcome();
-  }
-
-  dispose() {
-    console.log("Welcome flow disposed");
-  }
+  constructor(private router: Flow.Router) {}
 
   handleWelcomeAction(action: WelcomeViewModelAction) {
     switch (action.type) {
@@ -33,5 +22,10 @@ export class WelcomeFlowControllerImpl implements WelcomeFlowController {
 
   handleAboutAction(action: AboutViewModelAction): void {
     // GUARD: Unimplemented functionality (navigation) [@dmitry.kovalev]
+  }
+
+  // Lifecycle methods
+  dispose() {
+    console.log("Welcome flow disposed");
   }
 }

@@ -1,5 +1,5 @@
 import { createStore, createEvent, createEffect, sample } from "effector";
-import { BaseViewModel } from "../navigation/types/BaseViewModel";
+import { ViewModel } from "../navigation/types/ViewModel";
 import { Route, RouteFilter } from "./types";
 import { RouteService } from "./RouteService";
 
@@ -9,7 +9,7 @@ export type Action =
 
 export type Params = undefined;
 
-export class RoutesViewModel implements BaseViewModel {
+export class RoutesViewModel implements ViewModel {
   events = {
     mounted: createEvent(),
     unmounted: createEvent(),

@@ -1,14 +1,20 @@
 import { useEffect, useRef } from "react";
 import { NavigationProp, useIsFocused } from "@react-navigation/native";
 import { FlowResourceManager } from "./FlowResourceManager";
+import { FlowController } from "./FlowController";
 
 export function useFlowRegisterScreen<
   TParamList extends Record<string, object | undefined>,
   TRouter,
-  TController,
-  TRouterDelegate
+  TController extends FlowController,
+  TRouterDelegate,
 >(
-  resourceManager: FlowResourceManager<TParamList, TRouter, TController, TRouterDelegate>
+  resourceManager: FlowResourceManager<
+    TParamList,
+    TRouter,
+    TController,
+    TRouterDelegate
+  >
 ) {
   const isFocused = useIsFocused();
   const isRegisteredRef = useRef(false);
@@ -33,12 +39,17 @@ export function useFlowRegisterScreen<
 export function useFlowController<
   TParamList extends Record<string, object | undefined>,
   TRouter,
-  TController,
-  TRouterDelegate
+  TController extends FlowController,
+  TRouterDelegate,
 >(
   navigation: NavigationProp<TParamList>,
   routerDelegate: TRouterDelegate,
-  resourceManager: FlowResourceManager<TParamList, TRouter, TController, TRouterDelegate>
+  resourceManager: FlowResourceManager<
+    TParamList,
+    TRouter,
+    TController,
+    TRouterDelegate
+  >
 ): TController {
   resourceManager.setupRouter(navigation, routerDelegate);
   return resourceManager.getController();
@@ -47,21 +58,26 @@ export function useFlowController<
 export interface FlowScreenProviderProps<
   TParamList extends Record<string, object | undefined>,
   TRouter,
-  TController,
-  TRouterDelegate
+  TController extends FlowController,
+  TRouterDelegate,
 > {
   navigation: NavigationProp<TParamList>;
   routerDelegate: TRouterDelegate;
   screenName: string;
-  resourceManager: FlowResourceManager<TParamList, TRouter, TController, TRouterDelegate>;
+  resourceManager: FlowResourceManager<
+    TParamList,
+    TRouter,
+    TController,
+    TRouterDelegate
+  >;
   children: (controller: TController) => JSX.Element;
 }
 
 export function FlowScreenProvider<
   TParamList extends Record<string, object | undefined>,
   TRouter,
-  TController,
-  TRouterDelegate
+  TController extends FlowController,
+  TRouterDelegate,
 >({
   navigation,
   routerDelegate,
@@ -69,8 +85,12 @@ export function FlowScreenProvider<
   resourceManager,
   children,
 }: FlowScreenProviderProps<TParamList, TRouter, TController, TRouterDelegate>) {
-  console.log(`📱 Rendering ${screenName} screen`);
+  console.log(`Rendering ${screenName} screen`);
   useFlowRegisterScreen(resourceManager);
-  const controller = useFlowController(navigation, routerDelegate, resourceManager);
+  const controller = useFlowController(
+    navigation,
+    routerDelegate,
+    resourceManager
+  );
   return children(controller);
 }

@@ -17,7 +17,7 @@ export class LoginFlowResourceManager<T extends LoginParamList> {
 
   static getInstance<P extends LoginParamList>(): LoginFlowResourceManager<P> {
     if (!LoginFlowResourceManager.instance) {
-      console.log("🔄 Creating new LoginFlowResourceManager instance");
+      console.log("Creating new LoginFlowResourceManager instance");
       LoginFlowResourceManager.instance =
         new LoginFlowResourceManager<LoginParamList>();
     }
@@ -26,13 +26,13 @@ export class LoginFlowResourceManager<T extends LoginParamList> {
 
   registerScreen(): void {
     this.activeScreens++;
-    console.log(`📊 Screen registered. Active screens: ${this.activeScreens}`);
+    console.log(`Screen registered. Active screens: ${this.activeScreens}`);
   }
 
   unregisterScreen(): void {
     this.activeScreens--;
     console.log(
-      `📊 Screen unregistered. Active screens: ${this.activeScreens}`
+      `Screen unregistered. Active screens: ${this.activeScreens}`
     );
 
     if (this.activeScreens <= 0) {
@@ -45,7 +45,7 @@ export class LoginFlowResourceManager<T extends LoginParamList> {
     delegate: LoginFlowRouterDelegate
   ): void {
     if (!this.routerInstance) {
-      console.log("🔄 Creating new LoginFlowRouter instance");
+      console.log("Creating new LoginFlowRouter instance");
       this.routerInstance = new LoginFlowRouterImpl<T>(navigation, delegate);
     }
   }
@@ -59,7 +59,7 @@ export class LoginFlowResourceManager<T extends LoginParamList> {
 
   getController(): LoginFlowController {
     if (!this.controllerInstance && this.routerInstance) {
-      console.log("🔄 Creating new LoginFlowController instance");
+      console.log("Creating new LoginFlowController instance");
       this.controllerInstance = new LoginFlowControllerImpl(
         this.routerInstance
       );
@@ -73,15 +73,15 @@ export class LoginFlowResourceManager<T extends LoginParamList> {
   }
 
   cleanup(): void {
-    console.log("🧹 Cleaning up login flow resources");
+    console.log("Cleaning up login flow resources");
 
     if (this.controllerInstance) {
-      console.log("🗑️ Destroying controller instance");
+      console.log("Destroying controller instance");
       this.controllerInstance = null;
     }
 
     if (this.routerInstance) {
-      console.log("🗑️ Destroying router instance");
+      console.log("Destroying router instance");
       this.routerInstance = null;
     }
 
