@@ -15,16 +15,8 @@ import { RoutesViewModel } from "../reactQueryPlayground/RoutesViewModel";
 import { RouteDetails } from "../reactQueryPlayground/RouteDetails";
 import { RouteDetailsViewModel } from "../reactQueryPlayground/RouteDetailsViewModel";
 import { HomeShellDemo } from "../shellPlayground/HomeShellDemo";
-import {
-  createWelcomeFlowScreens,
-  WelcomeFlowRouterDelegate,
-  WelcomeParamList,
-} from "../features/welcome";
-import {
-  createLoginFlowScreens,
-  LoginFlowRouterDelegate,
-  LoginParamList,
-} from "../features/login";
+
+import * as Flows from './AppFlows'
 
 export type RootStackParamList = {
   PasswordRecovery: { email: string };
@@ -33,8 +25,8 @@ export type RootStackParamList = {
   FavoriteRoutes: undefined;
   RouteDetails: { routeId: string };
   ShellDemo: undefined;
-} & LoginParamList &
-  WelcomeParamList;
+} & Flows.Login.ParamList &
+  Flows.Welcome.ParamList;
 
 export type RootStackNavigator = ReturnType<
   typeof createNativeStackNavigator<RootStackParamList>
@@ -46,7 +38,7 @@ export default function AppRoutes() {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const queryClient = useQueryClient();
 
-  const loginFlowDelegate: LoginFlowRouterDelegate = {
+  const loginFlowDelegate: Flows.Login.Delegate = {
     openHome: () => {
       console.log("Navigate to home");
       navigation.reset({
@@ -62,7 +54,7 @@ export default function AppRoutes() {
     },
   };
 
-  const welcomeFlowDelegate: WelcomeFlowRouterDelegate = {
+  const welcomeFlowDelegate: Flows.Welcome.Delegate = {
     openHome: () => {
       console.log("Navigate to home");
       navigation.reset({
@@ -115,7 +107,6 @@ export default function AppRoutes() {
         name="Home"
         children={() => {
           const viewModel = new HomeViewModel(() =>
-            // console.log("Final screen reached")
             navigation.navigate("Welcome")
           );
           return <Home viewModel={viewModel} />;
@@ -195,13 +186,13 @@ export default function AppRoutes() {
         component={HomeShellDemo}
       />
 
-      {createLoginFlowScreens<RootStackParamList>(
+      {Flows.Login.createFlowScreens<RootStackParamList>(
         Stack,
         navigation,
         loginFlowDelegate
       )}
 
-      {createWelcomeFlowScreens<RootStackParamList>(
+      {Flows.Welcome.createFlowScreens<RootStackParamList>(
         Stack,
         navigation,
         welcomeFlowDelegate
