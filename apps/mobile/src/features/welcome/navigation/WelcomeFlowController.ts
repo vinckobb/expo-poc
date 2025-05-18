@@ -1,6 +1,4 @@
-import * as Flow from "./Flow";
-
-// ViewModel actions
+import * as Flow from "./types/flowTypes";
 import { WelcomeViewModelAction, AboutViewModelAction } from "../screens";
 
 export class WelcomeFlowControllerImpl implements Flow.Controller {

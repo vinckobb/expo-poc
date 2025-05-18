@@ -5,7 +5,9 @@ import {
   FlowResourceStateManager,
 } from "../../../navigation/types/FlowResourceManager";
 
-import * as Flow from "./Flow";
+import * as Flow from "./types/flowTypes";
+import { RouterImpl } from "./types/RouterImpl";
+import { ControllerImpl } from "./types/ControllerImpl";
 
 export class FlowResourceManagerImpl<
   T extends Flow.ParamList,
@@ -24,13 +26,13 @@ export class FlowResourceManagerImpl<
   }
 
   protected getRouterClass(): RouterClass<T, Flow.Router, Flow.Delegate> {
-    return Flow.RouterImpl;
+    return RouterImpl;
   }
 
   protected getControllerClass(): ControllerClass<
     Flow.Controller,
     Flow.Router
   > {
-    return Flow.ControllerImpl;
+    return ControllerImpl;
   }
 }

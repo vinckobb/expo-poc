@@ -84,9 +84,7 @@ export abstract class FlowResourceManager<
       activeScreens: state.activeScreens + 1,
     };
     this.stateManager.updateState(newState);
-    console.log(
-      `📊 Screen registered. Active screens: ${newState.activeScreens}`
-    );
+    console.log(`Screen registered. Active screens: ${newState.activeScreens}`);
   }
 
   unregisterScreen(): void {

@@ -1,7 +1,8 @@
 import { NavigationProp } from "@react-navigation/native";
 import { FlowScreenProvider } from "../../../navigation/types/FlowScreenProvider";
 
-import * as Flow from "./Flow";
+import * as Flow from "./types/flowTypes";
+import { ResourceManager } from "./types/ResourceManager";
 
 export function LoginFlowScreenProvider<T extends Flow.ParamList>({
   navigation,
@@ -14,7 +15,7 @@ export function LoginFlowScreenProvider<T extends Flow.ParamList>({
   screenName: string;
   children: (controller: Flow.Controller) => JSX.Element;
 }) {
-  const manager = Flow.ResourceManager.getInstance<T>();
+  const manager = ResourceManager.getInstance<T>();
 
   return (
     <FlowScreenProvider

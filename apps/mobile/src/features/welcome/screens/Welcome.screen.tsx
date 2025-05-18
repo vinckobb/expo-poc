@@ -5,7 +5,7 @@ import {
   Action,
 } from "../../../screens/Welcome";
 
-import * as Flow from "../navigation/Flow";
+import * as Flow from "../navigation/types/flowTypes";
 
 type Dependencies = {
   apiClient?: object;

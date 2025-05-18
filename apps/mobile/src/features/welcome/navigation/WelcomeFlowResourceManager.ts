@@ -5,32 +5,45 @@ import {
   FlowResourceStateManager,
 } from "../../../navigation/types/FlowResourceManager";
 
-import * as Flow from "./Flow";
+import * as FlowType from "./types/flowTypes";
+import { RouterImpl } from "./types/RouterImpl";
+import { ControllerImpl } from "./types/ControllerImpl";
 
 export class FlowResourceManagerImpl<
-  T extends Flow.ParamList,
-> extends FlowResourceManager<T, Flow.Router, Flow.Controller, Flow.Delegate> {
+  T extends FlowType.ParamList,
+> extends FlowResourceManager<
+  T,
+  FlowType.Router,
+  FlowType.Controller,
+  FlowType.Delegate
+> {
   private static stateManager = new FlowResourceStateManager<
-    Flow.Router,
-    Flow.Controller
+    FlowType.Router,
+    FlowType.Controller
   >();
 
   private constructor() {
     super(FlowResourceManagerImpl.stateManager);
   }
 
-  static getInstance<P extends Flow.ParamList>(): FlowResourceManagerImpl<P> {
+  static getInstance<
+    P extends FlowType.ParamList,
+  >(): FlowResourceManagerImpl<P> {
     return new FlowResourceManagerImpl<P>();
   }
 
-  protected getRouterClass(): RouterClass<T, Flow.Router, Flow.Delegate> {
-    return Flow.RouterImpl;
+  protected getRouterClass(): RouterClass<
+    T,
+    FlowType.Router,
+    FlowType.Delegate
+  > {
+    return RouterImpl;
   }
 
   protected getControllerClass(): ControllerClass<
-    Flow.Controller,
-    Flow.Router
+    FlowType.Controller,
+    FlowType.Router
   > {
-    return Flow.ControllerImpl;
+    return ControllerImpl;
   }
 }

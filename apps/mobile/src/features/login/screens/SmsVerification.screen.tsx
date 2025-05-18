@@ -5,7 +5,7 @@ import {
   Action,
 } from "../../../screens/SMS Verification";
 
-import * as Flow from "../navigation/Flow";
+import * as Flow from "../navigation/types/flowTypes";
 
 type Dependencies = {
   apiClient?: object;

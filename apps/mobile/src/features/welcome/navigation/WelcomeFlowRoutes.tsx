@@ -1,19 +1,20 @@
 import { NavigationProp } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import * as Flow from "./Flow";
+import * as FlowType from "./types/flowTypes";
 import * as Screens from "../screens";
+import { ScreenProvider } from "./types/ScreenProvider";
 
-export function createWelcomeFlowScreens<T extends Flow.ParamList>(
+export function createWelcomeFlowScreens<T extends FlowType.ParamList>(
   Stack: ReturnType<typeof createNativeStackNavigator<T>>,
   navigation: NavigationProp<T>,
-  delegate: Flow.Delegate
+  delegate: FlowType.Delegate
 ) {
   return (
     <Stack.Group>
       <Stack.Screen
         name="Welcome"
         children={() => (
-          <Flow.ScreenProvider
+          <ScreenProvider
             navigation={navigation}
             routerDelegate={delegate}
             screenName="Welcome"
@@ -24,13 +25,13 @@ export function createWelcomeFlowScreens<T extends Flow.ParamList>(
                 params={{ params: undefined }}
               />
             )}
-          </Flow.ScreenProvider>
+          </ScreenProvider>
         )}
       />
       <Stack.Screen
         name="About"
         children={() => (
-          <Flow.ScreenProvider
+          <ScreenProvider
             navigation={navigation}
             routerDelegate={delegate}
             screenName="About"
@@ -41,7 +42,7 @@ export function createWelcomeFlowScreens<T extends Flow.ParamList>(
                 params={{ params: undefined }}
               />
             )}
-          </Flow.ScreenProvider>
+          </ScreenProvider>
         )}
       />
     </Stack.Group>

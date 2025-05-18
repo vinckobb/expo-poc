@@ -1,7 +1,8 @@
 import { NavigationProp } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import * as Flow from "./Flow";
+import * as Flow from "./types/flowTypes";
 import * as Screens from "../screens";
+import { ScreenProvider } from "./types/ScreenProvider";
 
 export function createLoginFlowScreens<T extends Flow.ParamList>(
   Stack: ReturnType<typeof createNativeStackNavigator<T>>,
@@ -13,7 +14,7 @@ export function createLoginFlowScreens<T extends Flow.ParamList>(
       <Stack.Screen
         name="Login"
         children={() => (
-          <Flow.ScreenProvider
+          <ScreenProvider
             navigation={navigation}
             routerDelegate={delegate}
             screenName="Login"
@@ -24,13 +25,13 @@ export function createLoginFlowScreens<T extends Flow.ParamList>(
                 params={{ params: undefined }}
               />
             )}
-          </Flow.ScreenProvider>
+          </ScreenProvider>
         )}
       />
       <Stack.Screen
         name="SMSVerification"
         children={() => (
-          <Flow.ScreenProvider
+          <ScreenProvider
             navigation={navigation}
             routerDelegate={delegate}
             screenName="SMSVerification"
@@ -41,7 +42,7 @@ export function createLoginFlowScreens<T extends Flow.ParamList>(
                 params={{ params: undefined }}
               />
             )}
-          </Flow.ScreenProvider>
+          </ScreenProvider>
         )}
       />
     </Stack.Group>

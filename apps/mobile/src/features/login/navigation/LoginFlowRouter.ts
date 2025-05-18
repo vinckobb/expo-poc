@@ -1,8 +1,10 @@
 import { NavigationProp } from "@react-navigation/native";
 
-import * as Flow from "./Flow";
+import * as Flow from "./types/flowTypes";
 
-export class LoginFlowRouterImpl<T extends Flow.ParamList> implements Flow.Router {
+export class LoginFlowRouterImpl<T extends Flow.ParamList>
+  implements Flow.Router
+{
   static readonly displayName: string = "WelcomeFlowRouterImpl";
 
   constructor(
