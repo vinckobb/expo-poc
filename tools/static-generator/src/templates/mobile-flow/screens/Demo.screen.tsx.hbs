@@ -1,0 +1,38 @@
+import { createFlowScreen } from "../../../navigation/types/FlowScreen";
+import {
+  Demo as View,
+  DemoViewModel as ViewModel,
+  Action,
+  Params
+} from "../../../screens/Demo";
+
+import * as Flow from "../navigation/types/flowTypes";
+
+type Dependencies = {
+  apiClient?: object;
+  analytics?: object;
+  featureFlags?: object;
+};
+
+type Config = {
+  showDebugInfo?: boolean;
+};
+
+type ParamsType = {
+  params: Params;
+  dependencies?: Dependencies;
+  config?: Config;
+};
+
+export type { Action as DemoAction };
+
+export const DemoScreen = createFlowScreen<
+  ParamsType,
+  ViewModel,
+  Action,
+  Flow.Controller
+>(
+  View,
+  (params, onAction) => new ViewModel(onAction),
+  (controller, action) => controller.handleDemoAction(action)
+);

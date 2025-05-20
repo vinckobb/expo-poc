@@ -1,0 +1,17 @@
+import { z } from "zod";
+
+// Param Schemas
+const DemoParamsSchema = z.object({
+  id: z.string().min(1),
+});
+
+// Params inferred Types
+type DemoParams = z.infer<typeof DemoParamsSchema>;
+
+export type {{pascalCase name}}ParamList = {
+  Demo: DemoParams;
+};
+
+export const {{pascalCase name}}ParamSchemas = {
+  Demo: DemoParamsSchema,
+};

@@ -1,0 +1,19 @@
+export type Action = { type: "home" };
+
+export class {{pascalCase name}}ViewModel {
+  private onAction: ((action: Action) => void) | undefined;
+
+  constructor(onAction: (action: Action) => void) {
+    this.onAction = onAction;
+  }
+
+  onHomeButton() {
+    console.log("{{pascalCase name}}ViewModel: onHomeButton");
+    this.onAction?.({ type: "home" });
+  }
+
+  dispose(): void {
+    console.log("❌ {{pascalCase name}}ViewModel dispose");
+    this.onAction = undefined;
+  }
+}

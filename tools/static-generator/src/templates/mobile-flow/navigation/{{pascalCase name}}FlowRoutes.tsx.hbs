@@ -1,0 +1,35 @@
+import { NavigationProp } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import * as FlowType from "./types/flowTypes";
+import * as Screens from "../screens";
+import { ScreenProvider } from "./types/ScreenProvider";
+
+export function create{{pascalCase name}}FlowScreens<T extends FlowType.ParamList>(
+  Stack: ReturnType<typeof createNativeStackNavigator<T>>,
+  navigation: NavigationProp<T>,
+  delegate: FlowType.Delegate
+) {
+  return (
+    <Stack.Group>
+      <Stack.Screen
+        name="Demo"
+        children={() => (
+          <ScreenProvider
+            navigation={navigation}
+            routerDelegate={delegate}
+            screenName="Demo"
+          >
+            {(controller) => (
+              <Screens.Demo
+                controller={controller}
+                {{{{raw}}}}
+                params={{ params: undefined }}
+                {{{{/raw}}}}
+              />
+            )}
+          </ScreenProvider>
+        )}
+      />
+    </Stack.Group>
+  );
+}
