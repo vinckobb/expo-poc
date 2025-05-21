@@ -1,6 +1,4 @@
 import { QueryClient } from "@tanstack/react-query";
-import { NavigationProp } from "@react-navigation/native";
-import { createNativeStackNavigator as StackNavigator } from "@react-navigation/native-stack";
 import * as FlowType from "./types/flowTypes";
 import * as Screens from "../screens";
 import { ScreenProvider } from "./types/ScreenProvider";
@@ -15,7 +13,6 @@ export type RoutesDependencies = {
 
 function createRoutesListScreen<T extends FlowType.ParamList>(
   Stack: FlowType.Stack<T>,
-  navigation: NavigationProp<T>,
   delegate: FlowType.Delegate,
   routeService: ReturnType<typeof createQueryRouteService>
 ) {
@@ -33,7 +30,6 @@ function createRoutesListScreen<T extends FlowType.ParamList>(
       name={screenName}
       children={() => (
         <ScreenProvider
-          navigation={navigation}
           routerDelegate={delegate}
           screenName={screenName}
         >
@@ -51,7 +47,6 @@ function createRoutesListScreen<T extends FlowType.ParamList>(
 
 function createRouteDetailsScreen<T extends FlowType.ParamList>(
   Stack: FlowType.Stack<T>,
-  navigation: NavigationProp<T>,
   delegate: FlowType.Delegate,
   routeService: ReturnType<typeof createQueryRouteService>
 ) {
@@ -79,7 +74,6 @@ function createRouteDetailsScreen<T extends FlowType.ParamList>(
 
         return (
           <ScreenProvider
-            navigation={navigation}
             routerDelegate={delegate}
             screenName={screenName}
           >
@@ -98,7 +92,6 @@ function createRouteDetailsScreen<T extends FlowType.ParamList>(
 
 function createFavoriteRoutesScreen<T extends FlowType.ParamList>(
   Stack: FlowType.Stack<T>,
-  navigation: NavigationProp<T>,
   delegate: FlowType.Delegate,
   routeService: ReturnType<typeof createQueryRouteService>
 ) {
@@ -116,7 +109,6 @@ function createFavoriteRoutesScreen<T extends FlowType.ParamList>(
       name={screenName}
       children={() => (
         <ScreenProvider
-          navigation={navigation}
           routerDelegate={delegate}
           screenName={screenName}
         >
@@ -134,7 +126,6 @@ function createFavoriteRoutesScreen<T extends FlowType.ParamList>(
 
 export function createRoutesFlowScreens<T extends FlowType.ParamList>(
   Stack: FlowType.Stack<T>,
-  navigation: NavigationProp<T>,
   delegate: FlowType.Delegate,
   dependencies: RoutesDependencies
 ) {
@@ -143,9 +134,9 @@ export function createRoutesFlowScreens<T extends FlowType.ParamList>(
 
   return (
     <Stack.Group>
-      {createRoutesListScreen(Stack, navigation, delegate, routeService)}
-      {createRouteDetailsScreen(Stack, navigation, delegate, routeService)}
-      {createFavoriteRoutesScreen(Stack, navigation, delegate, routeService)}
+      {createRoutesListScreen(Stack, delegate, routeService)}
+      {createRouteDetailsScreen(Stack, delegate, routeService)}
+      {createFavoriteRoutesScreen(Stack, delegate, routeService)}
     </Stack.Group>
   );
 }

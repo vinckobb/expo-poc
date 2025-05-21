@@ -21,7 +21,7 @@ export class RoutesFlowRouterImpl<T extends FlowType.ParamList>
     console.log("Navigating to Favorite Routes");
     this.nav.navigate(FlowType.Screens.FAVORITE_ROUTES, undefined);
   }
-  
+
   openRouteDetails(routeId: string) {
     console.log("Navigating to Route Details");
     const params: FlowType.ParamList[typeof FlowType.Screens.ROUTE_DETAILS] = {

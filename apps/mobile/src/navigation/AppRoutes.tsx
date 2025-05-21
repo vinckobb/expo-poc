@@ -5,18 +5,15 @@ import {
   PasswordRecovery,
   PasswordRecoveryViewModel,
 } from "../screens/Password Recovery";
-import { Home, HomeViewModel } from "../screens/Home";
-import { HomeShellDemo } from "../shellPlayground/HomeShellDemo";
 
 import * as Flows from "./AppFlows";
 
 export type RootStackParamList = {
   PasswordRecovery: { email: string };
-  Home: undefined;
-  ShellDemo: undefined;
 } & Flows.Login.ParamList &
   Flows.Welcome.ParamList &
-  Flows.TransportRoutes.ParamList;
+  Flows.TransportRoutes.ParamList &
+  Flows.Shell.ParamList;
 
 export type RootStackNavigator = ReturnType<
   typeof createNativeStackNavigator<RootStackParamList>
@@ -33,7 +30,7 @@ export default function AppRoutes() {
       console.log("Navigate to home");
       navigation.reset({
         index: 0,
-        routes: [{ name: "Home" }],
+        routes: [{ name: Flows.Shell.ScreenNames.SHELL }],
       });
     },
     openRegistration: () => {
@@ -44,12 +41,25 @@ export default function AppRoutes() {
     },
   };
 
+  // GUARD: Possible bad solution [@dmitry.kovalev]
+  const shellFlowDelegate: Flows.Shell.Delegate = {
+    openHomeTab: () => {
+      console.log("Open Home Tab");
+    },
+    openRoutesTab: () => {
+      console.log("Open Routes Tab");
+    },
+    openProfileTab: () => {
+      console.log("Open Profile Tab");
+    },
+  };
+
   const welcomeFlowDelegate: Flows.Welcome.Delegate = {
     openHome: () => {
       console.log("Navigate to home");
       navigation.reset({
         index: 0,
-        routes: [{ name: "Home" }],
+        routes: [{ name: Flows.Shell.ScreenNames.SHELL }],
       });
     },
     openLogin: () => {
@@ -71,7 +81,7 @@ export default function AppRoutes() {
         name="PasswordRecovery"
         children={({ route }) => {
           const viewModel = new PasswordRecoveryViewModel(() =>
-            navigation.navigate("Home")
+            navigation.navigate(Flows.Shell.ScreenNames.SHELL)
           );
           return (
             <PasswordRecovery
@@ -81,24 +91,11 @@ export default function AppRoutes() {
           );
         }}
       />
-      <Stack.Screen
-        name="Home"
-        children={() => {
-          const viewModel = new HomeViewModel(() =>
-            navigation.navigate("Welcome")
-          );
-          return <Home viewModel={viewModel} />;
-        }}
-      />
 
-      <Stack.Screen
-        name="ShellDemo"
-        options={{
-          title: "Shell Demo",
-          headerShown: false,
-        }}
-        component={HomeShellDemo}
-      />
+      {Flows.Shell.createFlowScreens<RootStackParamList>(
+        Stack,
+        shellFlowDelegate
+      )}
 
       {Flows.Login.createFlowScreens<RootStackParamList>(
         Stack,
@@ -114,7 +111,6 @@ export default function AppRoutes() {
 
       {Flows.TransportRoutes.createFlowScreens<RootStackParamList>(
         Stack,
-        navigation,
         welcomeFlowDelegate,
         { queryClient: queryClient }
       )}
