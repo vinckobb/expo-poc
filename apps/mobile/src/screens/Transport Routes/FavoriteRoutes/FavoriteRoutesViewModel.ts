@@ -1,8 +1,10 @@
 import { createStore, createEvent, createEffect, sample } from "effector";
-import { RouteService } from "./RouteService";
-import { RouteFilter, FavoriteRouteResponse } from "./types";
+import { RouteService } from "../../../service/RouteService";
+import { RouteFilter, FavoriteRouteResponse } from "../../../service/types";
 
 export type Action = { type: "routeSelected"; routeId: string };
+
+export type Params = undefined;
 
 export class FavoriteRoutesViewModel {
   events = {
@@ -39,7 +41,7 @@ export class FavoriteRoutesViewModel {
 
   constructor(
     private routeService: RouteService,
-    private onAction: (action: Action) => void
+    private onAction: ((action: Action) => void) | undefined
   ) {
     this.initializeEffects();
     this.initializeStores();
@@ -132,8 +134,14 @@ export class FavoriteRoutesViewModel {
     });
 
     this.events.routeSelected.watch((routeId) => {
-      this.onAction({ type: "routeSelected", routeId });
+      this.onAction?.({ type: "routeSelected", routeId });
     });
+  }
+
+  dispose(): void {
+    console.log("❌ FavoriteRoutesViewModel dispose");
+    this.events.unmounted();
+    this.onAction = undefined;
   }
 }
 

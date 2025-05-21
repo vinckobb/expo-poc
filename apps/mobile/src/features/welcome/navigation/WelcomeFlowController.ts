@@ -24,6 +24,6 @@ export class WelcomeFlowControllerImpl implements Flow.Controller {
 
   // Lifecycle methods
   dispose() {
-    console.log("Welcome flow disposed");
+    console.log(`❌ ${WelcomeFlowControllerImpl.displayName} flow disposed`);
   }
 }

@@ -1,7 +1,7 @@
 import { createStore, createEvent, createEffect, sample } from "effector";
-import { ViewModel } from "../navigation/types/ViewModel";
-import { Route } from "./types";
-import { RouteService } from "./RouteService";
+import { ViewModel } from "../../../navigation/types/ViewModel";
+import { Route } from "../../../service/types";
+import { RouteService } from "../../../service/RouteService";
 
 export type Action = {
   type: "openFavorites";
@@ -172,6 +172,7 @@ export class RouteDetailsViewModel implements ViewModel {
   }
 
   dispose(): void {
+    console.log("❌ RouteDetailsViewModel dispose");
     this.events.unmounted();
     this.onAction = undefined;
   }

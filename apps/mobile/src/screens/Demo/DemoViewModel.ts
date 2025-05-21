@@ -13,7 +13,7 @@ export class DemoViewModel {
   }
 
   dispose(): void {
-    console.log("DemoViewModel dispose");
+    console.log("❌ DemoViewModel dispose");
     this.onAction = undefined;
   }
 }

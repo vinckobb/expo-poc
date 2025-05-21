@@ -4,6 +4,7 @@ export class AboutViewModel {
   private onAction: ((action: Action) => void) | undefined;
 
   constructor(onAction: (action: Action) => void) {
+    console.log("✳️ AboutViewModel init");
     this.onAction = onAction;
   }
 
@@ -18,7 +19,7 @@ export class AboutViewModel {
   }
 
   dispose(): void {
-    console.log("AboutViewModel dispose");
+    console.log("❌ AboutViewModel dispose");
     this.onAction = undefined;
   }
 }

@@ -36,6 +36,6 @@ export class LoginFlowControllerImpl implements Flow.Controller {
 
   // Lifecycle methods
   dispose() {
-    console.log("${displayName} disposed");
+    console.log(`❌ ${LoginFlowControllerImpl.displayName} disposed`);
   }
 }

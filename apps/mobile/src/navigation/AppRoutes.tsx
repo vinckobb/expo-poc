@@ -7,26 +7,24 @@ import {
 } from "../screens/Password Recovery";
 import { Home, HomeViewModel } from "../screens/Home";
 
-import { FavoriteRoutes } from "../reactQueryPlayground/FavoriteRoutes";
-import { createFavoriteRoutesViewModel } from "../reactQueryPlayground/FavoriteRoutesViewModel";
-import { createQueryRouteService } from "../reactQueryPlayground/QueryRouteServiceDecorator";
-import { Routes } from "../reactQueryPlayground/Routes";
-import { RoutesViewModel } from "../reactQueryPlayground/RoutesViewModel";
-import { RouteDetails } from "../reactQueryPlayground/RouteDetails";
-import { RouteDetailsViewModel } from "../reactQueryPlayground/RouteDetailsViewModel";
+import { FavoriteRoutesScreen } from "../screens/Transport Routes/FavoriteRoutes/FavoriteRoutesScreen";
+import { createFavoriteRoutesViewModel } from "../screens/Transport Routes/FavoriteRoutes/FavoriteRoutesViewModel";
+import { createQueryRouteService } from "../service/QueryRouteServiceDecorator";
+import { RoutesListScreen } from "../screens/Transport Routes/RoutesList/RoutesListScreen";
+import { RoutesListViewModel } from "../screens/Transport Routes/RoutesList/RoutesListViewModel";
+import { RouteDetailsScreen } from "../screens/Transport Routes/RouteDetails/RouteDetailsScreen";
+import { RouteDetailsViewModel } from "../screens/Transport Routes/RouteDetails/RouteDetailsViewModel";
 import { HomeShellDemo } from "../shellPlayground/HomeShellDemo";
 
-import * as Flows from './AppFlows'
+import * as Flows from "./AppFlows";
 
 export type RootStackParamList = {
   PasswordRecovery: { email: string };
   Home: undefined;
-  Routes: undefined;
-  FavoriteRoutes: undefined;
-  RouteDetails: { routeId: string };
   ShellDemo: undefined;
 } & Flows.Login.ParamList &
-  Flows.Welcome.ParamList;
+  Flows.Welcome.ParamList &
+  Flows.TransportRoutes.ParamList;
 
 export type RootStackNavigator = ReturnType<
   typeof createNativeStackNavigator<RootStackParamList>
@@ -59,7 +57,7 @@ export default function AppRoutes() {
       console.log("Navigate to home");
       navigation.reset({
         index: 0,
-        routes: [{ name: "Home" }],
+        routes: [{ name: "RoutesList" }],
       });
     },
     openLogin: () => {
@@ -73,7 +71,7 @@ export default function AppRoutes() {
   };
 
   const handleOpenRoutes = () => {
-    navigation.navigate("Routes");
+    navigation.navigate("RoutesList");
   };
 
   const handleOpenFavorites = ({ preferPop }: { preferPop?: boolean } = {}) => {
@@ -114,13 +112,13 @@ export default function AppRoutes() {
       />
 
       {/* React Query Playground Screens */}
-      <Stack.Screen
+      {/* <Stack.Screen
         name="Routes"
         options={{ title: "Trasy" }}
         children={() => {
           const routeService = createQueryRouteService(queryClient);
 
-          const viewModel = new RoutesViewModel(
+          const viewModel = new RoutesListViewModel(
             undefined,
             (action) => {
               if (action.type === "routeSelected") {
@@ -132,7 +130,7 @@ export default function AppRoutes() {
             routeService
           );
 
-          return <Routes viewModel={viewModel} />;
+          return <RoutesListScreen viewModel={viewModel} />;
         }}
       />
 
@@ -153,7 +151,7 @@ export default function AppRoutes() {
             handleAction
           );
 
-          return <FavoriteRoutes viewModel={viewModel} />;
+          return <FavoriteRoutesScreen viewModel={viewModel} />;
         }}
       />
 
@@ -173,9 +171,9 @@ export default function AppRoutes() {
             routeService
           );
 
-          return <RouteDetails viewModel={viewModel} />;
+          return <RouteDetailsScreen viewModel={viewModel} />;
         }}
-      />
+      /> */}
 
       <Stack.Screen
         name="ShellDemo"
@@ -196,6 +194,13 @@ export default function AppRoutes() {
         Stack,
         navigation,
         welcomeFlowDelegate
+      )}
+
+      {Flows.TransportRoutes.createFlowScreens<RootStackParamList>(
+        Stack,
+        navigation,
+        welcomeFlowDelegate,
+        { queryClient: queryClient }
       )}
     </Stack.Navigator>
   );

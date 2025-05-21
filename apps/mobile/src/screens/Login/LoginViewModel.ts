@@ -11,6 +11,7 @@ export class LoginViewModel implements ViewModel {
   private onAction: ((action: Action) => void) | undefined;
 
   constructor(params: Params, onAction: (action: Action) => void) {
+    console.log("✳️ LoginViewModel init");
     this.onAction = onAction;
   }
 
@@ -28,7 +29,7 @@ export class LoginViewModel implements ViewModel {
   }
 
   dispose(): void {
-    console.log("LoginViewModel dispose");
+    console.log("❌ LoginViewModel dispose");
     this.onAction = undefined;
   }
 }

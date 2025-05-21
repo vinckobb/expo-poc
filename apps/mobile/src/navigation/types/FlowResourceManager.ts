@@ -53,7 +53,7 @@ export class FlowResourceStateManager<
   }
 
   resetState(): void {
-    console.log("Flow state will be reset");
+    console.log("⭕️ Flow state will be reset");
     this.state.controllerInstance?.dispose?.();
     this.state = {
       routerInstance: null,

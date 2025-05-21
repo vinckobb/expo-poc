@@ -1,7 +1,7 @@
 import { createStore, createEvent, createEffect, sample } from "effector";
-import { ViewModel } from "../navigation/types/ViewModel";
-import { Route, RouteFilter } from "./types";
-import { RouteService } from "./RouteService";
+import { ViewModel } from "../../../navigation/types/ViewModel";
+import { Route, RouteFilter } from "../../../service/types";
+import { RouteService } from "../../../service/RouteService";
 
 export type Action =
   | { type: "routeSelected"; routeId: string }
@@ -9,10 +9,11 @@ export type Action =
 
 export type Params = undefined;
 
-export class RoutesViewModel implements ViewModel {
+export class RoutesListViewModel implements ViewModel {
   events = {
     mounted: createEvent(),
     unmounted: createEvent(),
+    focused: createEvent(),
     loadRoutes: createEvent(),
     searchChanged: createEvent<string>(),
     sortChanged: createEvent<"number" | "name" | "custom">(),
@@ -43,6 +44,8 @@ export class RoutesViewModel implements ViewModel {
     onAction: (action: Action) => void,
     routeService: RouteService
   ) {
+    console.log("✳️ create RoutesListViewModel");
+
     this.onAction = onAction;
     this.routeService = routeService;
 
@@ -87,6 +90,7 @@ export class RoutesViewModel implements ViewModel {
       source: this.$filter,
       clock: [
         this.events.mounted,
+        this.events.focused,
         this.events.loadRoutes,
         this.events.retry,
         this.events.searchChanged,
@@ -105,6 +109,7 @@ export class RoutesViewModel implements ViewModel {
   }
 
   dispose(): void {
+    console.log("❌  dispose RoutesListViewModel");
     this.events.unmounted();
     this.onAction = undefined;
   }
@@ -114,6 +119,6 @@ export function createRoutesViewModel(
   params: Params,
   onAction: (action: Action) => void,
   routeService: RouteService
-): RoutesViewModel {
-  return new RoutesViewModel(params, onAction, routeService);
+): RoutesListViewModel {
+  return new RoutesListViewModel(params, onAction, routeService);
 }

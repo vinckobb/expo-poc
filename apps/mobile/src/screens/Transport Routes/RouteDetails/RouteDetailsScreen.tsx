@@ -9,9 +9,9 @@ import {
 } from "react-native";
 import { useUnit } from "effector-react";
 import { RouteDetailsViewModel } from "./RouteDetailsViewModel";
-import { Route } from "./types";
+import { Route } from "../../../service/types";
 
-export function RouteDetails({
+export function RouteDetailsScreen({
   viewModel,
 }: {
   viewModel: RouteDetailsViewModel;

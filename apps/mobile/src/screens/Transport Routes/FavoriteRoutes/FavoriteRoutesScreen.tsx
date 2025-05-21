@@ -11,9 +11,9 @@ import {
 import { useFocusEffect } from "@react-navigation/native";
 import { useUnit } from "effector-react";
 import { FavoriteRoutesViewModel } from "./FavoriteRoutesViewModel";
-import { FavoriteRouteResponse } from "./types";
+import { FavoriteRouteResponse } from "../../../service/types";
 
-export function FavoriteRoutes({
+export function FavoriteRoutesScreen({
   viewModel,
 }: {
   viewModel: FavoriteRoutesViewModel;

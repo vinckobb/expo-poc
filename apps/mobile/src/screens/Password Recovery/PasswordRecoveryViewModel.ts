@@ -13,7 +13,7 @@ export class PasswordRecoveryViewModel {
   }
 
   dispose(): void {
-    console.log("PasswordRecoveryViewModel dispose");
+    console.log("❌ PasswordRecoveryViewModel dispose");
     this.onAction = undefined;
   }
 }

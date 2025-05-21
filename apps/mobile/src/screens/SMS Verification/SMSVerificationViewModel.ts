@@ -8,6 +8,7 @@ export class SMSVerificationViewModel implements ViewModel {
   private onAction: ((action: Action) => void) | undefined;
 
   constructor(params: Params, onAction: (action: Action) => void) {
+    console.log("✳️ SMSVerificationViewModel init");
     this.onAction = onAction;
   }
 
@@ -17,7 +18,7 @@ export class SMSVerificationViewModel implements ViewModel {
   }
 
   dispose(): void {
-    console.log("SMSVerificationViewModel dispose");
+    console.log("❌ SMSVerificationViewModel dispose");
     this.onAction = undefined;
   }
 }

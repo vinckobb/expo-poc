@@ -7,14 +7,18 @@ import {
   StyleSheet,
   TouchableOpacity,
   ActivityIndicator,
-  Pressable,
 } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { useUnit } from "effector-react";
-import { RoutesViewModel } from "./RoutesViewModel";
-import { Route, RouteFilter } from "./types";
+import { RoutesListViewModel } from "./RoutesListViewModel";
+import { Route, RouteFilter } from "../../../service/types";
+import React from "react";
 
-export function Routes({ viewModel }: { viewModel: RoutesViewModel }) {
+export function RoutesListScreen({
+  viewModel,
+}: {
+  viewModel: RoutesListViewModel;
+}) {
   const routes = useUnit(viewModel.$routes);
   const isLoading = useUnit(viewModel.$isLoading);
   const error = useUnit(viewModel.$error);
@@ -41,6 +45,12 @@ export function Routes({ viewModel }: { viewModel: RoutesViewModel }) {
       viewModel.events.unmounted();
     };
   }, []);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      viewModel.events.focused();
+    }, [])
+  );
 
   const handleSearch = (text: string) => {
     viewModel.events.searchChanged(text);

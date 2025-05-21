@@ -17,5 +17,5 @@ export function createHttpClient(): HttpClient {
     baseUrl = "http://10.0.2.2:3000/api";
   }
 
-  return new FetchHttpClient(baseUrl, true);
+  return new FetchHttpClient(baseUrl, false);
 }
