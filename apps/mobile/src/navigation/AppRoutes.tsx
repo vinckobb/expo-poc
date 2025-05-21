@@ -99,13 +99,11 @@ export default function AppRoutes() {
 
       {Flows.Login.createFlowScreens<RootStackParamList>(
         Stack,
-        navigation,
         loginFlowDelegate
       )}
 
       {Flows.Welcome.createFlowScreens<RootStackParamList>(
         Stack,
-        navigation,
         welcomeFlowDelegate
       )}
 

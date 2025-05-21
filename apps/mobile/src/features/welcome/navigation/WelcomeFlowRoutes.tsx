@@ -6,7 +6,6 @@ import { ScreenProvider } from "./types/ScreenProvider";
 
 function createWelcomeScreen<T extends FlowType.ParamList>(
   Stack: FlowType.Stack<T>,
-  navigation: NavigationProp<T>,
   delegate: FlowType.Delegate
 ) {
   const screenName = FlowType.Screens.WELCOME;
@@ -22,7 +21,6 @@ function createWelcomeScreen<T extends FlowType.ParamList>(
       name={screenName}
       children={() => (
         <ScreenProvider
-          navigation={navigation}
           routerDelegate={delegate}
           screenName={screenName}
         >
@@ -40,7 +38,6 @@ function createWelcomeScreen<T extends FlowType.ParamList>(
 
 function createAboutScreen<T extends FlowType.ParamList>(
   Stack: FlowType.Stack<T>,
-  navigation: NavigationProp<T>,
   delegate: FlowType.Delegate
 ) {
   const screenName = FlowType.Screens.ABOUT;
@@ -56,7 +53,6 @@ function createAboutScreen<T extends FlowType.ParamList>(
       name={screenName}
       children={() => (
         <ScreenProvider
-          navigation={navigation}
           routerDelegate={delegate}
           screenName={screenName}
         >
@@ -74,13 +70,12 @@ function createAboutScreen<T extends FlowType.ParamList>(
 
 export function createWelcomeFlowScreens<T extends FlowType.ParamList>(
   Stack: FlowType.Stack<T>,
-  navigation: NavigationProp<T>,
   delegate: FlowType.Delegate
 ) {
   return (
     <Stack.Group>
-      {createWelcomeScreen(Stack, navigation, delegate)}
-      {createAboutScreen(Stack, navigation, delegate)}
+      {createWelcomeScreen(Stack, delegate)}
+      {createAboutScreen(Stack, delegate)}
     </Stack.Group>
   );
 }

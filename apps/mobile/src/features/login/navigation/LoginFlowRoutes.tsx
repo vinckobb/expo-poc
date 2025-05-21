@@ -6,7 +6,6 @@ import { ScreenProvider } from "./types/ScreenProvider";
 
 function createLoginScreen<T extends FlowType.ParamList>(
   Stack: FlowType.Stack<T>,
-  navigation: NavigationProp<T>,
   delegate: FlowType.Delegate
 ) {
   const screenName = FlowType.Screens.LOGIN;
@@ -22,7 +21,6 @@ function createLoginScreen<T extends FlowType.ParamList>(
       name={screenName}
       children={() => (
         <ScreenProvider
-          navigation={navigation}
           routerDelegate={delegate}
           screenName={screenName}
         >
@@ -40,7 +38,6 @@ function createLoginScreen<T extends FlowType.ParamList>(
 
 function createSMSVerificationScreen<T extends FlowType.ParamList>(
   Stack: FlowType.Stack<T>,
-  navigation: NavigationProp<T>,
   delegate: FlowType.Delegate
 ) {
   const screenName = FlowType.Screens.SMS_VERIFICATION;
@@ -56,7 +53,6 @@ function createSMSVerificationScreen<T extends FlowType.ParamList>(
       name={screenName}
       children={() => (
         <ScreenProvider
-          navigation={navigation}
           routerDelegate={delegate}
           screenName={screenName}
         >
@@ -74,13 +70,12 @@ function createSMSVerificationScreen<T extends FlowType.ParamList>(
 
 export function createLoginFlowScreens<T extends FlowType.ParamList>(
   Stack: FlowType.Stack<T>,
-  navigation: NavigationProp<T>,
   delegate: FlowType.Delegate
 ) {
   return (
     <Stack.Group>
-      {createLoginScreen(Stack, navigation, delegate)}
-      {createSMSVerificationScreen(Stack, navigation, delegate)}
+      {createLoginScreen(Stack, delegate)}
+      {createSMSVerificationScreen(Stack, delegate)}
     </Stack.Group>
   );
 }
