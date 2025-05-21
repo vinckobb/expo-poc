@@ -1,6 +1,10 @@
 export type Action =
-  | { type: "login" }
   | { type: "home" }
+  | { type: "about" }
+  | { type: "login" }
+  | { type: "routes" };
+
+export type Params = undefined;
 
 export class WelcomeViewModel {
   private onAction: ((action: Action) => void) | undefined;
@@ -10,13 +14,23 @@ export class WelcomeViewModel {
   }
 
   onHomeButton() {
-    console.log("WelcomeViewModel: onActionButton");
+    console.log("WelcomeViewModel: onHomeButton");
     this.onAction?.({ type: "home" });
   }
 
   onLoginButton() {
-    console.log("WelcomeViewModel: onActionButton");
+    console.log("WelcomeViewModel: onLoginButton");
     this.onAction?.({ type: "login" });
+  }
+
+  onAboutButton() {
+    console.log("WelcomeViewModel: onAboutButton");
+    this.onAction?.({ type: "about" });
+  }
+
+  onRoutesButton() {
+    console.log("WelcomeViewModel: onRoutesButton");
+    this.onAction?.({ type: "routes" });
   }
 
   dispose(): void {

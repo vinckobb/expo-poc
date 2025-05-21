@@ -3,9 +3,10 @@ import {
   About as View,
   AboutViewModel as ViewModel,
   Action,
+  Params
 } from "../../../screens/About";
 
-import * as Flow from "../navigation/types/flowTypes";
+import { Controller } from "../navigation/types/flowTypes";
 
 type Dependencies = {
   apiClient?: object;
@@ -18,7 +19,7 @@ type Config = {
 };
 
 type ParamsType = {
-  params: Flow.ParamList["About"];
+  params: Params;
   deps?: Dependencies;
   config?: Config;
 };
@@ -29,7 +30,7 @@ export const AboutScreen = createFlowScreen<
   ParamsType,
   ViewModel,
   Action,
-  Flow.Controller
+  Controller
 >(
   View,
   (params, onAction) => new ViewModel(onAction),

@@ -6,14 +6,6 @@ import {
   PasswordRecoveryViewModel,
 } from "../screens/Password Recovery";
 import { Home, HomeViewModel } from "../screens/Home";
-
-import { FavoriteRoutesScreen } from "../screens/Transport Routes/FavoriteRoutes/FavoriteRoutesScreen";
-import { createFavoriteRoutesViewModel } from "../screens/Transport Routes/FavoriteRoutes/FavoriteRoutesViewModel";
-import { createQueryRouteService } from "../service/QueryRouteServiceDecorator";
-import { RoutesListScreen } from "../screens/Transport Routes/RoutesList/RoutesListScreen";
-import { RoutesListViewModel } from "../screens/Transport Routes/RoutesList/RoutesListViewModel";
-import { RouteDetailsScreen } from "../screens/Transport Routes/RouteDetails/RouteDetailsScreen";
-import { RouteDetailsViewModel } from "../screens/Transport Routes/RouteDetails/RouteDetailsViewModel";
 import { HomeShellDemo } from "../shellPlayground/HomeShellDemo";
 
 import * as Flows from "./AppFlows";
@@ -57,29 +49,17 @@ export default function AppRoutes() {
       console.log("Navigate to home");
       navigation.reset({
         index: 0,
-        routes: [{ name: "RoutesList" }],
+        routes: [{ name: "Home" }],
       });
     },
     openLogin: () => {
       console.log("Navigate to login");
-      navigation.navigate("Login");
+      navigation.navigate(Flows.Login.ScreenNames.LOGIN);
     },
-  };
-
-  const handleRouteSelected = (routeId: string) => {
-    navigation.navigate("RouteDetails", { routeId });
-  };
-
-  const handleOpenRoutes = () => {
-    navigation.navigate("RoutesList");
-  };
-
-  const handleOpenFavorites = ({ preferPop }: { preferPop?: boolean } = {}) => {
-    if (preferPop) {
-      navigation.navigate("FavoriteRoutes", undefined, { pop: true });
-    } else {
-      navigation.navigate("FavoriteRoutes");
-    }
+    openRoutes: () => {
+      console.log("Navigate to routes");
+      navigation.navigate(Flows.TransportRoutes.ScreenNames.ROUTES_LIST);
+    },
   };
 
   return (
@@ -110,70 +90,6 @@ export default function AppRoutes() {
           return <Home viewModel={viewModel} />;
         }}
       />
-
-      {/* React Query Playground Screens */}
-      {/* <Stack.Screen
-        name="Routes"
-        options={{ title: "Trasy" }}
-        children={() => {
-          const routeService = createQueryRouteService(queryClient);
-
-          const viewModel = new RoutesListViewModel(
-            undefined,
-            (action) => {
-              if (action.type === "routeSelected") {
-                handleRouteSelected(action.routeId);
-              } else if (action.type === "openFavorites") {
-                handleOpenFavorites();
-              }
-            },
-            routeService
-          );
-
-          return <RoutesListScreen viewModel={viewModel} />;
-        }}
-      />
-
-      <Stack.Screen
-        name="FavoriteRoutes"
-        options={{ title: "Obľúbené trasy" }}
-        children={() => {
-          const routeService = createQueryRouteService(queryClient);
-
-          const handleAction = (action: { type: string; routeId?: string }) => {
-            if (action.type === "routeSelected" && action.routeId) {
-              handleRouteSelected(action.routeId);
-            }
-          };
-
-          const viewModel = createFavoriteRoutesViewModel(
-            routeService,
-            handleAction
-          );
-
-          return <FavoriteRoutesScreen viewModel={viewModel} />;
-        }}
-      />
-
-      <Stack.Screen
-        name="RouteDetails"
-        options={{ title: "Detail trasy" }}
-        children={({ route }) => {
-          const routeService = createQueryRouteService(queryClient);
-
-          const viewModel = new RouteDetailsViewModel(
-            { routeId: route.params.routeId },
-            (action: { type: string }) => {
-              if (action.type === "openFavorites") {
-                handleOpenFavorites({ preferPop: true });
-              }
-            },
-            routeService
-          );
-
-          return <RouteDetailsScreen viewModel={viewModel} />;
-        }}
-      /> */}
 
       <Stack.Screen
         name="ShellDemo"

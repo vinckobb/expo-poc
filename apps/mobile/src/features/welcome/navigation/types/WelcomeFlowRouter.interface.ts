@@ -3,4 +3,5 @@ export interface WelcomeFlowRouter {
   openAbout(): void;
   openLogin(): void;
   openHome(): void;
+  openRoutes(): void;
 }

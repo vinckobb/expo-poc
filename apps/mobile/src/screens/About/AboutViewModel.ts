@@ -1,5 +1,7 @@
 export type Action = { type: "home" } | { type: "contact" };
 
+export type Params = undefined;
+
 export class AboutViewModel {
   private onAction: ((action: Action) => void) | undefined;
 

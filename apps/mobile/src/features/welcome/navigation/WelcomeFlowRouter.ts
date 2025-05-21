@@ -13,12 +13,12 @@ export class WelcomeFlowRouterImpl<T extends FlowType.ParamList>
   ) {}
 
   openWelcome() {
-    this.nav.navigate("Welcome", undefined);
+    this.nav.navigate(FlowType.Screens.WELCOME, undefined);
     console.log("Navigating to welcome");
   }
 
   openAbout() {
-    this.nav.navigate("About", undefined);
+    this.nav.navigate(FlowType.Screens.ABOUT, undefined);
     console.log("Navigating to about");
   }
 
@@ -30,5 +30,10 @@ export class WelcomeFlowRouterImpl<T extends FlowType.ParamList>
   openHome() {
     console.log("Navigating to home via delegate");
     this.delegate?.openHome();
+  }
+
+  openRoutes() {
+    console.log("Navigating to home via delegate");
+    this.delegate?.openRoutes();
   }
 }
