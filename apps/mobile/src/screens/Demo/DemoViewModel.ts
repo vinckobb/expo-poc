@@ -1,5 +1,7 @@
 export type Action = { type: "home" };
 
+export type Params = undefined;
+
 export class DemoViewModel {
   private onAction: ((action: Action) => void) | undefined;
 

@@ -12,6 +12,14 @@ export class {{pascalCase name}}FlowRouterImpl<T extends FlowType.ParamList>
     private delegate?: FlowType.Delegate
   ) {}
   
+  openDemo() {
+    console.log("Navigating to demo");
+    const params: FlowType.ParamList[typeof FlowType.Screens.DEMO] = {
+      id: "demoId",
+    };
+    this.nav.navigate(FlowType.Screens.DEMO, params);
+  }
+
   openHome() {
     console.log("Navigating to home via delegate");
     this.delegate?.openHome();

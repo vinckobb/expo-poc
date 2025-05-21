@@ -6,7 +6,7 @@ import {
   Params
 } from "../../../screens/Demo";
 
-import * as Flow from "../navigation/types/flowTypes";
+import { Controller } from "../navigation/types/flowTypes";
 
 type Dependencies = {
   apiClient?: object;
@@ -30,7 +30,7 @@ export const DemoScreen = createFlowScreen<
   ParamsType,
   ViewModel,
   Action,
-  Flow.Controller
+  Controller
 >(
   View,
   (params, onAction) => new ViewModel(onAction),

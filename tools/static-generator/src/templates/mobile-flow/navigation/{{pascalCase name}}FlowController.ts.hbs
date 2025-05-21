@@ -1,12 +1,12 @@
 import * as Flow from "./types/flowTypes";
-import { DemoViewModelAction } from "../screens";
+import { DemoAction } from "../screens";
 
 export class {{pascalCase name}}FlowControllerImpl implements Flow.Controller {
   static readonly displayName: string = "{{pascalCase name}}FlowControllerImpl";
 
   constructor(private router: Flow.Router) {}
 
-  handleDemoAction(action: DemoViewModelAction) {
+  handleDemoAction(action: DemoAction) {
     switch (action.type) {
       case "home":
         this.router.openHome();

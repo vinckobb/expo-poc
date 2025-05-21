@@ -1,0 +1,5 @@
+export const {{pascalCase name}}Screens = {
+  DEMO: "Demo",
+} as const;
+
+export type {{pascalCase name}}ScreenName = (typeof {{pascalCase name}}Screens)[keyof typeof {{pascalCase name}}Screens];

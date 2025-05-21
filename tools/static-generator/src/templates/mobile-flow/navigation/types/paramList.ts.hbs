@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { {{pascalCase name}}Screens as Screens } from "./routesList";
 
 // Param Schemas
 const DemoParamsSchema = z.object({
@@ -9,9 +10,9 @@ const DemoParamsSchema = z.object({
 type DemoParams = z.infer<typeof DemoParamsSchema>;
 
 export type {{pascalCase name}}ParamList = {
-  Demo: DemoParams;
+  [Screens.DEMO]: DemoParams;
 };
 
 export const {{pascalCase name}}ParamSchemas = {
-  Demo: DemoParamsSchema,
+  [Screens.DEMO]: DemoParamsSchema,
 };

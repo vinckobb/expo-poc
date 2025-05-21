@@ -13,7 +13,7 @@ export function Demo({ viewModel }: { viewModel: DemoViewModel }) {
             marginVertical: 24,
           }}
         >
-          O aplikácii
+          Demo Screen for Flow generator
         </Text>
         <Button title="Home" onPress={() => viewModel.onHomeButton()} />
       </View>

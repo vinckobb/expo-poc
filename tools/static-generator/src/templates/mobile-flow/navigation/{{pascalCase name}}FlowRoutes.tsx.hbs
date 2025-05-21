@@ -1,35 +1,51 @@
 import { NavigationProp } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useMemo } from "react";
 import * as FlowType from "./types/flowTypes";
 import * as Screens from "../screens";
 import { ScreenProvider } from "./types/ScreenProvider";
 
+function createDemoScreen<T extends FlowType.ParamList>(
+  Stack: FlowType.Stack<T>,
+  navigation: NavigationProp<T>,
+  delegate: FlowType.Delegate
+) {
+  const screenName = FlowType.Screens.DEMO;
+  const screenParams = useMemo(
+    () => ({
+      params: undefined,
+    }),
+    []
+  );
+
+  return (
+    <Stack.Screen
+      name={screenName}
+      children={() => (
+        <ScreenProvider
+          navigation={navigation}
+          routerDelegate={delegate}
+          screenName={screenName}
+        >
+          {(controller) => (
+            <Screens.DemoScreen
+              controller={controller}
+              params={screenParams}
+            />
+          )}
+        </ScreenProvider>
+      )}
+    />
+  );
+}
+
 export function create{{pascalCase name}}FlowScreens<T extends FlowType.ParamList>(
-  Stack: ReturnType<typeof createNativeStackNavigator<T>>,
+  Stack: FlowType.Stack<T>,
   navigation: NavigationProp<T>,
   delegate: FlowType.Delegate
 ) {
   return (
     <Stack.Group>
-      <Stack.Screen
-        name="Demo"
-        children={() => (
-          <ScreenProvider
-            navigation={navigation}
-            routerDelegate={delegate}
-            screenName="Demo"
-          >
-            {(controller) => (
-              <Screens.Demo
-                controller={controller}
-                {{{{raw}}}}
-                params={{ params: undefined }}
-                {{{{/raw}}}}
-              />
-            )}
-          </ScreenProvider>
-        )}
-      />
+      {createDemoScreen(Stack, navigation, delegate)}
     </Stack.Group>
   );
 }
