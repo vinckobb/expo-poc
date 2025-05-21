@@ -6,7 +6,6 @@ import { ScreenProvider } from "./types/ScreenProvider";
 
 function createDemoScreen<T extends FlowType.ParamList>(
   Stack: FlowType.Stack<T>,
-  navigation: NavigationProp<T>,
   delegate: FlowType.Delegate
 ) {
   const screenName = FlowType.Screens.DEMO;
@@ -22,7 +21,6 @@ function createDemoScreen<T extends FlowType.ParamList>(
       name={screenName}
       children={() => (
         <ScreenProvider
-          navigation={navigation}
           routerDelegate={delegate}
           screenName={screenName}
         >
@@ -40,12 +38,11 @@ function createDemoScreen<T extends FlowType.ParamList>(
 
 export function create{{pascalCase name}}FlowScreens<T extends FlowType.ParamList>(
   Stack: FlowType.Stack<T>,
-  navigation: NavigationProp<T>,
   delegate: FlowType.Delegate
 ) {
   return (
     <Stack.Group>
-      {createDemoScreen(Stack, navigation, delegate)}
+      {createDemoScreen(Stack, delegate)}
     </Stack.Group>
   );
 }
