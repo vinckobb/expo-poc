@@ -1,24 +1,24 @@
 import { NavigationProp } from "@react-navigation/native";
 
-import * as Flow from "./types/flowTypes";
+import * as FlowType from "./types/flowTypes";
 
-export class LoginFlowRouterImpl<T extends Flow.ParamList>
-  implements Flow.Router
+export class LoginFlowRouterImpl<T extends FlowType.ParamList>
+  implements FlowType.Router
 {
   static readonly displayName: string = "WelcomeFlowRouterImpl";
 
   constructor(
     private nav: NavigationProp<T>,
-    private delegate?: Flow.Delegate
+    private delegate?: FlowType.Delegate
   ) {}
 
   openLogin() {
-    this.nav.navigate("Login", undefined);
+    this.nav.navigate(FlowType.Screens.LOGIN, undefined);
     console.log("Navigating to login");
   }
 
   openSMSVerification() {
-    this.nav.navigate("SMSVerification", undefined);
+    this.nav.navigate(FlowType.Screens.SMS_VERIFICATION, undefined);
   }
 
   openPasswordRecovery() {

@@ -1,50 +1,86 @@
 import { NavigationProp } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import * as Flow from "./types/flowTypes";
+import { useMemo } from "react";
+import * as FlowType from "./types/flowTypes";
 import * as Screens from "../screens";
 import { ScreenProvider } from "./types/ScreenProvider";
 
-export function createLoginFlowScreens<T extends Flow.ParamList>(
-  Stack: ReturnType<typeof createNativeStackNavigator<T>>,
+function createLoginScreen<T extends FlowType.ParamList>(
+  Stack: FlowType.Stack<T>,
   navigation: NavigationProp<T>,
-  delegate: Flow.Delegate
+  delegate: FlowType.Delegate
+) {
+  const screenName = FlowType.Screens.LOGIN;
+  const screenParams = useMemo(
+    () => ({
+      params: undefined,
+    }),
+    []
+  );
+
+  return (
+    <Stack.Screen
+      name={screenName}
+      children={() => (
+        <ScreenProvider
+          navigation={navigation}
+          routerDelegate={delegate}
+          screenName={screenName}
+        >
+          {(controller) => (
+            <Screens.LoginScreen
+              controller={controller}
+              params={screenParams}
+            />
+          )}
+        </ScreenProvider>
+      )}
+    />
+  );
+}
+
+function createSMSVerificationScreen<T extends FlowType.ParamList>(
+  Stack: FlowType.Stack<T>,
+  navigation: NavigationProp<T>,
+  delegate: FlowType.Delegate
+) {
+  const screenName = FlowType.Screens.SMS_VERIFICATION;
+  const screenParams = useMemo(
+    () => ({
+      params: undefined,
+    }),
+    []
+  );
+
+  return (
+    <Stack.Screen
+      name={screenName}
+      children={() => (
+        <ScreenProvider
+          navigation={navigation}
+          routerDelegate={delegate}
+          screenName={screenName}
+        >
+          {(controller) => (
+            <Screens.SMSVerificationScreen
+              controller={controller}
+              params={screenParams}
+            />
+          )}
+        </ScreenProvider>
+      )}
+    />
+  );
+}
+
+export function createLoginFlowScreens<T extends FlowType.ParamList>(
+  Stack: FlowType.Stack<T>,
+  navigation: NavigationProp<T>,
+  delegate: FlowType.Delegate
 ) {
   return (
     <Stack.Group>
-      <Stack.Screen
-        name="Login"
-        children={() => (
-          <ScreenProvider
-            navigation={navigation}
-            routerDelegate={delegate}
-            screenName="Login"
-          >
-            {(controller) => (
-              <Screens.LoginScreen
-                controller={controller}
-                params={{ params: undefined }}
-              />
-            )}
-          </ScreenProvider>
-        )}
-      />
-      <Stack.Screen
-        name="SMSVerification"
-        children={() => (
-          <ScreenProvider
-            navigation={navigation}
-            routerDelegate={delegate}
-            screenName="SMSVerification"
-          >
-            {(controller) => (
-              <Screens.SMSVerificationScreen
-                controller={controller}
-                params={{ params: undefined }}
-              />
-            )}
-          </ScreenProvider>
-        )}
-      />
+      {createLoginScreen(Stack, navigation, delegate)}
+      {createSMSVerificationScreen(Stack, navigation, delegate)}
     </Stack.Group>
   );
 }
