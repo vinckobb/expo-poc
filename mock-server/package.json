@@ -8,7 +8,7 @@
     "start": "ts-node src/server.ts",
     "build": "tsc",
     "watch": "tsc --watch",
-    "dev": "nodemon --watch 'src/**/*.ts' --exec 'node --inspect -r ts-node/register -r tsconfig-paths/register' src/server.ts",
+    "dev": "nodemon --watch \"src/**/*.ts\" --exec \"node --inspect -r ts-node/register -r tsconfig-paths/register\" src/server.ts",
     "dev:ios": "npm run dev",
     "dev:android": "npm run dev"
   },
