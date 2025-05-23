@@ -9,8 +9,8 @@
   "scripts": {
     "dev": "npm run dev:web",
     "dev:web": "turbo dev:web",
-    "dev-expo:android": "turbo dev-expo:android",
-    "dev-expo:ios": "turbo dev-expo:ios",
+    "dev-native:android": "turbo dev-native:android",
+    "dev-native:ios": "turbo --log-prefix=none dev-native:ios",
     "dev:android": "turbo dev:android",
     "dev:ios": "turbo --log-prefix=none dev:ios",
     "build": "turbo build",
@@ -28,7 +28,7 @@
     "prettier": "^3.3.2",
     "turbo": "~2.5.0",
     "typescript": "~5.3.3",
-    "typescript-eslint": "~8.31.0"
+    "typescript-eslint": "~8.31.0",
     "ts-node": "^10.9.2"
   },
   "packageManager": "npm@9.8.1"
