@@ -1,20 +1,11 @@
-import * as Flow from "./types/flowTypes";
-import { WelcomeViewModelAction, AboutViewModelAction } from "../screens";
+import * as FlowType from "./types/flowTypes";
 
-function assertUnreachable(x: never): never {
-  throw new Error(`Didn't expect to get here: ${x}`);
-}
-
-function exhaustiveCheck<T extends never>(x: T): never {
-  throw new Error(`Unexpected value: ${x}`);
-}
-
-export class WelcomeFlowControllerImpl implements Flow.Controller {
+export class WelcomeFlowControllerImpl implements FlowType.Controller {
   static readonly displayName: string = "WelcomeFlowControllerImpl";
 
-  constructor(private router: Flow.Router) {}
+  constructor(private router: FlowType.Router) {}
 
-  handleWelcomeAction(action: WelcomeViewModelAction) {
+  handleWelcomeAction(action: FlowType.Actions.WelcomeAction) {
     switch (action.type) {
       case "home":
         this.router.openHome();
@@ -27,14 +18,14 @@ export class WelcomeFlowControllerImpl implements Flow.Controller {
       case "about":
         this.router.openAbout();
         break;
-      
+
       case "routes":
         this.router.openRoutes();
         break;
     }
   }
 
-  handleAboutAction(action: AboutViewModelAction): void {
+  handleAboutAction(action: FlowType.Actions.AboutAction): void {
     // GUARD: Unimplemented functionality (navigation) [@dmitry.kovalev]
   }
 

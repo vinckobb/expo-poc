@@ -1,32 +1,16 @@
-import {
-  RouteParamSchemas as ParamSchemas,
-  RoutesParamList as ParamList,
-} from "./types/paramList";
+import * as FlowType from "./types/flowTypes";
 
-export function mapRouteDetailsParams(
-  input: unknown
-): ParamList["RouteDetails"] {
-  const result = ParamSchemas["RouteDetails"].safeParse(input);
+const validateRouteDetailsParams = (input: unknown) => {
+  const result =
+    FlowType.ParamSchemas[FlowType.Screens.ROUTE_DETAILS].safeParse(input);
   if (!result.success) {
     throw new Error(`Invalid RouteDetailsParams: ${result.error.message}`);
   }
-
   return result.data;
-}
-
-type ParamsAdapterMap = {
-  [K in keyof ParamList]: (input: unknown) => ParamList[K];
 };
 
-export const ParamsAdapter: ParamsAdapterMap = {
-  RouteDetails: (input) => {
-    const result = ParamSchemas["RouteDetails"].safeParse(input);
-    if (!result.success) {
-      throw new Error(`Invalid RouteDetailsParams: ${result.error.message}`);
-    }
-    return result.data;
-  },
-
-  RoutesList: () => undefined,
-  FavoriteRoutes: () => undefined,
-};
+export const ParamsAdapter: FlowType.ParamsAdapterMap = {
+  [FlowType.Screens.ROUTES_LIST]: FlowType.NO_PARAMS,
+  [FlowType.Screens.ROUTE_DETAILS]: validateRouteDetailsParams,
+  [FlowType.Screens.FAVORITE_ROUTES]: FlowType.NO_PARAMS,
+} as const;

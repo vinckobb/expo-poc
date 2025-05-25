@@ -3,4 +3,5 @@ export const WelcomeScreens = {
   ABOUT: "About",
 } as const;
 
-export type WelcomeScreenName = (typeof WelcomeScreens)[keyof typeof WelcomeScreens];
+export type WelcomeScreenName =
+  (typeof WelcomeScreens)[keyof typeof WelcomeScreens];

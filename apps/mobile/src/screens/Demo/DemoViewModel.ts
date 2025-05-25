@@ -1,6 +1,6 @@
 export type Action = { type: "home" };
 
-export type Params = undefined;
+export type Params = { id: string };
 
 export class DemoViewModel {
   private onAction: ((action: Action) => void) | undefined;

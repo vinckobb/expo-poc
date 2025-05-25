@@ -1,4 +1,4 @@
-import { ShellFlowRouterDelegate } from "./types/ShellFlowRouterDelegate.interface";
+import { ShellFlowRouterDelegate } from "./interfaces/ShellFlowRouterDelegate.interface";
 
 export class ShellFlowController {
   private delegate: ShellFlowRouterDelegate;

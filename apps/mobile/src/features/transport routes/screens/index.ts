@@ -1,3 +1,3 @@
-export * from "./RoutesList.screen";
-export * from "./RouteDetails.screen";
-export * from "./FavoriteRoutes.screen";
+export * as RoutesList from "./RoutesList.screen";
+export * as RouteDetails from "./RouteDetails.screen";
+export * as FavoriteRoutes from "./FavoriteRoutes.screen";

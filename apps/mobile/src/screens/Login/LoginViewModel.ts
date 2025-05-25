@@ -10,7 +10,7 @@ export type Params = undefined;
 export class LoginViewModel implements ViewModel {
   private onAction: ((action: Action) => void) | undefined;
 
-  constructor(params: Params, onAction: (action: Action) => void) {
+  constructor(onAction: (action: Action) => void) {
     console.log("✳️ LoginViewModel init");
     this.onAction = onAction;
   }

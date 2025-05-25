@@ -1,6 +1,6 @@
 import React from "react";
 import * as FlowType from "./types/flowTypes";
-import { ShellFlowRouterDelegate } from "./types/ShellFlowRouterDelegate.interface";
+import { ShellFlowRouterDelegate } from "./interfaces/ShellFlowRouterDelegate.interface";
 import { ShellScreen } from "../screens/ShellScreen";
 import { NativeStackNavigationOptions } from "@react-navigation/native-stack";
 

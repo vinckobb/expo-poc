@@ -1,15 +1,11 @@
-import * as Flow from "./types/flowTypes";
-import {
-  SMSVerificationViewModelAction,
-  LoginViewModelAction,
-} from "../screens";
+import * as FlowType from "./types/flowTypes";
 
-export class LoginFlowControllerImpl implements Flow.Controller {
+export class LoginFlowControllerImpl implements FlowType.Controller {
   static readonly displayName: string = "LoginFlowControllerImpl";
 
-  constructor(private router: Flow.Router) {}
+  constructor(private router: FlowType.Router) {}
 
-  handleLoginAction(action: LoginViewModelAction) {
+  handleLoginAction(action: FlowType.Actions.LoginAction) {
     switch (action.type) {
       case "successfulLogin":
         this.router.openSMSVerification();
@@ -25,7 +21,9 @@ export class LoginFlowControllerImpl implements Flow.Controller {
     }
   }
 
-  handleSMSVerificationAction(action: SMSVerificationViewModelAction): void {
+  handleSMSVerificationAction(
+    action: FlowType.Actions.SMSVerificationAction
+  ): void {
     // GUARD: Unimplemented functionality (navigation) [@dmitry.kovalev]
     this.router.openHome();
   }

@@ -1,2 +1,2 @@
-export * from "./Welcome.screen";
-export * from "./About.screen";
+export * as Wecome from "./Welcome.screen";
+export * as About from "./About.screen";

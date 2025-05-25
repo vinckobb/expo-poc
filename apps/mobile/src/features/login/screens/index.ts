@@ -1,2 +1,2 @@
-export * from "./SmsVerification.screen";
-export * from "./Login.screen";
+export * as Login from "./Login.screen";
+export * as SMSVerification from "./SMSVerification.screen";

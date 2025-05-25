@@ -1,16 +1,11 @@
-import * as Flow from "./types/flowTypes";
-import {
-  RoutesListAction,
-  RouteDetailsAction,
-  FavoriteRoutesAction,
-} from "../screens";
+import * as FlowType from "./types/flowTypes";
 
-export class RoutesFlowControllerImpl implements Flow.Controller {
+export class RoutesFlowControllerImpl implements FlowType.Controller {
   static readonly displayName: string = "RoutesFlowControllerImpl";
 
-  constructor(private router: Flow.Router) {}
+  constructor(private router: FlowType.Router) {}
 
-  handleRoutesListActionAction(action: RoutesListAction) {
+  handleRoutesListActionAction(action: FlowType.Actions.RoutesListAction) {
     switch (action.type) {
       case "openFavorites":
         this.router.openFavorites();
@@ -21,7 +16,7 @@ export class RoutesFlowControllerImpl implements Flow.Controller {
     }
   }
 
-  handleRouteDetailsAction(action: RouteDetailsAction) {
+  handleRouteDetailsAction(action: FlowType.Actions.RouteDetailsAction) {
     switch (action.type) {
       case "openFavorites":
         this.router.openFavorites();
@@ -29,7 +24,7 @@ export class RoutesFlowControllerImpl implements Flow.Controller {
     }
   }
 
-  handleFavoriteRoutesAction(action: FavoriteRoutesAction) {
+  handleFavoriteRoutesAction(action: FlowType.Actions.FavoriteRoutesAction) {
     switch (action.type) {
       case "routeSelected":
         this.router.openRouteDetails(action.routeId);
@@ -40,6 +35,5 @@ export class RoutesFlowControllerImpl implements Flow.Controller {
   // Lifecycle methods
   dispose() {
     console.log(`❌ ${RoutesFlowControllerImpl.displayName} flow disposed`);
-
   }
 }

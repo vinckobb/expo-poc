@@ -3,11 +3,11 @@ import {
   RouterClass,
   FlowResourceManager,
   FlowResourceStateManager,
-} from "../../../navigation/types/FlowResourceManager";
+} from "../../../../navigation/types/FlowResourceManager";
 
-import * as FlowType from "./types/flowTypes";
-import { RouterImpl } from "./types/RouterImpl";
-import { ControllerImpl } from "./types/ControllerImpl";
+import * as FlowType from "../types/flowTypes";
+import { RouterImpl } from "../types/flowAliases";
+import { ControllerImpl } from "../types/flowAliases";
 
 export class FlowResourceManagerImpl<
   T extends FlowType.ParamList,

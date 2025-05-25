@@ -1,10 +1,10 @@
 import { NavigationProp, useNavigation } from "@react-navigation/native";
-import { FlowScreenProvider } from "../../../navigation/types/FlowScreenProvider";
+import { FlowScreenProvider } from "../../../../navigation/types/FlowScreenProvider";
 
-import * as FlowType from "./types/flowTypes";
-import { ResourceManager } from "./types/ResourceManager";
+import * as FlowType from "../types/flowTypes";
+import { ResourceManager } from "../types/flowAliases";
 
-export function WelcomeFlowScreenProvider<T extends FlowType.ParamList>({
+export function LoginFlowScreenProvider<T extends FlowType.ParamList>({
   routerDelegate,
   screenName,
   children,

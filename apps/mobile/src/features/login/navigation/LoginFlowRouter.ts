@@ -18,6 +18,7 @@ export class LoginFlowRouterImpl<T extends FlowType.ParamList>
   }
 
   openSMSVerification() {
+    console.log("Navigating to SMSVerification");
     this.nav.navigate(FlowType.Screens.SMS_VERIFICATION, undefined);
   }
 

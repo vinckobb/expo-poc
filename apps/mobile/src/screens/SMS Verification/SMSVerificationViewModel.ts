@@ -7,7 +7,7 @@ export type Params = undefined;
 export class SMSVerificationViewModel implements ViewModel {
   private onAction: ((action: Action) => void) | undefined;
 
-  constructor(params: Params, onAction: (action: Action) => void) {
+  constructor(onAction: (action: Action) => void) {
     console.log("✳️ SMSVerificationViewModel init");
     this.onAction = onAction;
   }

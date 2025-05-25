@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { ShellFlowRouterDelegate } from "../navigation/types/ShellFlowRouterDelegate.interface";
+import { ShellFlowRouterDelegate } from "../navigation/interfaces/ShellFlowRouterDelegate.interface";
 import { ShellFlowController } from "../navigation/ShellFlowController";
 import { TabNavigator } from "./TabNavigator";
 import { useQueryClient } from "@tanstack/react-query";
