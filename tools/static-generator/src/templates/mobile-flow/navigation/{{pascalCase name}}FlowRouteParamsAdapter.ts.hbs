@@ -1,0 +1,16 @@
+import * as FlowType from "./types/flowTypes";
+
+const validateDemoScreenParams = (input: unknown) => {
+  const result =
+    FlowType.ParamSchemas[FlowType.Screens.DEMO].safeParse(input);
+  if (!result.success) {
+    throw new Error(`Invalid DemoScreenParams: ${result.error.message}`);
+  }
+  return result.data;
+};
+
+export const ParamsAdapter: FlowType.ParamsAdapterMap = {
+  [FlowType.Screens.DEMO]: validateDemoScreenParams,
+  // Example of undefined params 
+  //  [FlowType.Screens.SOME_SCREEN]: FlowType.NO_PARAMS,
+} as const;

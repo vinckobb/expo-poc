@@ -1,40 +1,5 @@
-import { NavigationProp } from "@react-navigation/native";
-import { useMemo } from "react";
 import * as FlowType from "./types/flowTypes";
 import * as Screens from "../screens";
-import { ScreenProvider } from "./types/ScreenProvider";
-
-function createDemoScreen<T extends FlowType.ParamList>(
-  Stack: FlowType.Stack<T>,
-  delegate: FlowType.Delegate
-) {
-  const screenName = FlowType.Screens.DEMO;
-  const screenParams = useMemo(
-    () => ({
-      params: undefined,
-    }),
-    []
-  );
-
-  return (
-    <Stack.Screen
-      name={screenName}
-      children={() => (
-        <ScreenProvider
-          routerDelegate={delegate}
-          screenName={screenName}
-        >
-          {(controller) => (
-            <Screens.DemoScreen
-              controller={controller}
-              params={screenParams}
-            />
-          )}
-        </ScreenProvider>
-      )}
-    />
-  );
-}
 
 export function create{{pascalCase name}}FlowScreens<T extends FlowType.ParamList>(
   Stack: FlowType.Stack<T>,
@@ -42,7 +7,7 @@ export function create{{pascalCase name}}FlowScreens<T extends FlowType.ParamLis
 ) {
   return (
     <Stack.Group>
-      {createDemoScreen(Stack, delegate)}
+      {Screens.Demo.stackScreen(Stack, delegate)}
     </Stack.Group>
   );
 }

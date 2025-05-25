@@ -1,6 +1,6 @@
 import type { FlowController } from "../../../../navigation/types/FlowController";
-import type { Action as DemoViewModelAction } from "../../../../screens/Demo/DemoViewModel";
+import * as Actions from "../types/screenActions";
 
 export interface {{pascalCase name}}FlowController extends FlowController {
-  handleDemoAction(action: DemoViewModelAction): void;
+  handleDemoAction(action: Actions.DemoAction): void;
 }

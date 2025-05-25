@@ -1,12 +1,21 @@
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { {{pascalCase name}}ParamList as ParamList } from "./paramList";
 
 export type { ParamList };
+export { {{pascalCase name}}ParamSchemas as ParamSchemas } from "./paramList";
 export { {{pascalCase name}}Screens as Screens } from "./routesList";
-export type { {{pascalCase name}}FlowRouterDelegate as Delegate } from "./{{pascalCase name}}FlowRouterDelegate.interface";
-export type { {{pascalCase name}}FlowRouter as Router } from "./{{pascalCase name}}FlowRouter.interface";
-export type { {{pascalCase name}}FlowController as Controller } from "./{{pascalCase name}}FlowController.interface";
+export type { {{pascalCase name}}ScreenName as ScreenName } from "./routesList";
+export type { {{pascalCase name}}FlowRouterDelegate as Delegate } from "../interfaces/{{pascalCase name}}FlowRouterDelegate.interface";
+export type { {{pascalCase name}}FlowRouter as Router } from "../interfaces/{{pascalCase name}}FlowRouter.interface";
+export type { {{pascalCase name}}FlowController as Controller } from "../interfaces/{{pascalCase name}}FlowController.interface";
+export * as Actions from "./screenActions";
 
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 export type Stack<T extends ParamList> = ReturnType<
   typeof createNativeStackNavigator<T>
 >;
+
+export type ParamsAdapterMap = {
+  [K in keyof ParamList]: (input: unknown) => ParamList[K];
+};
+
+export const NO_PARAMS = () => undefined;

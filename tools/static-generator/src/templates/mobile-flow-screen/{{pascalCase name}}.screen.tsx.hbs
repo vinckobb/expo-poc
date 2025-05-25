@@ -1,17 +1,20 @@
+import { useMemo } from "react";
 import { createFlowScreen } from "../../../navigation/types/FlowScreen";
+import * as FlowType from "../navigation/types/flowTypes";
+import { ParamsAdapter } from "../navigation/types/flowAliases";
+import { ScreenProvider } from "../navigation/types/flowAliases";
+
 import {
-  {{pascalCase name}}Screen as View,
+  {{pascalCase name}} as View,
   {{pascalCase name}}ViewModel as ViewModel,
   Action,
   Params
 } from "../../../screens/{{pascalCase name}}";
 
-import { Controller } from "../navigation/types/flowTypes";
+const screenName = FlowType.Screens.{{constantCase name}};
 
 type Dependencies = {
-  apiClient?: object;
-  analytics?: object;
-  featureFlags?: object;
+  someDependency?: object;
 };
 
 type Config = {
@@ -24,15 +27,63 @@ type ParamsType = {
   config?: Config;
 };
 
-export type { Action as {{pascalCase name}}Action };
-
-export const {{pascalCase name}}Screen = createFlowScreen<
+export const ScreenComponent = createFlowScreen<
   ParamsType,
   ViewModel,
   Action,
-  Controller
+  FlowType.Controller
 >(
   View,
   (params, onAction) => new ViewModel(onAction),
   (controller, action) => controller.handle{{pascalCase name}}Action(action)
 );
+
+function createParams(
+  routeParams: FlowType.ParamList[typeof screenName] | undefined
+): ParamsType {
+  const params = ParamsAdapter[screenName](routeParams);
+  return useMemo(
+    () => ({ params }),
+    [params]
+  );
+}
+
+function createScreenProviderBuilder(
+  delegate: FlowType.Delegate,
+) {
+  return (routeParams: FlowType.ParamList[typeof screenName] | undefined) => {
+    const screenParams = createParams(routeParams);
+
+    return (
+      <ScreenProvider routerDelegate={delegate} screenName={screenName}>
+        {(controller) => (
+          <ScreenComponent controller={controller} params={screenParams} />
+        )}
+      </ScreenProvider>
+    );
+  };
+}
+
+export function stackScreen<T extends FlowType.ParamList>(
+  Stack: FlowType.Stack<T>,
+  delegate: FlowType.Delegate
+) {
+  const screenProviderBuilder = createScreenProviderBuilder(
+    delegate
+  );
+
+  return (
+    <Stack.Screen
+      name={screenName}
+      children={({ route, navigation }) => {
+        try {
+          return screenProviderBuilder(undefined);
+        } catch (error) {
+          // GUARD: Possible bad solution [code.generator]
+          navigation.goBack();
+          return null;
+        }
+      }}
+    />
+  );
+}

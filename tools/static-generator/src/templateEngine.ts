@@ -1,23 +1,24 @@
 import fs from "fs-extra";
 import handlebars from "handlebars";
-import { pascalCase, camelCase, paramCase } from "change-case";
+import {
+  pascalCase,
+  camelCase,
+  paramCase,
+  constantCase,
+  capitalCase,
+} from "change-case";
 
 handlebars.registerHelper("pascalCase", pascalCase);
 handlebars.registerHelper("camelCase", camelCase);
 handlebars.registerHelper("kebabCase", paramCase);
-handlebars.registerHelper("spacedName", (str) =>
-  paramCase(str).replace(/-/g, " ")
+handlebars.registerHelper("constantCase", constantCase);
+handlebars.registerHelper("capitalCase", capitalCase);
+handlebars.registerHelper(
+  "raw",
+  function (this: object, options: handlebars.HelperOptions) {
+    return options.fn(this);
+  }
 );
-handlebars.registerHelper("spacedCapitalisedName", (str) =>
-  paramCase(str)
-    .replace(/-/g, " ")
-    .split(" ")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ")
-);
-handlebars.registerHelper("raw", function (this: object, options: handlebars.HelperOptions) {
-  return options.fn(this);
-});
 
 export const renderTemplate = async (
   templatePath: string,
