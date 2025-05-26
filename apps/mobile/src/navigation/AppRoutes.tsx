@@ -4,7 +4,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import {
   PasswordRecovery,
   PasswordRecoveryViewModel,
-} from "../screens/Password Recovery";
+} from "../screens/password-recovery";
 
 import * as Flows from "./AppFlows";
 

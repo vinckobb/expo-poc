@@ -7,13 +7,13 @@ import { ParamsAdapter } from "../navigation/types/flowAliases";
 import { ScreenProvider } from "../navigation/types/flowAliases";
 
 import {
-  RouteDetailsScreen as View,
-  RouteDetailsViewModel as ViewModel,
+  FavoriteRoutesScreen as View,
+  FavoriteRoutesViewModel as ViewModel,
   Action,
   Params,
-} from "../../../screens/Transport Routes/RouteDetails";
+} from "../../../screens/transport-routes/FavoriteRoutes";
 
-const screenName = FlowType.Screens.ROUTE_DETAILS;
+const screenName = FlowType.Screens.FAVORITE_ROUTES;
 
 type Dependencies = {
   routeService: RouteService;
@@ -31,16 +31,15 @@ type ParamsType = {
   config?: Config;
 };
 
-const ScreenComponent = createFlowScreen<
+export const ScreenComponent = createFlowScreen<
   ParamsType,
   ViewModel,
   Action,
   FlowType.Controller
 >(
   View,
-  (params, onAction) =>
-    new ViewModel(params.params, onAction, params.deps.routeService),
-  (controller, action) => controller.handleRouteDetailsAction(action)
+  (params, onAction) => new ViewModel(params.deps?.routeService, onAction),
+  (controller, action) => controller.handleFavoriteRoutesAction(action)
 );
 
 function createParams(
@@ -86,7 +85,7 @@ export function stackScreen<T extends FlowType.ParamList>(
       name={screenName}
       children={({ route, navigation }) => {
         try {
-          return screenProviderBuilder(route.params);
+          return screenProviderBuilder(undefined);
         } catch (error) {
           // GUARD: Possible bad solution [@dmitry.kovalev]
           navigation.goBack();

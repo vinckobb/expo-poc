@@ -9,7 +9,7 @@ import {
   WelcomeViewModel as ViewModel,
   Action,
   Params,
-} from "../../../screens/Welcome";
+} from "../../../screens/welcome";
 
 const screenName = FlowType.Screens.WELCOME;
 

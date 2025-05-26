@@ -9,7 +9,7 @@ import {
   AboutViewModel as ViewModel,
   Action,
   Params,
-} from "../../../screens/About";
+} from "../../../screens/about";
 
 const screenName = FlowType.Screens.ABOUT;
 

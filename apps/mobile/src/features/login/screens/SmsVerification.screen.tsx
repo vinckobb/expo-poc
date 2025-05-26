@@ -9,7 +9,7 @@ import {
   SMSVerificationViewModel as ViewModel,
   Action,
   Params,
-} from "../../../screens/SMS Verification";
+} from "../../../screens/sms-verification";
 
 const screenName = FlowType.Screens.SMS_VERIFICATION;
 

@@ -7,13 +7,13 @@ import { ParamsAdapter } from "../navigation/types/flowAliases";
 import { ScreenProvider } from "../navigation/types/flowAliases";
 
 import {
-  FavoriteRoutesScreen as View,
-  FavoriteRoutesViewModel as ViewModel,
+  RoutesListScreen as View,
+  RoutesListViewModel as ViewModel,
   Action,
   Params,
-} from "../../../screens/Transport Routes/FavoriteRoutes";
+} from "../../../screens/transport-routes/RoutesList";
 
-const screenName = FlowType.Screens.FAVORITE_ROUTES;
+const screenName = FlowType.Screens.ROUTES_LIST;
 
 type Dependencies = {
   routeService: RouteService;
@@ -38,8 +38,9 @@ export const ScreenComponent = createFlowScreen<
   FlowType.Controller
 >(
   View,
-  (params, onAction) => new ViewModel(params.deps?.routeService, onAction),
-  (controller, action) => controller.handleFavoriteRoutesAction(action)
+  (params, onAction) =>
+    new ViewModel(params.params, onAction, params.deps.routeService),
+  (controller, action) => controller.handleRoutesListActionAction(action)
 );
 
 function createParams(
