@@ -90,7 +90,7 @@ const DEFAULT_GENERATION_PATH = "tools/static-generator/generated";
     baseDir.includes(templateVars.pascalCase) ||
     baseDir.includes(templateVars.name)
       ? baseDir
-      : path.join(baseDir, templateVars.name);
+      : path.join(baseDir, templateVars.kebabCase);
 
   const targetDir = path.resolve(projectRoot, outputDir);
   console.log(`[CLI] Full target directory: ${targetDir}`);
