@@ -1,11 +1,10 @@
 import React from "react";
-import { Text } from "react-native";
+import * as Flows from "../../../../navigation/AppFlows";
+
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { ShellFlowController } from "../ShellFlowController";
 
-export type ProfileTabStackParamList = {
-  ProfileTabRoot: undefined;
-};
+export type ProfileTabStackParamList = {} & Flows.Profile.ParamList;
 
 const Stack = createNativeStackNavigator<ProfileTabStackParamList>();
 
@@ -16,13 +15,18 @@ interface ProfileTabStackProps {
 export const ProfileTabStack: React.FC<ProfileTabStackProps> = ({
   controller,
 }) => {
+  const transportRoutesFlowDelegate: Flows.Profile.Delegate = {
+    openHome: () => {
+      // navigation.navigate("");
+    },
+  };
+
   return (
-    <Stack.Navigator initialRouteName="ProfileTabRoot">
-      <Stack.Screen
-        name="ProfileTabRoot"
-        options={{ title: "Profil" }}
-        children={() => <Text>Profil - nastavenia účtu</Text>}
-      />
+    <Stack.Navigator initialRouteName={Flows.Profile.ScreenNames.PROFILE}>
+      {Flows.Profile.createFlowScreens<ProfileTabStackParamList>(
+        Stack,
+        transportRoutesFlowDelegate
+      )}
     </Stack.Navigator>
   );
 };

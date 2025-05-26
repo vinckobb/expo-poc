@@ -13,7 +13,8 @@ export type RootStackParamList = {
 } & Flows.Login.ParamList &
   Flows.Welcome.ParamList &
   Flows.TransportRoutes.ParamList &
-  Flows.Shell.ParamList;
+  Flows.Shell.ParamList &
+  Flows.Profile.ParamList;
 
 export type RootStackNavigator = ReturnType<
   typeof createNativeStackNavigator<RootStackParamList>
@@ -54,6 +55,12 @@ export default function AppRoutes() {
     },
   };
 
+  const profileFlowDelegate: Flows.Profile.Delegate = {
+    openHome() {
+      console.log("Go to the home");
+    },
+  };
+
   const welcomeFlowDelegate: Flows.Welcome.Delegate = {
     openHome: () => {
       console.log("Navigate to home");
@@ -61,6 +68,7 @@ export default function AppRoutes() {
         index: 0,
         routes: [{ name: Flows.Shell.ScreenNames.SHELL }],
       });
+      // navigation.navigate(Flows.Profile.ScreenNames.PROFILE);
     },
     openLogin: () => {
       console.log("Navigate to login");
@@ -74,7 +82,7 @@ export default function AppRoutes() {
 
   return (
     <Stack.Navigator
-      initialRouteName="Welcome"
+      initialRouteName={Flows.Welcome.ScreenNames.WELCOME}
       screenOptions={{ headerShown: true }}
     >
       <Stack.Screen
@@ -111,6 +119,11 @@ export default function AppRoutes() {
         Stack,
         welcomeFlowDelegate,
         { queryClient: queryClient }
+      )}
+
+      {Flows.Profile.createFlowScreens<RootStackParamList>(
+        Stack,
+        profileFlowDelegate
       )}
     </Stack.Navigator>
   );
