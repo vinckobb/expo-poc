@@ -60,6 +60,13 @@ xcuserdata
 .history/
 .vscode/settings.json
 .vscode/tasks.json
+.vscode/launch.json
+.vscode/*.code-snippets
+.vscode/*.md
+
+
+# Github Copilot
+.github/prompts
 
 # Github
 .github/
