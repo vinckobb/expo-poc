@@ -1,15 +1,15 @@
 import { useMemo } from "react";
-import { createFlowScreen } from "../../../navigation/types/FlowScreen";
+import { createFlowScreen } from "@monorepo/mobile-core/navigation";
 import * as FlowType from "../navigation/types/flowTypes";
 import { ParamsAdapter } from "../navigation/types/flowAliases";
 import { ScreenProvider } from "../navigation/types/flowAliases";
 
 import {
-  Login as View,
+  LoginScreen as View,
   LoginViewModel as ViewModel,
   Action,
   Params,
-} from "../../../screens/login";
+} from "@monorepo/screens/login/login";
 
 const screenName = FlowType.Screens.LOGIN;
 

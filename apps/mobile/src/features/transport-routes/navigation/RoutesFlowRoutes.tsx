@@ -1,7 +1,7 @@
 import { QueryClient } from "@tanstack/react-query";
 import * as FlowType from "./types/flowTypes";
 import * as Screens from "../screens";
-import { createQueryRouteService } from "../../../service/QueryRouteServiceDecorator";
+import { createQueryRouteService } from "@monorepo/data-access";
 
 // GUARD: Possible bad solution [@dmitry.kovalev]
 export type RoutesDependencies = {

@@ -17,7 +17,7 @@ const queryClient = new QueryClient({
   },
 });
 
-import AppRoutes from "./navigation/AppRoutes";
+import AppRoutes from "./app-navigation/AppRoutes";
 
 export default function App() {
   const colorScheme = useColorScheme();

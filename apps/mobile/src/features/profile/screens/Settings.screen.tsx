@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { createFlowScreen } from "../../../navigation/types/FlowScreen";
+import { createFlowScreen } from "@monorepo/mobile-core/navigation";
 import * as FlowType from "../navigation/types/flowTypes";
 import { ParamsAdapter } from "../navigation/types/flowAliases";
 import { ScreenProvider } from "../navigation/types/flowAliases";
@@ -8,8 +8,8 @@ import {
   SettingsScreen as View,
   SettingsViewModel as ViewModel,
   Action,
-  Params
-} from "../../../screens/settings";
+  Params,
+} from "@monorepo/screens/profile/settings";
 
 const screenName = FlowType.Screens.SETTINGS;
 
@@ -42,15 +42,10 @@ function createParams(
   routeParams: FlowType.ParamList[typeof screenName] | undefined
 ): ParamsType {
   const params = ParamsAdapter[screenName](routeParams);
-  return useMemo(
-    () => ({ params }),
-    [params]
-  );
+  return useMemo(() => ({ params }), [params]);
 }
 
-function createScreenProviderBuilder(
-  delegate: FlowType.Delegate,
-) {
+function createScreenProviderBuilder(delegate: FlowType.Delegate) {
   return (routeParams: FlowType.ParamList[typeof screenName] | undefined) => {
     const screenParams = createParams(routeParams);
 
@@ -68,9 +63,7 @@ export function stackScreen<T extends FlowType.ParamList>(
   Stack: FlowType.Stack<T>,
   delegate: FlowType.Delegate
 ) {
-  const screenProviderBuilder = createScreenProviderBuilder(
-    delegate
-  );
+  const screenProviderBuilder = createScreenProviderBuilder(delegate);
 
   return (
     <Stack.Screen

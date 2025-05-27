@@ -3,7 +3,7 @@ import {
   RouterClass,
   FlowResourceManager,
   FlowResourceStateManager,
-} from "../../../../navigation/types/FlowResourceManager";
+} from "@monorepo/mobile-core/navigation";
 
 import * as FlowType from "../types/flowTypes";
 import { RouterImpl } from "../types/flowAliases";

@@ -1,4 +1,4 @@
-import type { FlowController } from "../../../../navigation/types/FlowController";
+import type { FlowController } from "@monorepo/mobile-core/navigation";
 import * as Actions from "../types/screenActions";
 
 export interface RoutesFlowController extends FlowController {

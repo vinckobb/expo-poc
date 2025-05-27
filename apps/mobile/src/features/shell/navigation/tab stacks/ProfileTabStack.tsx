@@ -1,5 +1,5 @@
 import React from "react";
-import * as Flows from "../../../../navigation/AppFlows";
+import * as Flows from "../../../../app-navigation/AppFlows";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { ShellFlowController } from "../ShellFlowController";

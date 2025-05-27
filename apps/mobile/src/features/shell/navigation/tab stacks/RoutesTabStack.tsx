@@ -1,6 +1,6 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import * as Flows from "../../../../navigation/AppFlows";
+import * as Flows from "../../../../app-navigation/AppFlows";
 import { ShellFlowController } from "../ShellFlowController";
 import { QueryClient } from "@tanstack/react-query";
 

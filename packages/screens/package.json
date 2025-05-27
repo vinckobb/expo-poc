@@ -6,5 +6,9 @@
   "exports": {
     ".": "./src/index.ts",
     "./*": "./src/*/index.ts"
+  },
+  "dependencies": {
+    "@monorepo/data-access": "*",
+    "@monorepo/types": "*"
   }
 }

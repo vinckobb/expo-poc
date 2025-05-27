@@ -1,15 +1,15 @@
 import { useMemo } from "react";
-import { createFlowScreen } from "../../../navigation/types/FlowScreen";
+import { createFlowScreen } from "@monorepo/mobile-core/navigation";
 import * as FlowType from "../navigation/types/flowTypes";
 import { ParamsAdapter } from "../navigation/types/flowAliases";
 import { ScreenProvider } from "../navigation/types/flowAliases";
 
 import {
-  SMSVerification as View,
+  SMSVerificationScreen as View,
   SMSVerificationViewModel as ViewModel,
   Action,
   Params,
-} from "../../../screens/sms-verification";
+} from "@monorepo/screens/login/sms-verification";
 
 const screenName = FlowType.Screens.SMS_VERIFICATION;
 

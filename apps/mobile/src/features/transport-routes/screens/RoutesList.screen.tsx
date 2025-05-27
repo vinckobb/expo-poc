@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { createFlowScreen } from "../../../navigation/types/FlowScreen";
+import { createFlowScreen } from "@monorepo/mobile-core/navigation";
 import { RouteService } from "../../../service/RouteService";
 import { createQueryRouteService } from "../../../service/QueryRouteServiceDecorator";
 import * as FlowType from "../navigation/types/flowTypes";
@@ -11,7 +11,7 @@ import {
   RoutesListViewModel as ViewModel,
   Action,
   Params,
-} from "../../../screens/transport-routes/RoutesList";
+} from "@monorepo/screens/transport-routes/routes-list";
 
 const screenName = FlowType.Screens.ROUTES_LIST;
 

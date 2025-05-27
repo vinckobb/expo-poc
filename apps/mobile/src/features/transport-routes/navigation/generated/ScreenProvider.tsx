@@ -1,5 +1,5 @@
 import { NavigationProp, useNavigation } from "@react-navigation/native";
-import { FlowScreenProvider } from "../../../../navigation/types/FlowScreenProvider";
+import { FlowScreenProvider } from "@monorepo/mobile-core/navigation";
 
 import * as FlowType from "../types/flowTypes";
 import { ResourceManager } from "../types/flowAliases";
