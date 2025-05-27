@@ -1,5 +1,6 @@
 import { ScrollView, View } from "react-native";
 import { Header, Section, Card, Text, Button } from "@monorepo/components";
+import { PlatformSpecific } from "@monorepo/components/platform-specific";
 
 export function HomeScreen() {
   return (
@@ -38,6 +39,14 @@ export function HomeScreen() {
               variant="secondary"
               onPress={() => alert("Secondary action")}
             />
+          </Card>
+        </Section>
+
+        <Section title="Platform Specific">
+          <Card>
+            <PlatformSpecific>
+              This is a platform-specific component.
+            </PlatformSpecific>
           </Card>
         </Section>
       </ScrollView>

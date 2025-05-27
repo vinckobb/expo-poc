@@ -61,13 +61,7 @@ xcuserdata
 .vscode
 
 # Github
-.github/
-
-# Android
-android/
-
-# iOS
-ios/
+.github
 
 # Local
 _local*

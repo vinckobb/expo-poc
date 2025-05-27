@@ -18,6 +18,8 @@ config.resolver.nodeModulesPaths = [
 ];
 // 3. Force Metro to resolve (sub)dependencies only from the `nodeModulesPaths`
 config.resolver.disableHierarchicalLookup = true;
+// 4. Enable package exports, this option will be set to true by default in Metro 0.82+
+config.resolver.unstable_enablePackageExports = true;
 
 config.resolver.platforms = ['ios', 'android', 'web'];
 
