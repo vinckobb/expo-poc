@@ -1,6 +1,10 @@
+import { ViewModel } from "@monorepo/types";
+
 export type Action = { type: "home" };
 
-export class {{pascalCase name}}ViewModel {
+export type Params = undefined;
+
+export class {{pascalCase name}}ViewModel implements ViewModel {
   private onAction: ((action: Action) => void) | undefined;
 
   constructor(onAction: (action: Action) => void) {
