@@ -1,78 +1,33 @@
 {
-    "home": {
-        "title": "Home",
-        "link": "Home",
-        "welcome": {
-            "title": "Welcome",
-            "body": "This is a sample home screen. You can build whatever you want here."
-        },
-        "actions": {
-            "title": {
-                "title": "Actions"
-            },
-            "action": {
-                "title": "Press me"
-            },
-            "secondary": {
-                "action": {
-                    "title": "Press me too"
-                }
-            }
-        }
-    },
-    "profile": {
-        "link": "Profile",
-        "title": "Profile",
-        "userinfo": {
-            "title": "User Info",
-            "name": "Name",
-            "email": "Email"
-        },
-        "settings": {
-            "title": "Settings",
-            "theme": {
-                "title": "Theme",
-                "action": {
-                    "title": "Switch Theme"
-                }
-            },
-            "language": {
-                "title": "Language",
-                "action": {
-                    "title": "Switch Language"
-                }
-            },
-            "dangerzone": {
-                "title": "Danger Zone",
-                "action": {
-                    "title": "Logout"
-                }
-            }
-        }
-    },
-    "explore": {
-        "link": "Explore",
-        "title": "Explore",
-        "actions": {
-            "action": {
-                "title": "Show more"
-            }
-        },
-        "web": "Text only available on web.",
-        "detail": {
-            "title": "POI Detail",
-            "placeinfo": {
-                "title": "Place Info"
-            },
-            "actions": {
-                "title": "Actions",
-                "action": {
-                    "title": "Open in Maps"
-                }
-            }
-        }
-    },
-    "notsupported": {
-        "web": "This functionality is not supported on web."
-    }
+    "home.title": "Home",
+    "home.link": "Home",
+    "home.welcome.title": "Welcome",
+    "home.welcome.body": "This is a sample home screen. You can build whatever you want here.",
+    "home.actions.title": "Actions",
+    "home.actions.action.title": "Press me",
+    "home.actions.secondary.action.title": "Press me too",
+
+    "profile.link": "Profile",
+    "profile.title": "Profile",
+    "profile.userinfo.title": "User Info",
+    "profile.userinfo.name": "Name",
+    "profile.userinfo.email": "Email",
+    "profile.settings.title": "Settings",
+    "profile.settings.theme.title": "Theme",
+    "profile.settings.theme.action.title": "Switch Theme",
+    "profile.settings.language.title": "Language",
+    "profile.settings.language.action.title": "Switch Language",
+    "profile.settings.dangerzone.title": "Danger Zone",
+    "profile.settings.dangerzone.action.title": "Logout",
+
+    "explore.link": "Explore",
+    "explore.title": "Explore",
+    "explore.actions.action.title": "Show more",
+    "explore.web": "Text only available on web.",
+    "explore.detail.title": "POI Detail",
+    "explore.detail.placeinfo.title": "Place Info",
+    "explore.detail.actions.title": "Actions",
+    "explore.detail.actions.action.title": "Open in Maps",
+
+    "notsupported.web": "This functionality is not supported on web."
 }
