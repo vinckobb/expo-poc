@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   ActivityIndicator,
 } from "react-native";
+import { useTranslation } from "react-i18next";
 import { useFocusEffect } from "@react-navigation/native";
 import { useUnit } from "effector-react";
 import { FavoriteRoutesViewModel } from "./FavoriteRoutesViewModel";
@@ -18,6 +19,7 @@ export function FavoriteRoutesScreen({
 }: {
   viewModel: FavoriteRoutesViewModel;
 }) {
+  const { t } = useTranslation();
   const routes = useUnit(viewModel.$routes);
   const isLoading = useUnit(viewModel.$isLoading);
   const error = useUnit(viewModel.$error);
@@ -75,11 +77,11 @@ export function FavoriteRoutesScreen({
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>Obľúbené trasy</Text>
+        <Text style={styles.title}>{t('favorite-routes.label.favorite-routes')}</Text>
 
         <TextInput
           style={styles.searchInput}
-          placeholder="Hľadať trasu"
+          placeholder={t('favorite-routes.placeholder.search-route')}
           value={filter.searchText}
           onChangeText={(text) => viewModel.events.searchChanged(text)}
         />
@@ -92,7 +94,7 @@ export function FavoriteRoutesScreen({
             ]}
             onPress={() => viewModel.events.sortChanged("number")}
           >
-            <Text>Číslo</Text>
+            <Text>{t('favorite-routes.label.route-number')}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -102,7 +104,7 @@ export function FavoriteRoutesScreen({
             ]}
             onPress={() => viewModel.events.sortChanged("name")}
           >
-            <Text>Názov</Text>
+            <Text>{t('favorite-routes.label.route-name')}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -112,7 +114,7 @@ export function FavoriteRoutesScreen({
             ]}
             onPress={() => viewModel.events.sortChanged("custom")}
           >
-            <Text>Vlastné</Text>
+            <Text>{t('favorite-routes.label.custom')}</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -120,7 +122,7 @@ export function FavoriteRoutesScreen({
       {isLoading ? (
         <View style={styles.loaderContainer}>
           <ActivityIndicator size="large" />
-          <Text style={styles.loaderText}>Načítavam trasy...</Text>
+          <Text style={styles.loaderText}>{t('favorite-routes.label.route-loading')}</Text>
         </View>
       ) : error ? (
         <View style={styles.errorContainer}>
@@ -129,7 +131,7 @@ export function FavoriteRoutesScreen({
             style={styles.retryButton}
             onPress={() => viewModel.events.retry()}
           >
-            <Text style={styles.retryButtonText}>Skúsiť znova</Text>
+            <Text style={styles.retryButtonText}>{t('favorite-routes.label.retry')}</Text>
           </TouchableOpacity>
         </View>
       ) : (
@@ -142,7 +144,7 @@ export function FavoriteRoutesScreen({
           refreshing={isLoading}
           onRefresh={() => viewModel.events.retry()}
           ListEmptyComponent={
-            <Text style={styles.emptyText}>Nemáte žiadne obľúbené trasy</Text>
+            <Text style={styles.emptyText}>{t('favorite-routes.label.no-favorites')}</Text>
           }
         />
       )}

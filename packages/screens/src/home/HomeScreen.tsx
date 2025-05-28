@@ -1,4 +1,5 @@
 import { View, Text, Button, SafeAreaView } from "react-native";
+import { useTranslation } from "react-i18next";
 import { HomeViewModel } from "./HomeViewModel";
 
 type HomeProps = {
@@ -6,11 +7,13 @@ type HomeProps = {
 };
 
 export default function Home({ viewModel }: HomeProps) {
+  const { t } = useTranslation();
+
   return (
     <SafeAreaView>
       <View>
-        <Text>Home</Text>
-        <Button title="Ďalej" onPress={() => viewModel.onActionButton()} />
+        <Text>{t("home.title")}</Text>
+        <Button title={t("home.button.continue.title")} onPress={() => viewModel.onActionButton()} />
       </View>
     </SafeAreaView>
   );

@@ -7,15 +7,16 @@ import {
   ActivityIndicator,
   ScrollView,
 } from "react-native";
+import { useTranslation } from "react-i18next";
 import { useUnit } from "effector-react";
 import { RouteDetailsViewModel } from "./RouteDetailsViewModel";
-import { Route } from "../../../service/types";
 
 export function RouteDetailsScreen({
   viewModel,
 }: {
   viewModel: RouteDetailsViewModel;
 }) {
+  const { t } = useTranslation();
   const route = useUnit(viewModel.$route);
   const isLoading = useUnit(viewModel.$isLoading);
   const error = useUnit(viewModel.$error);
@@ -42,7 +43,7 @@ export function RouteDetailsScreen({
     return (
       <View style={styles.centeredContainer}>
         <ActivityIndicator size="large" />
-        <Text style={styles.loaderText}>Načítavam detaily trasy...</Text>
+        <Text style={styles.loaderText}>{t('route-details.label.loading')}</Text>
       </View>
     );
   }
@@ -52,7 +53,7 @@ export function RouteDetailsScreen({
       <View style={styles.centeredContainer}>
         <Text style={styles.errorText}>{error}</Text>
         <TouchableOpacity style={styles.button} onPress={handleRetry}>
-          <Text style={styles.buttonText}>Skúsiť znova</Text>
+          <Text style={styles.buttonText}>{t('route-details.label.retry')}</Text>
         </TouchableOpacity>
       </View>
     );
@@ -61,7 +62,7 @@ export function RouteDetailsScreen({
   if (!route) {
     return (
       <View style={styles.centeredContainer}>
-        <Text style={styles.errorText}>Trasa nebola nájdená</Text>
+        <Text style={styles.errorText}>{t('route-details.label.not-found')}</Text>
       </View>
     );
   }
@@ -77,20 +78,20 @@ export function RouteDetailsScreen({
 
       <View style={styles.content}>
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Informácie o trase</Text>
+          <Text style={styles.sectionTitle}>{t('route-details.label.route-info')}</Text>
 
           <View style={styles.infoRow}>
-            <Text style={styles.infoLabel}>Začiatok:</Text>
+            <Text style={styles.infoLabel}>{t('route-details.label.start')}</Text>
             <Text style={styles.infoValue}>{route.startPoint}</Text>
           </View>
 
           <View style={styles.infoRow}>
-            <Text style={styles.infoLabel}>Koniec:</Text>
+            <Text style={styles.infoLabel}>{t('route-details.label.end')}</Text>
             <Text style={styles.infoValue}>{route.endPoint}</Text>
           </View>
 
           <View style={styles.infoRow}>
-            <Text style={styles.infoLabel}>Číslo trasy:</Text>
+            <Text style={styles.infoLabel}>{t('route-details.label.route-number')}</Text>
             <Text style={styles.infoValue}>{route.number}</Text>
           </View>
         </View>
@@ -105,7 +106,7 @@ export function RouteDetailsScreen({
               <ActivityIndicator size="small" color="#fff" />
             ) : (
               <Text style={styles.buttonText}>
-                {isFavorite ? "Odstrániť z obľúbených" : "Pridať do obľúbených"}
+                {isFavorite ? t('route-details.label.remove-favorite') : t('route-details.label.add-favorite')}
               </Text>
             )}
           </TouchableOpacity>
@@ -114,7 +115,7 @@ export function RouteDetailsScreen({
             style={[styles.button, styles.secondaryButton]}
             onPress={() => viewModel.events.openFavorites()}
           >
-            <Text style={styles.secondaryButtonText}>Zobraziť obľúbené</Text>
+            <Text style={styles.secondaryButtonText}>{t('route-details.label.view-favorites')}</Text>
           </TouchableOpacity>
         </View>
       </View>
