@@ -15,28 +15,17 @@
     "profile.title": "Profile",
     "profile.button.settings.title": "Settings",
 
-    // Súkromie a bezpečnosť
     "security-settings.title": "Privacy and security",
-    //Dvojfaktorové overenie (2FA)
     "security-settings.label.two-factor-authentication": "Two-factor authentication (2FA)",
-    //Biometrická autentifikácia
     "security-settings.label.biometric-authentication": "Biometric authentication",
-    //Zmena hesla
     "security-settings.label.change-password": "Change password",
-    //Staré heslo
     "security-settings.placeholder.old-password": "Old password",
-    //Nové heslo
     "security-settings.placeholder.new-password": "New password",
-    //Potvrdiť nové heslo
     "security-settings.placeholder.confirm-password": "Confirm new password",
-    //Uložiť heslo
     "security-settings.button.save-password.title": "Save password",
-    //Deaktivovať aplikáciu pri nepoužívaní 6+ mesiacov
     "security-settings.label.deactivate-after-inactivity": "Deactivate app after 6+ months of inactivity",
 
-    //Obľúbené trasy
     "favorite-routes.label.favorite-routes": "Favorite routes",
-    //Hľadať trasu
     "favorite-routes.placeholder.search-route": "Search route",
     "favorite-routes.label.route-number": "Route number",
     "favorite-routes.label.route-name": "Route name",
