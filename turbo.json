@@ -22,11 +22,11 @@
       "cache": false,
       "persistent": true
     },
-    "dev-expo:android": {
+    "dev-native:android": {
       "cache": false,
       "persistent": true
     },
-    "dev-expo:ios": {
+    "dev-native:ios": {
       "cache": false,
       "persistent": true
     },

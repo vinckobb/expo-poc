@@ -9,10 +9,10 @@
   "scripts": {
     "dev": "npm run dev:web",
     "dev:web": "turbo dev:web",
-    "dev-expo:android": "turbo dev-expo:android",
-    "dev-expo:ios": "turbo --log-prefix=none dev-expo:ios",
     "dev:android": "turbo dev:android",
     "dev:ios": "turbo --log-prefix=none dev:ios",
+    "dev-native:android": "turbo dev-native:android",
+    "dev-native:ios": "turbo --log-prefix=none dev-native:ios",
     "build": "turbo build",
     "test": "turbo test",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
@@ -23,8 +23,10 @@
     "@eslint/js": "^9.24.0",
     "eslint": "~9.24.0",
     "eslint-plugin-react": "~7.37.5",
+    "globals": "^11.1.0",
     "prettier": "^3.3.2",
-    "turbo": "~2.5.0"
+    "turbo": "~2.5.0",
+    "typescript-eslint": "^8.33.0"
   },
   "packageManager": "npm@9.8.1"
 }
