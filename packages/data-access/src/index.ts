@@ -1,23 +1,33 @@
+// Domain exports
+export type { Route } from "./domain/entities/Route";
+export type { Stop } from "./domain/entities/Stop";
+export type { FavoriteRoute } from "./domain/entities/FavoriteRoute";
+export type { RoutesService } from "./domain/services/RoutesService";
 export type {
-  Route,
-  FavoriteRouteResponse,
+  RoutesRepository,
   RouteFilter,
-  AddFavoriteRequest,
-  ChangePositionRequest,
-  GetRoutesResponse,
-  GetFavoriteRoutesResponse,
-  GetFavoriteRoutesQueryParams,
-} from "./types";
+} from "./domain/repositories/RoutesRepository";
 
-export type { RouteService } from "./RouteService";
-export { RouteServiceImpl } from "./RouteServiceImpl";
+// Infrastructure exports
+export type {
+  HttpClient,
+  RequestConfig,
+} from "./infrastructure/networking/HttpClient";
+export { FetchHttpClient } from "./infrastructure/networking/HttpClient";
+export type { NetworkService } from "./infrastructure/networking/NetworkService";
+export { NetworkServiceImpl } from "./infrastructure/networking/NetworkService";
+export type { LocalStorage } from "./infrastructure/storage/LocalStorage";
+export { AsyncLocalStorage } from "./infrastructure/storage/LocalStorage";
 
-export type { HttpClient, RequestConfig } from "./HttpClient";
-export { FetchHttpClient } from "./HttpClient";
+// Factory
+export { DataLayerFactory } from "./infrastructure/di/DataLayerFactory";
+export type { DataLayerConfig } from "./infrastructure/di/DataLayerFactory";
 
-export { createHttpClient } from "./ApiConfig";
-
+// Query keys for external usage
 export {
-  QueryRouteServiceDecorator,
-  createQueryRouteService,
-} from "./QueryRouteServiceDecorator";
+  ROUTES_QUERY_KEY,
+  FAVORITES_QUERY_KEY,
+  ROUTE_DETAILS_QUERY_KEY,
+} from "./data/repositories/RoutesQueryKeys";
+
+export { createbaseUrl } from "./CreateBaseUrl";

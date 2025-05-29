@@ -1,11 +1,9 @@
-import { QueryClient } from "@tanstack/react-query";
 import * as FlowType from "./types/flowTypes";
 import * as Screens from "../screens";
-import { createQueryRouteService } from "@monorepo/data-access";
+import { RoutesService } from "@monorepo/data-access/";
 
-// GUARD: Possible bad solution [@dmitry.kovalev]
 export type RoutesDependencies = {
-  queryClient: QueryClient;
+  routesService: RoutesService;
 };
 
 export function createRoutesFlowScreens<T extends FlowType.ParamList>(
@@ -13,14 +11,12 @@ export function createRoutesFlowScreens<T extends FlowType.ParamList>(
   delegate: FlowType.Delegate,
   dependencies: RoutesDependencies
 ) {
-  // GUARD: Temp code [@dmitry.kovalev]
-  const routeService = createQueryRouteService(dependencies.queryClient);
 
   return (
     <Stack.Group>
-      {Screens.RoutesList.stackScreen(Stack, delegate, routeService)}
-      {Screens.RouteDetails.stackScreen(Stack, delegate, routeService)}
-      {Screens.FavoriteRoutes.stackScreen(Stack, delegate, routeService)}
+      {Screens.RoutesList.stackScreen(Stack, delegate, dependencies.routesService)}
+      {Screens.RouteDetails.stackScreen(Stack, delegate, dependencies.routesService)}
+      {Screens.FavoriteRoutes.stackScreen(Stack, delegate, dependencies.routesService)}
     </Stack.Group>
   );
 }

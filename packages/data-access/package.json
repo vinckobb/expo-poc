@@ -8,6 +8,8 @@
     "./*": "./src/*/index.ts"
   },
   "dependencies": {
-    "@monorepo/types": "*"
+    "@monorepo/types": "*",
+    "@react-native-async-storage/async-storage": "^2.1.2",
+    "@react-native-community/netinfo": "^11.4.1"
   }
 }

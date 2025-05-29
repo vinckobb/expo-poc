@@ -15,6 +15,7 @@
     "@expo/vector-icons": "^14.0.2",
     "@monorepo/components": "*",
     "@monorepo/constants": "*",
+    "@monorepo/di": "*",
     "@monorepo/hooks": "*",
     "@monorepo/screens": "*",
     "@monorepo/theme": "*",

@@ -1,0 +1,27 @@
+[
+  {
+    "id": "8f3f4454-07a3-431a-a424-8bb2ed003455",
+    "routeId": "2",
+    "position": 1
+  },
+  {
+    "id": "bed2957b-53e8-4f95-a1ce-30c4def0044e",
+    "routeId": "8",
+    "position": 2
+  },
+  {
+    "id": "9711cf86-2460-4b42-9c85-4b1078b3e42a",
+    "routeId": "4",
+    "position": 3
+  },
+  {
+    "id": "52ab4a56-9918-4e50-9c74-f0bb5b7c672d",
+    "routeId": "6",
+    "position": 4
+  },
+  {
+    "id": "76386c90-3d83-4094-89d4-e9c487014856",
+    "routeId": "7",
+    "position": 5
+  }
+]

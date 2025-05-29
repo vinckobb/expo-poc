@@ -1,6 +1,6 @@
-import { createStore, createEvent, createEffect, sample } from "effector";
+import { createStore, createEvent, createEffect, sample, combine } from "effector";
 import { ViewModel } from "@monorepo/types";
-import { Route, RouteFilter, RouteService } from "@monorepo/data-access";
+import { Route, RouteFilter, RoutesService } from "@monorepo/data-access";
 
 export type Action =
   | { type: "routeSelected"; routeId: string }
@@ -14,6 +14,7 @@ export class RoutesListViewModel implements ViewModel {
     unmounted: createEvent(),
     focused: createEvent(),
     loadRoutes: createEvent(),
+    refreshed: createEvent(),
     searchChanged: createEvent<string>(),
     sortChanged: createEvent<"number" | "name" | "custom">(),
     selectRoute: createEvent<string>(),
@@ -23,10 +24,15 @@ export class RoutesListViewModel implements ViewModel {
 
   private effects = {
     fetchRoutes: createEffect<RouteFilter, Route[], Error>(),
+    fetchRoutesForced: createEffect<RouteFilter, Route[], Error>(),
   };
 
   $routes = createStore<Route[]>([]);
   $isLoading = createStore<boolean>(false);
+    $showLoader = combine(
+      [this.$isLoading, this.$routes],
+      ([isLoading, routes]) => isLoading && routes.length === 0
+    );
   $error = createStore<string | null>(null);
   $filter = createStore<RouteFilter>({
     sortBy: "number",
@@ -36,12 +42,12 @@ export class RoutesListViewModel implements ViewModel {
   });
 
   private onAction: ((action: Action) => void) | undefined;
-  private routeService: RouteService;
+  private routeService: RoutesService;
 
   constructor(
     params: Params,
     onAction: (action: Action) => void,
-    routeService: RouteService
+    routeService: RoutesService
   ) {
     console.log("✳️ create RoutesListViewModel");
 
@@ -57,20 +63,31 @@ export class RoutesListViewModel implements ViewModel {
     this.effects.fetchRoutes.use((filter) =>
       this.routeService.getRoutes(filter)
     );
+
+    this.effects.fetchRoutesForced.use((filter) =>
+      this.routeService.getRoutes(filter, true)
+    );
   }
 
   private initializeStores() {
     this.$routes
       .on(this.effects.fetchRoutes.doneData, (_, routes) => routes)
+      .on(this.effects.fetchRoutesForced.doneData, (_, routes) => routes)
       .reset(this.events.unmounted);
 
     this.$isLoading
       .on(this.effects.fetchRoutes.pending, (_, isPending) => isPending)
+      .on(this.effects.fetchRoutesForced.pending, (_, isPending) => isPending)
       .reset(this.events.unmounted);
 
     this.$error
       .on(this.effects.fetchRoutes.failData, (_, error) => error.message)
-      .reset([this.effects.fetchRoutes.done, this.events.unmounted]);
+      .on(this.effects.fetchRoutesForced.failData, (_, error) => error.message)
+      .reset([
+        this.effects.fetchRoutes.done,
+        this.effects.fetchRoutesForced.done,
+        this.events.unmounted,
+      ]);
 
     this.$filter
       .on(this.events.searchChanged, (state, searchText) => ({
@@ -89,13 +106,18 @@ export class RoutesListViewModel implements ViewModel {
       source: this.$filter,
       clock: [
         this.events.mounted,
-        this.events.focused,
         this.events.loadRoutes,
         this.events.retry,
         this.events.searchChanged,
         this.events.sortChanged,
       ],
       target: this.effects.fetchRoutes,
+    });
+
+    sample({
+      source: this.$filter,
+      clock: this.events.refreshed,
+      target: this.effects.fetchRoutesForced,
     });
 
     this.events.selectRoute.watch((routeId) => {
@@ -117,7 +139,7 @@ export class RoutesListViewModel implements ViewModel {
 export function createRoutesViewModel(
   params: Params,
   onAction: (action: Action) => void,
-  routeService: RouteService
+  routeService: RoutesService
 ): RoutesListViewModel {
   return new RoutesListViewModel(params, onAction, routeService);
 }

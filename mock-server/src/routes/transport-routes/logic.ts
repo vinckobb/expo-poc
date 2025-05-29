@@ -95,18 +95,8 @@ export const removeFromFavorite = (favoriteId: string): boolean => {
   return removeFromFavorites(favoriteId);
 };
 
-export const getRouteById = (routeId: string): FavoriteRouteResponse | null => {
-  const route = getRouteByIdService(routeId);
-  if (!route) {
-    return null;
-  }
-
-  return {
-    id: "",
-    routeId: route.id,
-    position: 0,
-    route: route,
-  };
+export const getRouteById = (routeId: string): Route | null => {
+  return getRouteByIdService(routeId);
 };
 
 export const changePosition = (
