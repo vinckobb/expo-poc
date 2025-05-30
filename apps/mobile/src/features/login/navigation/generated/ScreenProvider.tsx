@@ -2,9 +2,9 @@ import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { FlowScreenProvider } from "@monorepo/mobile-core/navigation";
 
 import * as FlowType from "../types/flowTypes";
-import { ResourceManager } from "../types/flowAliases";
+import { ResourceManager } from "./ResourceManager";
 
-export function LoginFlowScreenProvider<T extends FlowType.ParamList>({
+export function ScreenProvider<T extends FlowType.ParamList>({
   routerDelegate,
   screenName,
   children,
