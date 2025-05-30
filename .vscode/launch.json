@@ -1,0 +1,12 @@
+{
+    "configurations": [
+        {
+            "name": "Debug Android Hermes",
+            "request": "attach",
+            "type": "reactnativedirect",
+            "cwd": "${workspaceFolder}\\apps\\mobile",
+            "platform": "android",
+            "sourceMapRenames": true,            
+        }
+    ]
+}

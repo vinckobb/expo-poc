@@ -3,11 +3,13 @@ import { Ionicons } from "@expo/vector-icons";
 import { HomeScreen, ProfileScreen } from "@monorepo/screens";
 
 import ExploreStack from "./ExploreStack";
+import { View } from "react-native";
 
 const Tab = createBottomTabNavigator();
 
 export default function BottomTabs() {
   return (
+    <View className="dark:bg-secondary-500 flex" style={{ flex: 1 }}>
     <Tab.Navigator
       screenOptions={({ route }) => ({
         headerShown: true,
@@ -25,8 +27,9 @@ export default function BottomTabs() {
       })}
     >
       <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Explore" component={ExploreStack} />
+      {/* <Tab.Screen name="Explore" component={ExploreStack} /> */}
       <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
+    </View>
   );
 }

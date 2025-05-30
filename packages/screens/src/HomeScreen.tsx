@@ -1,9 +1,10 @@
 import { ScrollView, View } from "react-native";
 import { Header, Section, Card, Text, Button, Theme } from "@monorepo/components";
+import { MaterialButton } from "components/src/MaterialButton";
 
 export function HomeScreen() {
   return (
-    <View className="dark:bg-secondary-500 flex" style={{flex: 1}}>
+    <View className="dark:bg-secondary-500 flex" style={{ flex: 1 }}>
       <Header title="Home" />
 
       <ScrollView
@@ -12,6 +13,16 @@ export function HomeScreen() {
           gap: 24,
         }}
       >
+        <Theme name="brand">
+          <MaterialButton
+            title="Do something"
+            // variant = "secondary"
+            // className="mb-4"
+            onPress={() => alert("Action!")}
+          />
+        </Theme>
+
+
         <Section title="Welcome">
           <Card>
             <Text variant="body">

@@ -43,7 +43,8 @@
     "react-native-web": "~0.19.13",
     "react-native-webview": "13.12.5",
     "react-native-maps": "^1.20.1",
-    "tailwindcss": "~3.4.17"
+    "tailwindcss": "~3.4.17",
+    "webidl-conversions": "7.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
