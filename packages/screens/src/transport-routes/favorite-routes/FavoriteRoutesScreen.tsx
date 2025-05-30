@@ -12,7 +12,7 @@ import { useTranslation } from "react-i18next";
 import { useFocusEffect } from "@react-navigation/native";
 import { useUnit } from "effector-react";
 import { FavoriteRoutesViewModel } from "./FavoriteRoutesViewModel";
-import { FavoriteRouteResponse } from "../../../service/types";
+import {FavoriteRouteResponse} from "@monorepo/data-access";
 
 export function FavoriteRoutesScreen({
   viewModel,
