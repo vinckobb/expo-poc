@@ -1,6 +1,29 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "@monorepo/typescript-config/nextjs.json",
-  "include": ["**/*.ts", "**/*.tsx", "nativewind-env.d.ts", "src/something.js", "src/something-else.js", "src/not-existing-route.js"],
-  "exclude": ["node_modules", "packages/*/node_modules", "packages/*/dist"],
+  "compilerOptions": {
+    "baseUrl": "../../packages",
+    "paths": {
+      "@monorepo/components": ["./components/src/index.ts"],
+      "@monorepo/components/*": ["./components/src/*/index.ts"],
+      "@monorepo/constants": ["./constants/src/index.ts"],
+      "@monorepo/constants/*": ["./constants/src/*/index.ts"],
+      "@monorepo/hooks/": ["./hooks/src/index.ts"],
+      "@monorepo/hooks/*": ["./hooks/src/*/index.ts"],
+      "@monorepo/mobile-core/": ["./mobile-core/src/index.ts"],
+      "@monorepo/mobile-core/*": ["./mobile-core/src/*/index.ts"],
+      "@monorepo/data-access/": ["./data-access/src/index.ts"],
+      "@monorepo/data-access/*": ["./data-access/src/*/index.ts"],
+      "@monorepo/screens": ["./screens/src/index.ts"],
+      "@monorepo/screens/*": ["./screens/src/*/index.ts"],
+      "@monorepo/shared": ["./shared/src/index.ts"],
+      "@monorepo/shared/*": ["./shared/src/*/index.ts"],
+      "@monorepo/theme": ["./theme/src/index.ts"],
+      "@monorepo/theme/*": ["./theme/*"],
+      "@monorepo/utils/": ["./utils/src/index.ts"],
+      "@monorepo/utils/*": ["./utils/*/src/index.ts"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.tsx", "nativewind-env.d.ts"],
+  "exclude": ["node_modules", "packages/*/node_modules", "packages/*/dist"]
 }

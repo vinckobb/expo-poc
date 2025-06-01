@@ -12,7 +12,7 @@ import { useTranslation } from "react-i18next";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { useUnit } from "effector-react";
 import { RoutesListViewModel } from "./RoutesListViewModel";
-import { Route } from "@monorepo/data-access";
+import { Route } from "../../../service/types";
 import React from "react";
 
 export function RoutesListScreen({
@@ -96,7 +96,7 @@ export function RoutesListScreen({
           value={filter.searchText}
           onChangeText={handleSearch}
         />
-        
+
         <View style={styles.sortButtons}>
           <TouchableOpacity
             style={[
