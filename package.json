@@ -17,7 +17,8 @@
     "test": "turbo test",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
-    "clean": "turbo run clean && rm -rf node_modules"
+    "clean": "turbo run clean ; rm -rf node_modules",
+    "clean:all": "npm run clean ; rm -rf .turbo"
   },
   "devDependencies": {
     "@eslint/js": "^9.24.0",
@@ -26,8 +27,7 @@
     "globals": "^11.1.0",
     "prettier": "^3.3.2",
     "turbo": "~2.5.0",
-    "typescript-eslint": "^8.33.0",
-    "lightningcss-win32-x64-msvc": "1.30.1"
+    "typescript-eslint": "^8.33.0"
   },
   "packageManager": "npm@9.8.1"
 }

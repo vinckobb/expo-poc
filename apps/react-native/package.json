@@ -6,7 +6,8 @@
     "dev-native:android": "react-native run-android",
     "dev-native:ios": "react-native run-ios --udid=\"09D2B579-DF31-4014-9391-36E810FAA8A4\"",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "clean": "rm -rf node_modules"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.2",

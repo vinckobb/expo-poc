@@ -8,7 +8,8 @@
     "dev:web": "npm run dev",
     "build": "tsc -b && vite build",
     "start": "vite preview",
-    "test": "jest"
+    "test": "jest",
+    "clean": "rm -rf node_modules"
   },
   "dependencies": {
     "@monorepo/components": "*",
