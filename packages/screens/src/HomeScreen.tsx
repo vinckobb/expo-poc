@@ -1,9 +1,13 @@
 import { ScrollView, View } from "react-native";
 import { Header, Section, Card, Text, Button, Theme } from "@monorepo/components";
+import { Button as PaperButton } from "react-native-paper";
+import { PapButton } from "components/src/PaperButton";
 
 export function HomeScreen() {
+
+
   return (
-    <View className="dark:bg-secondary-500 flex" style={{flex: 1}}>
+    <View className="dark:bg-secondary-500 flex" style={{ flex: 1 }}>
       <Header title="Home" />
 
       <ScrollView
@@ -12,6 +16,33 @@ export function HomeScreen() {
           gap: 24,
         }}
       >
+
+        <PaperButton
+          mode="outlined"
+          onPress={() => { }}
+          style={{ backgroundColor: "#1d4ed8" }}
+          labelStyle={{ color: "white" }}
+        >
+          Klikni ma
+        </PaperButton>
+
+        <View className="bg-red-500 p-2 rounded-lg">
+          <PaperButton
+            mode="contained"
+            onPress={() => console.log("Klik!")}
+            labelStyle={{ color: "white" }}
+            style={{ backgroundColor: "transparent" }} // alebo žiadny background, nech sa vidí obal
+          >
+            Klikni ma
+          </PaperButton>
+        </View>
+
+        <PapButton
+          title="Press me too Now"
+          variant="primary"
+          onPress={() => console.log("Pressed!")}
+        />
+
         <Section title="Welcome">
           <Card>
             <Text variant="body">
