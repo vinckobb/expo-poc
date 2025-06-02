@@ -6,7 +6,7 @@ export function ProfileScreen() {
   const { toggleColorScheme } = useColorScheme();
 
   return (
-    <View className="dark:bg-secondary-500" style={{flex: 1}}>
+    <View className="dark:bg-green-500" style={{flex: 1}}>
       <Header title="Profile" />
 
       <ScrollView

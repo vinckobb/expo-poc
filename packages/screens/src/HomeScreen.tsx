@@ -7,7 +7,7 @@ export function HomeScreen() {
 
 
   return (
-    <View className="dark:bg-secondary-500 flex" style={{ flex: 1 }}>
+    <View className="dark:bg-green-500 flex" style={{ flex: 1 }}>
       <Header title="Home" />
 
       <ScrollView

@@ -16,12 +16,12 @@ const variantStyles: Record<Variant, ButtonVariant> = {
     textClassName: "text-center font-bold",
   },
   primary: {
-    className: "bg-primary-400 dark:bg-white",
-    textClassName: "text-white dark:text-primary-400",
+    className: "bg-blue-400 dark:bg-white",
+    textClassName: "text-white dark:text-blue-400",
   },
   secondary: {
-    className: "border border-solid border-primary-400 dark:border-white",
-    textClassName: "text-primary-400 dark:text-white",
+    className: "border border-solid border-blue-400 dark:border-white",
+    textClassName: "text-blue-400 dark:text-white",
   }
 };
 
