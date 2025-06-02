@@ -1,8 +1,6 @@
-import { Pressable, View } from "react-native";
-import { classNameMerge } from "@monorepo/utils/src";
-import { Button as PaperButton } from "react-native-paper";
-
-import { Text } from "./Text";
+import { Button } from "react-native-paper";
+import { cssInterop, remapProps } from "nativewind";
+import { classNameMerge } from "@monorepo/utils";
 
 type Variant = 'default' | 'primary' | 'secondary';
 
@@ -13,7 +11,7 @@ type ButtonVariant = {
 
 const variantStyles: Record<Variant, ButtonVariant> = {
   default: {
-    className: "py-4 px-6 rounded-md",
+    className: "py-4 px-6 rounded-none border-4 border-red",
     textClassName: "text-center font-bold",
   },
   primary: {
@@ -21,12 +19,12 @@ const variantStyles: Record<Variant, ButtonVariant> = {
     textClassName: "text-white dark:text-primary-400",
   },
   secondary: {
-    className: "border border-solid border-primary-400 dark:border-white",
+    className: "border-none border-solid border-primary-400 dark:border-white",
     textClassName: "text-primary-400 dark:text-white",
   }
 };
 
-type Props = {
+type ButtonProps = {
   title: string;
   onPress: () => void;
   variant?: Variant;
@@ -34,32 +32,44 @@ type Props = {
   textClassName?: string;
 };
 
+type EnhancedButtonProps = React.ComponentProps<typeof Button> & 
+{
+  contentClassName?: string;
+  className?: string;
+};
+
+const EnhancedButton = Button as React.ForwardRefExoticComponent<EnhancedButtonProps>;
+
+remapProps(Button, {
+  className: "style",
+  contentClassName: "contentStyle",
+});
+
+cssInterop(Button, {
+  className: "style",
+  contentClassName: "contentStyle",
+});
+
 export function PapButton({
   title,
   onPress,
   variant = "primary",
   className,
-  textClassName,
-}: Props) {
+}: ButtonProps) {
   return (
-    <Pressable
-      className={classNameMerge(
-        variantStyles.default.className,
-        variantStyles[variant].className,
-        className
-      )}
-      onPress={onPress}
-      style={{ width: "100%" }}
-    >
-      <PaperButton
-        // mode="contained"
+      <EnhancedButton
         onPress={onPress}
         labelStyle={{ color: "white" }}
-        style={{ backgroundColor: "transparent", width: "100%" }}
+        mode="outlined"
+        className={classNameMerge(
+          variantStyles.default.className,
+          variantStyles[variant].className,
+          className
+        )}
+        contentClassName="bg-primary-400"
       >
         {title}
-      </PaperButton>
-    </Pressable>
+      </EnhancedButton>
   )
 
 }
