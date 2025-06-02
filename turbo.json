@@ -1,10 +1,14 @@
 {
   "$schema": "https://turbo.build/schema.v2.json",
-  "ui": "tui",
   "tasks": {
     "build": {
-      "outputs": [".next/**", "!.next/cache/**"],
-      "dependsOn": ["^build"]
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**"
+      ],
+      "dependsOn": [
+        "^build"
+      ]
     },
     "dev": {
       "cache": false,
@@ -25,5 +29,8 @@
     "clean": {
       "cache": false
     }
-  }
+  },
+  "globalEnv": [
+    "ANDROID_HOME"
+  ]
 }
