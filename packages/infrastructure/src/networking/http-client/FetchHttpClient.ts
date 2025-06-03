@@ -1,18 +1,5 @@
-export interface RequestConfig {
-  headers?: Record<string, string>;
-  params?: Record<string, string | number | boolean>;
-  signal?: AbortSignal;
-  timeout?: number;
-  acceptsEmptyResponse?: boolean;
-  enableLogging?: boolean;
-}
-
-export interface HttpClient {
-  get<T>(url: string, config?: RequestConfig): Promise<T>;
-  post<T>(url: string, body?: unknown, config?: RequestConfig): Promise<T>;
-  put<T>(url: string, body?: unknown, config?: RequestConfig): Promise<T>;
-  delete<T>(url: string, config?: RequestConfig): Promise<T>;
-}
+import { HttpClient } from "./HttpClient";
+import { RequestConfig } from "./RequestConfig";
 
 export class FetchHttpClient implements HttpClient {
   private static globalLoggingEnabled = false;
@@ -62,21 +49,19 @@ export class FetchHttpClient implements HttpClient {
     const enableLogging =
       mergedConfig.enableLogging ?? FetchHttpClient.globalLoggingEnabled;
 
+    const finalUrl = this.buildUrlWithParams(url, mergedConfig.params);
+    const finalSignal = this.buildSignal(mergedConfig);
+
     if (enableLogging) {
-      console.log(`[HTTP ${requestId}] ${method} ${url}`);
+      console.log(`[HTTP ${requestId}] ${method} ${finalUrl}`);
     }
 
     try {
-      const response = await fetch(url, {
+      const response = await fetch(finalUrl, {
         method,
-        headers: {
-          "Content-Type": "application/json",
-          ...mergedConfig.headers,
-        },
-        body: body ? JSON.stringify(body) : undefined,
-        signal: mergedConfig.timeout
-          ? AbortSignal.timeout(mergedConfig.timeout)
-          : undefined,
+        headers: this.buildHeaders(body, mergedConfig.headers),
+        body: this.buildBody(body),
+        signal: finalSignal,
       });
 
       return this.handleResponse<T>(
@@ -91,6 +76,69 @@ export class FetchHttpClient implements HttpClient {
       }
       throw error;
     }
+  }
+
+  private buildUrlWithParams(
+    url: string,
+    params?: Record<string, string | number | boolean>
+  ): string {
+    if (!params || Object.keys(params).length === 0) {
+      return url;
+    }
+
+    const urlObj = new URL(url);
+    Object.entries(params).forEach(([key, value]) => {
+      urlObj.searchParams.set(key, String(value));
+    });
+
+    return urlObj.toString();
+  }
+
+  private buildSignal(config: RequestConfig): AbortSignal | undefined {
+    if (config.signal) {
+      return config.signal;
+    }
+
+    if (config.timeout) {
+      return AbortSignal.timeout(config.timeout);
+    }
+
+    return undefined;
+  }
+
+  private buildHeaders(
+    body: unknown,
+    userHeaders?: Record<string, string>
+  ): Record<string, string> {
+    const headers: Record<string, string> = { ...userHeaders };
+
+    if (body && !headers["Content-Type"]) {
+      if (body instanceof FormData) {
+        // FormData sets Content-Type automatically with boundary
+      } else if (typeof body === "string") {
+        headers["Content-Type"] = "text/plain";
+      } else {
+        headers["Content-Type"] = "application/json";
+      }
+    }
+
+    return headers;
+  }
+
+  private buildBody(body: unknown): string | FormData | undefined {
+    if (!body) {
+      return undefined;
+    }
+
+    if (body instanceof FormData) {
+      return body;
+    }
+
+    if (typeof body === "string") {
+      return body;
+    }
+
+    return JSON.stringify(body);
   }
 
   private async handleResponse<T>(

@@ -22,22 +22,20 @@ export class RoutesAPI {
   ) {}
 
   async getRoutes(filter?: RouteFilter): Promise<GetRoutesResponseDTO> {
+    const url = this.buildUrl("/routes");
     const params = this.buildRouteParams(filter);
-    const queryString = params.length > 0 ? `?${params.join("&")}` : "";
-    const url = this.buildUrl(`/routes${queryString}`);
 
-    const response = await this.httpClient.get<unknown>(url);
+    const response = await this.httpClient.get<unknown>(url, { params });
     return GetRoutesResponseSchema.parse(response);
   }
 
   async getFavoriteRoutes(
     filter?: RouteFilter
   ): Promise<GetFavoriteRoutesResponseDTO> {
+    const url = this.buildUrl("/routes/favorite");
     const params = this.buildRouteParams(filter);
-    const queryString = params.length > 0 ? `?${params.join("&")}` : "";
-    const url = this.buildUrl(`/routes/favorite${queryString}`);
 
-    const response = await this.httpClient.get<unknown>(url);
+    const response = await this.httpClient.get<unknown>(url, { params });
     return GetFavoriteRoutesResponseSchema.parse(response);
   }
 
@@ -77,24 +75,26 @@ export class RoutesAPI {
     return `${this.baseUrl}${path}`;
   }
 
-  private buildRouteParams(filter?: RouteFilter): string[] {
-    if (!filter) return [];
+  private buildRouteParams(
+    filter?: RouteFilter
+  ): Record<string, string | number | boolean> | undefined {
+    if (!filter) return undefined;
 
-    const params: string[] = [];
+    const params: Record<string, string | number | boolean> = {};
 
     if (filter.sortBy) {
-      params.push(`sortBy=${encodeURIComponent(filter.sortBy)}`);
+      params.sortBy = filter.sortBy;
     }
     if (filter.searchText) {
-      params.push(`searchText=${encodeURIComponent(filter.searchText)}`);
+      params.searchText = filter.searchText;
     }
     if (filter.filterByName !== undefined) {
-      params.push(`filterByName=${filter.filterByName}`);
+      params.filterByName = filter.filterByName;
     }
     if (filter.filterByNumber !== undefined) {
-      params.push(`filterByNumber=${filter.filterByNumber}`);
+      params.filterByNumber = filter.filterByNumber;
     }
 
-    return params;
+    return Object.keys(params).length > 0 ? params : undefined;
   }
 }

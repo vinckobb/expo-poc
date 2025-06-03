@@ -1,7 +1,16 @@
 import { QueryClient } from "@tanstack/react-query";
-import { HttpClient, FetchHttpClient } from "@monorepo/infrastructure/networking";
-import { NetworkService, NetworkServiceImpl } from "@monorepo/infrastructure/networking";
-import { LocalStorage, AsyncLocalStorage } from "@monorepo/infrastructure/storage";
+import {
+  HttpClient,
+  AxiosHttpClient,
+} from "@monorepo/infrastructure/networking";
+import {
+  NetworkService,
+  NetworkServiceImpl,
+} from "@monorepo/infrastructure/networking";
+import {
+  LocalStorage,
+  AsyncLocalStorage,
+} from "@monorepo/infrastructure/storage";
 import { DataLayerFactory, DataLayerConfig } from "@monorepo/data-access";
 import { RoutesService } from "@monorepo/data-access";
 import { createbaseUrl } from "@monorepo/data-access";
@@ -38,7 +47,7 @@ export class ServicesImpl implements Services {
 
     this._networkService = new NetworkServiceImpl();
     this._localStorage = new AsyncLocalStorage();
-    this._httpClient = new FetchHttpClient();
+    this._httpClient = new AxiosHttpClient();
   }
 
   private initializeDomainServices(): void {
