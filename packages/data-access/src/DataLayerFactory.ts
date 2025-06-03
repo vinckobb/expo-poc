@@ -1,13 +1,13 @@
 import { QueryClient } from '@tanstack/react-query';
-import { RoutesService } from '../../domain/services/RoutesService';
-import { RoutesServiceImpl } from '../../data/services/RoutesServiceImpl';
-import { RoutesRepositoryMain } from '../../data/repositories/RoutesRepositoryMain';
-import { RoutesRepositoryHTTP } from '../../data/repositories/RoutesRepositoryHTTP';
-import { RoutesRepositoryLocal } from '../../data/repositories/RoutesRepositoryLocal';
-import { RoutesAPI } from '../../data/api/RoutesAPI';
-import { HttpClient } from '../networking/HttpClient';
-import { NetworkService } from '../networking/NetworkService';
-import { LocalStorage } from '../storage/LocalStorage';
+import { HttpClient } from '@monorepo/infrastructure/networking';
+import { NetworkService } from '@monorepo/infrastructure/networking';
+import { LocalStorage } from '@monorepo/infrastructure/storage';
+import { RoutesService } from './domain/services/RoutesService';
+import { RoutesServiceImpl } from './data/services/RoutesServiceImpl';
+import { RoutesRepositoryMain } from './data/repositories/RoutesRepositoryMain';
+import { RoutesRepositoryHTTP } from './data/repositories/RoutesRepositoryHTTP';
+import { RoutesRepositoryLocal } from './data/repositories/RoutesRepositoryLocal';
+import { RoutesAPI } from './data/api/RoutesAPI';
 
 export interface DataLayerConfig {
   baseUrl: string;

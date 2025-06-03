@@ -1,7 +1,7 @@
 import { QueryClient } from "@tanstack/react-query";
-import { HttpClient, FetchHttpClient } from "@monorepo/data-access";
-import { NetworkService, NetworkServiceImpl } from "@monorepo/data-access";
-import { LocalStorage, AsyncLocalStorage } from "@monorepo/data-access";
+import { HttpClient, FetchHttpClient } from "@monorepo/infrastructure/networking";
+import { NetworkService, NetworkServiceImpl } from "@monorepo/infrastructure/networking";
+import { LocalStorage, AsyncLocalStorage } from "@monorepo/infrastructure/storage";
 import { DataLayerFactory, DataLayerConfig } from "@monorepo/data-access";
 import { RoutesService } from "@monorepo/data-access";
 import { createbaseUrl } from "@monorepo/data-access";

@@ -1,4 +1,4 @@
-import { HttpClient } from "../../infrastructure/networking/HttpClient";
+import { HttpClient } from "@monorepo/infrastructure/networking";
 import { RouteFilter } from "../../domain/repositories/RoutesRepository";
 import {
   RouteSchema,

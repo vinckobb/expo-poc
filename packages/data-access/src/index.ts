@@ -8,20 +8,8 @@ export type {
   RouteFilter,
 } from "./domain/repositories/RoutesRepository";
 
-// Infrastructure exports
-export type {
-  HttpClient,
-  RequestConfig,
-} from "./infrastructure/networking/HttpClient";
-export { FetchHttpClient } from "./infrastructure/networking/HttpClient";
-export type { NetworkService } from "./infrastructure/networking/NetworkService";
-export { NetworkServiceImpl } from "./infrastructure/networking/NetworkService";
-export type { LocalStorage } from "./infrastructure/storage/LocalStorage";
-export { AsyncLocalStorage } from "./infrastructure/storage/LocalStorage";
-
 // Factory
-export { DataLayerFactory } from "./infrastructure/di/DataLayerFactory";
-export type { DataLayerConfig } from "./infrastructure/di/DataLayerFactory";
+export { type DataLayerConfig, DataLayerFactory } from "./DataLayerFactory";
 
 // Query keys for external usage
 export {

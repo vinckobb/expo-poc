@@ -10,6 +10,8 @@
       "@monorepo/components/*": ["./components/src/*/index.ts"],
       "@monorepo/constants": ["./constants/src/index.ts"],
       "@monorepo/constants/*": ["./constants/src/*/index.ts"],
+      "@monorepo/infrastructure": ["./infrastructure/src/index.ts"],
+      "@monorepo/infrastructure/*": ["./infrastructure/src/*/index.ts"],
       "@monorepo/hooks/": ["./hooks/src/index.ts"],
       "@monorepo/hooks/*": ["./hooks/src/*/index.ts"],
       "@monorepo/screens": ["./screens/src/index.ts"],

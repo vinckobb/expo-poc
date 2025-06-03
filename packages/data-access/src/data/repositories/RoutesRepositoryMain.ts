@@ -6,8 +6,7 @@ import { Route } from "../../domain/entities/Route";
 import { FavoriteRoute } from "../../domain/entities/FavoriteRoute";
 import { RoutesRepositoryHTTP } from "./RoutesRepositoryHTTP";
 import { RoutesRepositoryLocal } from "./RoutesRepositoryLocal";
-import { NetworkService } from "../../infrastructure/networking/NetworkService";
-import { log } from "console";
+import { NetworkService } from "@monorepo/infrastructure/networking";
 
 export class RoutesRepositoryMain implements RoutesRepository {
   constructor(
