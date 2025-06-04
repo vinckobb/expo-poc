@@ -10,6 +10,10 @@ export function withTailwindConfig(content?: string[]): Config {
     presets: [require("nativewind/preset")],
     theme: {
       extend: {
+        spacing: {
+          '0.625': '0.625rem', // 10px
+          '1.5': '1.5rem', // 24px
+        },
         colors: {
           blue: {
             100: 'var(--color-blue-100)',

@@ -1,6 +1,5 @@
 import { ScrollView, View } from "react-native";
 import { Header, Section, Card, Text, Button, Theme } from "@monorepo/components";
-import { Button as PaperButton } from "react-native-paper";
 import { PapButton } from "components/src/PaperButton";
 
 export function HomeScreen() {
@@ -17,29 +16,22 @@ export function HomeScreen() {
         }}
       >
 
-        <PaperButton
-          mode="outlined"
-          onPress={() => { }}
-          style={{ backgroundColor: "#1d4ed8" }}
-          labelStyle={{ color: "white" }}
-        >
-          Klikni ma
-        </PaperButton>
-
-        <View className="bg-red-500 p-2 rounded-lg">
-          <PaperButton
-            mode="contained"
-            onPress={() => console.log("Klik!")}
-            labelStyle={{ color: "white" }}
-            style={{ backgroundColor: "transparent" }} // alebo žiadny background, nech sa vidí obal
-          >
-            Klikni ma
-          </PaperButton>
-        </View>
+        <PapButton
+          icon="plus"
+          title="Filled"
+          disabled={true}
+          onPress={() => alert("Pressed!")}
+        />
 
         <PapButton
-          title="Press me too Now"
-          variant="primary"
+          title="Outlined"
+          variant="outlined"
+          onPress={() => console.log("Pressed!")}
+        />
+
+        <PapButton
+          title="Text"
+          variant="text"
           onPress={() => console.log("Pressed!")}
         />
 

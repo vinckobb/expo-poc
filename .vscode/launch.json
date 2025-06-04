@@ -1,0 +1,13 @@
+{
+    "configurations": [
+        {
+            "name": "Attach to React Native Application",
+            "request": "attach",
+            "type": "reactnativedirect",
+            "cwd": "${workspaceFolder}\\apps\\mobile",
+            "sourceMapPathOverrides": {
+                "/[metro-watchFolders]/1/*": "${workspaceFolder}/*"
+            }
+        }
+    ]
+}
