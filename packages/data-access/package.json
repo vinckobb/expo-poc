@@ -8,6 +8,7 @@
     "./*": "./src/*/index.ts"
   },
   "dependencies": {
-    "@monorepo/types": "*"
+    "@monorepo/types": "*",
+    "@monorepo/infrastructure": "*"
   }
 }

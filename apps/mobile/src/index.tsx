@@ -7,16 +7,7 @@ import {
 } from "@react-navigation/native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { useColorScheme } from "@monorepo/hooks";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      retry: 1,
-      staleTime: 10000,
-    },
-  },
-});
+import { DIContainerImpl } from "@monorepo/di";
 
 import AppRoutes from "./app-navigation/AppRoutes";
 
@@ -25,14 +16,14 @@ export default function App() {
   console.log("colorScheme", colorScheme);
   const navTheme =
     colorScheme === "dark" ? NavigationDarkTheme : NavigationLightTheme;
+  
+  const di = new DIContainerImpl();
 
   return (
     <SafeAreaProvider>
-      <QueryClientProvider client={queryClient}>
         <NavigationContainer theme={navTheme}>
-          <AppRoutes />
+          <AppRoutes di={di}/>
         </NavigationContainer>
-      </QueryClientProvider>
     </SafeAreaProvider>
   );
 }

@@ -12,7 +12,7 @@ import { useTranslation } from "react-i18next";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { useUnit } from "effector-react";
 import { RoutesListViewModel } from "./RoutesListViewModel";
-import { Route } from "../../../service/types";
+import { Route } from "@monorepo/data-access";
 import React from "react";
 
 export function RoutesListScreen({
@@ -23,6 +23,7 @@ export function RoutesListScreen({
   const { t } = useTranslation();
   const routes = useUnit(viewModel.$routes);
   const isLoading = useUnit(viewModel.$isLoading);
+  const showLoader = useUnit(viewModel.$showLoader);
   const error = useUnit(viewModel.$error);
   const filter = useUnit(viewModel.$filter);
   const navigation = useNavigation();
@@ -120,7 +121,7 @@ export function RoutesListScreen({
         </View>
       </View>
 
-      {isLoading ? (
+      {showLoader ? (
         <View style={styles.loaderContainer}>
           <ActivityIndicator size="large" />
           <Text style={styles.loaderText}>{t('routes-list.label.loading')}</Text>
@@ -142,8 +143,8 @@ export function RoutesListScreen({
           keyExtractor={(item) => item.id}
           contentContainerStyle={styles.listContent}
           showsVerticalScrollIndicator={false}
-          refreshing={isLoading}
-          onRefresh={() => viewModel.events.loadRoutes()}
+          refreshing={isLoading && showLoader}
+          onRefresh={() => viewModel.events.refreshed()}
           ListEmptyComponent={
             <Text style={styles.emptyText}>{t('routes-list.label.no-routes')}</Text>
           }

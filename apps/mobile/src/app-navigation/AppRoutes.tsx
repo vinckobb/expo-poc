@@ -1,12 +1,12 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
-import { useQueryClient } from "@tanstack/react-query";
 import {
   PasswordRecovery,
   PasswordRecoveryViewModel,
 } from "@monorepo/screens/login/password-recovery";
 
 import * as Flows from "./AppFlows";
+import { DIContainer } from "@monorepo/di";
 
 export type RootStackParamList = {
   PasswordRecovery: { email: string };
@@ -22,9 +22,12 @@ export type RootStackNavigator = ReturnType<
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-export default function AppRoutes() {
+interface AppRoutesProps {
+  di: DIContainer;
+}
+
+export default function AppRoutes({ di }: AppRoutesProps) {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
-  const queryClient = useQueryClient();
 
   const loginFlowDelegate: Flows.Login.Delegate = {
     openHome: () => {
@@ -118,7 +121,7 @@ export default function AppRoutes() {
       {Flows.TransportRoutes.createFlowScreens<RootStackParamList>(
         Stack,
         welcomeFlowDelegate,
-        { queryClient: queryClient }
+        { routesService: di.services.routesService }
       )}
 
       {Flows.Profile.createFlowScreens<RootStackParamList>(

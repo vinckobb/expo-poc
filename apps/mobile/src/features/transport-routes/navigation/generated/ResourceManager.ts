@@ -9,7 +9,7 @@ import * as FlowType from "../types/flowTypes";
 import { RouterImpl } from "../types/flowAliases";
 import { ControllerImpl } from "../types/flowAliases";
 
-export class FlowResourceManagerImpl<
+export class ResourceManager<
   T extends FlowType.ParamList,
 > extends FlowResourceManager<
   T,
@@ -23,13 +23,13 @@ export class FlowResourceManagerImpl<
   >();
 
   private constructor() {
-    super(FlowResourceManagerImpl.stateManager);
+    super(ResourceManager.stateManager);
   }
 
   static getInstance<
     P extends FlowType.ParamList,
-  >(): FlowResourceManagerImpl<P> {
-    return new FlowResourceManagerImpl<P>();
+  >(): ResourceManager<P> {
+    return new ResourceManager<P>();
   }
 
   protected getRouterClass(): RouterClass<
@@ -46,4 +46,4 @@ export class FlowResourceManagerImpl<
   > {
     return ControllerImpl;
   }
-}
+};

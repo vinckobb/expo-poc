@@ -1,10 +1,9 @@
 import { useMemo } from "react";
 import { createFlowScreen } from "@monorepo/mobile-core/navigation";
-import { RouteService } from "../../../service/RouteService";
-import { createQueryRouteService } from "../../../service/QueryRouteServiceDecorator";
+import { RoutesService } from "@monorepo/data-access/";
 import * as FlowType from "../navigation/types/flowTypes";
 import { ParamsAdapter } from "../navigation/types/flowAliases";
-import { ScreenProvider } from "../navigation/types/flowAliases";
+import { ScreenProvider } from "../navigation/generated/ScreenProvider";
 
 import {
   RoutesListScreen as View,
@@ -16,7 +15,7 @@ import {
 const screenName = FlowType.Screens.ROUTES_LIST;
 
 type Dependencies = {
-  routeService: RouteService;
+  routesService: RoutesService;
   analytics?: object;
   featureFlags?: object;
 };
@@ -38,28 +37,28 @@ export const ScreenComponent = createFlowScreen<
   FlowType.Controller
 >(
   View,
-  (params, onAction) =>
-    new ViewModel(params.params, onAction, params.deps.routeService),
+  ({ params, deps }: ParamsType, onAction) =>
+    new ViewModel(params, onAction, deps.routesService),
   (controller, action) => controller.handleRoutesListActionAction(action)
 );
 
 function createParams(
   routeParams: FlowType.ParamList[typeof screenName] | undefined,
-  routeService: ReturnType<typeof createQueryRouteService>
+  routesService: RoutesService
 ): ParamsType {
   const params = ParamsAdapter[screenName](routeParams);
   return useMemo(
-    () => ({ params, deps: { routeService } }),
-    [params, routeService]
+    () => ({ params, deps: { routesService } }),
+    [params, routesService]
   );
 }
 
 function createScreenProviderBuilder(
   delegate: FlowType.Delegate,
-  routeService: ReturnType<typeof createQueryRouteService>
+  routesService: RoutesService
 ) {
   return (routeParams: FlowType.ParamList[typeof screenName] | undefined) => {
-    const screenParams = createParams(routeParams, routeService);
+    const screenParams = createParams(routeParams, routesService);
 
     return (
       <ScreenProvider routerDelegate={delegate} screenName={screenName}>
@@ -74,11 +73,11 @@ function createScreenProviderBuilder(
 export function stackScreen<T extends FlowType.ParamList>(
   Stack: FlowType.Stack<T>,
   delegate: FlowType.Delegate,
-  routeService: ReturnType<typeof createQueryRouteService>
+  routesService: RoutesService
 ) {
   const screenProviderBuilder = createScreenProviderBuilder(
     delegate,
-    routeService
+    routesService
   );
 
   return (

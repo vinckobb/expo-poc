@@ -2,7 +2,7 @@ export const mockConfig = {
   port: 3000,
   baseUrl: "http://localhost",
   logging: {
-    enabled: true,
+    enabled: false,
     usePrefix: false,
     requestDetails: false,
     logResponse: false,

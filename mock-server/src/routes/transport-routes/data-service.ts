@@ -3,11 +3,9 @@ import { Route, Favorite, FavoriteRouteResponse } from "./types";
 import { readJsonFile, writeJsonFile } from "../../utils/file-utils";
 import { v4 as uuidv4 } from "uuid";
 
-const routesFilePath = path.join(__dirname, "./data/routes.json");
-const favoriteRoutesFilePath = path.join(
-  __dirname,
-  "./data/favorite-routes.json"
-);
+const baseDir = path.join(__dirname, "../../../data/transport-routes");
+const routesFilePath = path.join(baseDir, "routes.json");
+const favoriteRoutesFilePath = path.join(baseDir, "favorite-routes.json");
 
 // Read functions
 export const readRoutes = (): Route[] => {

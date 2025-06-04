@@ -1,7 +1,6 @@
 import { Platform } from "react-native";
-import { HttpClient, FetchHttpClient } from "./HttpClient";
 
-export function createHttpClient(): HttpClient {
+export function createbaseUrl(): string {
   // 'localhost' is not accessible on iOS simulator and Android emulator
   // For real devices you'll need external IP or domain
   let baseUrl = "http://localhost:3000/api";
@@ -17,5 +16,5 @@ export function createHttpClient(): HttpClient {
     baseUrl = "http://10.0.2.2:3000/api";
   }
 
-  return new FetchHttpClient(baseUrl, false);
+  return baseUrl;
 }

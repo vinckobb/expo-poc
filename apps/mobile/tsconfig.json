@@ -19,6 +19,7 @@
       "@monorepo/shared": ["./shared/src/index.ts"],
       "@monorepo/shared/*": ["./shared/src/*/index.ts"],
       "@monorepo/theme": ["./theme/src/index.ts"],
+      "@monorepo/di": ["./di/src/index.ts"],
       "@monorepo/theme/*": ["./theme/*"],
       "@monorepo/utils/": ["./utils/src/index.ts"],
       "@monorepo/utils/*": ["./utils/*/src/index.ts"]

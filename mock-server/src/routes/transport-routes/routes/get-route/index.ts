@@ -1,13 +1,13 @@
 import { Request, Response } from "express";
 import { getRouteById } from "../../logic";
-import { GetRouteResponse, ErrorResponse } from "../../types";
+import { ErrorResponse, Route } from "../../types";
 
 export const method = "GET";
 export const path = "/routes/:routeId";
 
 export const handler = async (
   req: Request<{ routeId: string }>,
-  res: Response<GetRouteResponse | ErrorResponse>
+  res: Response<Route | ErrorResponse>
 ) => {
   try {
     const { routeId } = req.params;

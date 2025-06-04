@@ -12,7 +12,7 @@ import { useTranslation } from "react-i18next";
 import { useFocusEffect } from "@react-navigation/native";
 import { useUnit } from "effector-react";
 import { FavoriteRoutesViewModel } from "./FavoriteRoutesViewModel";
-import { FavoriteRouteResponse } from "../../../service/types";
+import { FavoriteRoute } from "@monorepo/data-access";
 
 export function FavoriteRoutesScreen({
   viewModel,
@@ -22,6 +22,7 @@ export function FavoriteRoutesScreen({
   const { t } = useTranslation();
   const routes = useUnit(viewModel.$routes);
   const isLoading = useUnit(viewModel.$isLoading);
+  const showLoader = useUnit(viewModel.$showLoader);
   const error = useUnit(viewModel.$error);
   const filter = useUnit(viewModel.$filter);
 
@@ -40,7 +41,7 @@ export function FavoriteRoutesScreen({
     }, [])
   );
 
-  const renderItem = ({ item }: { item: FavoriteRouteResponse }) => (
+  const renderItem = ({ item }: { item: FavoriteRoute }) => (
     <TouchableOpacity
       style={[
         styles.routeItem,
@@ -119,7 +120,7 @@ export function FavoriteRoutesScreen({
         </View>
       </View>
 
-      {isLoading ? (
+      {showLoader ? (
         <View style={styles.loaderContainer}>
           <ActivityIndicator size="large" />
           <Text style={styles.loaderText}>{t('favorite-routes.label.route-loading')}</Text>
@@ -141,8 +142,8 @@ export function FavoriteRoutesScreen({
           keyExtractor={(item) => item.id}
           contentContainerStyle={styles.listContent}
           showsVerticalScrollIndicator={false}
-          refreshing={isLoading}
-          onRefresh={() => viewModel.events.retry()}
+          refreshing={isLoading && showLoader}
+          onRefresh={() => viewModel.events.refreshed()}
           ListEmptyComponent={
             <Text style={styles.emptyText}>{t('favorite-routes.label.no-favorites')}</Text>
           }

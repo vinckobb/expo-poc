@@ -1,6 +1,6 @@
 import { createStore, createEvent, createEffect, sample } from "effector";
 import { ViewModel } from "@monorepo/types";
-import { Route, RouteService } from "@monorepo/data-access";
+import { Route, RoutesService } from "@monorepo/data-access";
 
 export type Action = {
   type: "openFavorites";
@@ -36,12 +36,12 @@ export class RouteDetailsViewModel implements ViewModel {
 
   private routeId: string;
   private onAction: ((action: Action) => void) | undefined;
-  private routeService: RouteService;
+  private routeService: RoutesService;
 
   constructor(
     params: Params,
     onAction: (action: Action) => void,
-    routeService: RouteService
+    routeService: RoutesService
   ) {
     this.routeId = params.routeId;
     this.onAction = onAction;
@@ -180,7 +180,7 @@ export class RouteDetailsViewModel implements ViewModel {
 export function createRouteDetailsViewModel(
   params: Params,
   onAction: (action: Action) => void,
-  routeService: RouteService
+  routeService: RoutesService
 ): RouteDetailsViewModel {
   return new RouteDetailsViewModel(params, onAction, routeService);
 }

@@ -1,9 +1,9 @@
-import { createStore, createEvent, createEffect, sample } from "effector";
+import { createStore, createEvent, createEffect, sample, combine } from "effector";
 import { ViewModel } from "@monorepo/types";
 import {
-  RouteService,
+  RoutesService,
   RouteFilter,
-  FavoriteRouteResponse,
+  FavoriteRoute,
 } from "@monorepo/data-access";
 
 export type Action = { type: "routeSelected"; routeId: string };
@@ -21,10 +21,12 @@ export class FavoriteRoutesViewModel implements ViewModel {
     removeFavorite: createEvent<string>(),
     updatePosition: createEvent<{ favoriteId: string; position: number }>(),
     retry: createEvent(),
+    refreshed: createEvent(),
   };
 
   private effects = {
-    fetchRoutes: createEffect<RouteFilter, FavoriteRouteResponse[], Error>(),
+    fetchRoutes: createEffect<RouteFilter, FavoriteRoute[], Error>(),
+    fetchRoutesForced: createEffect<RouteFilter, FavoriteRoute[], Error>(),
     removeFromFavorites: createEffect<string, void, Error>(),
     updateFavoritePosition: createEffect<
       { favoriteId: string; position: number },
@@ -33,8 +35,12 @@ export class FavoriteRoutesViewModel implements ViewModel {
     >(),
   };
 
-  $routes = createStore<FavoriteRouteResponse[]>([]);
+  $routes = createStore<FavoriteRoute[]>([]);
   $isLoading = createStore(false);
+  $showLoader = combine(
+    [this.$isLoading, this.$routes],
+    ([isLoading, routes]) => isLoading && routes.length === 0
+  );
   $error = createStore<string | null>(null);
   $filter = createStore<RouteFilter>({
     sortBy: "custom",
@@ -44,7 +50,7 @@ export class FavoriteRoutesViewModel implements ViewModel {
   });
 
   constructor(
-    private routeService: RouteService,
+    private routeService: RoutesService,
     private onAction: ((action: Action) => void) | undefined
   ) {
     this.initializeEffects();
@@ -57,6 +63,10 @@ export class FavoriteRoutesViewModel implements ViewModel {
       this.routeService.getFavoriteRoutes(filter)
     );
 
+    this.effects.fetchRoutesForced.use((filter) =>
+      this.routeService.getFavoriteRoutes(filter, true)
+    );
+
     this.effects.removeFromFavorites.use((favoriteId) =>
       this.routeService.removeFromFavorites(favoriteId)
     );
@@ -67,16 +77,21 @@ export class FavoriteRoutesViewModel implements ViewModel {
   }
 
   private initializeStores() {
-    this.$routes.on(this.effects.fetchRoutes.doneData, (_, routes) => routes);
+    this.$routes
+      .on(this.effects.fetchRoutes.doneData, (_, routes) => routes)
+      .on(this.effects.fetchRoutesForced.doneData, (_, routes) => routes);
 
-    this.$isLoading.on(
-      this.effects.fetchRoutes.pending,
-      (_, isPending) => isPending
-    );
+    this.$isLoading
+      .on(this.effects.fetchRoutes.pending, (_, isPending) => isPending)
+      .on(this.effects.fetchRoutesForced.pending, (_, isPending) => isPending);
 
     this.$error
       .on(this.effects.fetchRoutes.failData, (_, error) => error.message)
-      .reset(this.effects.fetchRoutes.done);
+      .on(this.effects.fetchRoutesForced.failData, (_, error) => error.message)
+      .reset([
+        this.effects.fetchRoutes.done,
+        this.effects.fetchRoutesForced.done,
+      ]);
 
     this.$filter
       .on(this.events.searchChanged, (state, searchText) => ({
@@ -114,12 +129,10 @@ export class FavoriteRoutesViewModel implements ViewModel {
       target: this.effects.fetchRoutes,
     });
 
-    this.events.removeFavorite.watch((favoriteId) => {
-      this.effects.removeFromFavorites(favoriteId);
-    });
-
-    this.events.updatePosition.watch((params) => {
-      this.effects.updateFavoritePosition(params);
+    sample({
+      source: this.$filter,
+      clock: this.events.refreshed,
+      target: this.effects.fetchRoutesForced,
     });
 
     sample({
@@ -137,6 +150,14 @@ export class FavoriteRoutesViewModel implements ViewModel {
       target: this.effects.fetchRoutes,
     });
 
+    this.events.removeFavorite.watch((favoriteId) => {
+      this.effects.removeFromFavorites(favoriteId);
+    });
+
+    this.events.updatePosition.watch((params) => {
+      this.effects.updateFavoritePosition(params);
+    });
+
     this.events.routeSelected.watch((routeId) => {
       this.onAction?.({ type: "routeSelected", routeId });
     });
@@ -150,7 +171,7 @@ export class FavoriteRoutesViewModel implements ViewModel {
 }
 
 export function createFavoriteRoutesViewModel(
-  routeService: RouteService,
+  routeService: RoutesService,
   onAction: (action: Action) => void
 ): FavoriteRoutesViewModel {
   return new FavoriteRoutesViewModel(routeService, onAction);
