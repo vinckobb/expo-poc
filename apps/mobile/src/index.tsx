@@ -1,4 +1,5 @@
 import "../global.css";
+import '@monorepo/i18n';
 import {
   NavigationContainer,
   DarkTheme as NavigationDarkTheme,

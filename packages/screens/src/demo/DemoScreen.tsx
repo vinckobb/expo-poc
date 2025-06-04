@@ -1,7 +1,10 @@
 import { View, Text, Button, SafeAreaView } from "react-native";
+import { useTranslation } from "react-i18next";
 import { DemoViewModel } from "./DemoViewModel";
 
 export function DemoScreen({ viewModel }: { viewModel: DemoViewModel }) {
+  const { t } = useTranslation();
+
   return (
     <SafeAreaView>
       <View>
@@ -13,9 +16,9 @@ export function DemoScreen({ viewModel }: { viewModel: DemoViewModel }) {
             marginVertical: 24,
           }}
         >
-          Demo Screen for Flow generator
+          {t('demo.title')}
         </Text>
-        <Button title="Home" onPress={() => viewModel.onHomeButton()} />
+        <Button title={t('demo.button.home.title')} onPress={() => viewModel.onHomeButton()} />
       </View>
     </SafeAreaView>
   );

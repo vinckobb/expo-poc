@@ -1,7 +1,9 @@
 import { View, Text, Button, SafeAreaView, Switch, TextInput } from "react-native";
+import { useTranslation } from "react-i18next";
 import { SecuritySettingsViewModel } from "./SecuritySettingsViewModel";
 
 export function SecuritySettingsScreen({ viewModel }: { viewModel: SecuritySettingsViewModel }) {
+  const { t } = useTranslation();
   return (
     <SafeAreaView>
       <View style={{ padding: 16 }}>
@@ -13,7 +15,7 @@ export function SecuritySettingsScreen({ viewModel }: { viewModel: SecuritySetti
             marginVertical: 24,
           }}
         >
-          Súkromie a bezpečnosť
+          {t("security-settings.title")}
         </Text>
 
         <View
@@ -25,7 +27,7 @@ export function SecuritySettingsScreen({ viewModel }: { viewModel: SecuritySetti
             marginBottom: 0,
           }}
         >
-          <Text style={{ fontSize: 16 }}>Dvojfaktorové overenie (2FA)</Text>
+          <Text style={{ fontSize: 16 }}>{t('security-settings.label.two-factor-authentication')}</Text>
           <Switch
             value={viewModel.twoFactorEnabled}
             onValueChange={viewModel.setTwoFactorEnabled}
@@ -41,7 +43,7 @@ export function SecuritySettingsScreen({ viewModel }: { viewModel: SecuritySetti
             marginBottom: 24,
           }}
         >
-          <Text style={{ fontSize: 16 }}>Biometrická autentifikácia</Text>
+          <Text style={{ fontSize: 16 }}>{t('security-settings.label.biometric-authentication')}</Text>
           <Switch
             value={viewModel.biometricAuthEnabled}
             onValueChange={viewModel.setBiometricAuthEnabled}
@@ -63,7 +65,7 @@ export function SecuritySettingsScreen({ viewModel }: { viewModel: SecuritySetti
               marginBottom: 16,
             }}
           >
-            Zmena hesla
+            {t('security-settings.label.change-password')}
           </Text>
 
           <TextInput
@@ -75,7 +77,7 @@ export function SecuritySettingsScreen({ viewModel }: { viewModel: SecuritySetti
               marginBottom: 12,
               backgroundColor: "white",
             }}
-            placeholder="Staré heslo"
+            placeholder={t('security-settings.placeholder.old-password')}
             secureTextEntry
             value={viewModel.oldPassword}
             onChangeText={viewModel.setOldPassword}
@@ -90,7 +92,7 @@ export function SecuritySettingsScreen({ viewModel }: { viewModel: SecuritySetti
               marginBottom: 12,
               backgroundColor: "white",
             }}
-            placeholder="Nové heslo"
+            placeholder={t('security-settings.placeholder.new-password')}
             secureTextEntry
             value={viewModel.newPassword}
             onChangeText={viewModel.setNewPassword}
@@ -105,14 +107,14 @@ export function SecuritySettingsScreen({ viewModel }: { viewModel: SecuritySetti
               marginBottom: 16,
               backgroundColor: "white",
             }}
-            placeholder="Potvrdiť nové heslo"
+            placeholder={t('security-settings.placeholder.confirm-password')}
             secureTextEntry
             value={viewModel.confirmPassword}
             onChangeText={viewModel.setConfirmPassword}
           />
 
           <Button
-            title="Uložiť heslo"
+            title={t("security-settings.button.save-password.title")}
             onPress={() => viewModel.onSavePassword()}
           />
         </View>
@@ -131,7 +133,7 @@ export function SecuritySettingsScreen({ viewModel }: { viewModel: SecuritySetti
             style={{ marginRight: 12 }}
           />
           <Text style={{ fontSize: 16, flex: 1 }}>
-            Deaktivovať aplikáciu pri nepoužívaní 6+ mesiacov
+            {t('security-settings.label.deactivate-after-inactivity')}
           </Text>
         </View>
       </View>

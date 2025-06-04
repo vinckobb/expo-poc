@@ -12,7 +12,8 @@
     "dev:ios": "npm run dev",
     "dev:android": "npm run dev",
     "dev-expo:ios": "npm run dev",
-    "dev-expo:android": "npm run dev"
+    "dev-expo:android": "npm run dev",
+    "clean": "rm -rf node_modules"
   },
   "dependencies": {
     "cors": "^2.8.5",

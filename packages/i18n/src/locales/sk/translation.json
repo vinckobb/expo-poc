@@ -1,0 +1,81 @@
+{
+    "demo.title": "Demo obrazovka pre flow generátor",
+    "demo.button.home.title": "Domov",
+
+    "home.title": "Domov",
+    "home.label.text": "Domov - hlavná obrazovka",
+    "home.button.continue.title": "Pokračovať",
+
+    "password-recovery.title": "Obnova hesla",
+    "password-recovery.button.continue.title": "Pokračovať",
+
+    "sms-validation.title": "SMS overenie",
+    "sms-validation.button.continue.title": "Pokračovať",
+
+    "profile.title": "Profil",
+    "profile.button.settings.title": "Nastavenia",
+
+    "security-settings.title": "Súkromie a bezpečnosť",
+    "security-settings.label.two-factor-authentication": "Dvojfaktorové overenie (2FA)",
+    "security-settings.label.biometric-authentication": "Biometrická autentifikácia",
+    "security-settings.label.change-password": "Zmena hesla",
+    "security-settings.placeholder.old-password": "Staré heslo",
+    "security-settings.placeholder.new-password": "Nové heslo",
+    "security-settings.placeholder.confirm-password": "Potvrdiť nové heslo",
+    "security-settings.button.save-password.title": "Uložiť heslo",
+    "security-settings.label.deactivate-after-inactivity": "Deaktivovať aplikáciu po 6+ mesiacoch nečinnosti",
+
+    "favorite-routes.label.favorite-routes": "Obľúbené trasy",
+    "favorite-routes.placeholder.search-route": "Hľadať trasu",
+    "favorite-routes.label.route-number": "Číslo trasy",
+    "favorite-routes.label.route-name": "Názov trasy",
+    "favorite-routes.label.custom": "Vlastné",
+    "favorite-routes.label.route-loading": "Načítavanie trás...",
+    "favorite-routes.label.retry": "Skúsiť znova",
+    "favorite-routes.label.no-favorites": "Žiadne obľúbené trasy nenájdené",
+
+    "route-details.label.loading": "Načítavanie podrobností o trase...",
+    "route-details.label.route-number": "Číslo trasy",
+    "route-details.label.route-name": "Názov trasy",
+    "route-details.label.retry": "Skúsiť znova",
+    "route-details.label.start": "Začiatok",
+    "route-details.label.end": "Koniec",
+    "route-details.label.not-found": "Trasa nenájdená",
+    "route-details.label.view-favorites": "Zobraziť obľúbené",
+    "route-details.label.add-favorite": "Pridať k obľúbeným",
+    "route-details.label.remove-favorite": "Odstrániť z obľúbených",
+    "route-details.label.route-info": "Informácie o trase",
+
+    "routes-list.title": "Trasy",
+    "routes-list.label.favorites": "Obľúbené",
+    "routes-list.label.routes": "Trasy",
+    "routes-list.placeholder.search-route": "Hľadať trasu",
+    "routes-list.label.route-number": "Číslo trasy",
+    "routes-list.label.route-name": "Názov trasy",
+    "routes-list.label.loading": "Načítavanie trás...",
+    "routes-list.label.retry": "Skúsiť znova",
+    "routes-list.label.no-routes": "Žiadne trasy nenájdené",
+
+    "about.title": "O nás",
+    "about.button.home.title": "Domov",
+    "about.button.contact.title": "Kontakt",
+
+    "welcome.title": "Vitaj",
+    "welcome.link.about.title": "O nás",
+    "welcome.link.login.title": "Prihlásenie",
+    "welcome.link.routes.title": "Trasy",
+    "welcome.link.home.title": "Domov",
+
+    "login.title": "Prihlásenie",
+    "login.button.login.title": "PRIHLÁSENIE",
+    "login.button.password-recovery.title": "OBNOVA HESLA",
+    "login.button.registration.title": "REGISTRÁCIA",
+
+    "settings.title": "Nastavenia",
+    "settings.label.show-tickets-in-my-region": "Zobraziť len lístky v mojom regióne",
+    "settings.label.marketing-messages": "Marketingové správy",
+    "settings.label.push-notifications": "Push notifikácie",
+    "settings.label.auto-ticket-download": "Automatické získavanie lístkov",
+    "settings.button.privacy-and-security.title": "SÚKROMIE A BEZPEČNOSŤ",
+    "settings.button.change-language.title": "ZMENIŤ JAZYK"
+}

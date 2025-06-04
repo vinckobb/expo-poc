@@ -17,7 +17,8 @@
     "test": "turbo test",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
-    "clean": "turbo run clean && rm -rf node_modules"
+    "clean": "turbo run clean ; rm -rf node_modules",
+    "clean:all": "npm run clean ; rm -rf .turbo"
   },
   "devDependencies": {
     "@eslint/js": "^9.24.0",

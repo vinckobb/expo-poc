@@ -1,0 +1,81 @@
+{
+    "demo.title": "Demo Screen for Flow generator",
+    "demo.button.home.title": "Home",
+
+    "home.title": "Home",
+    "home.label.text": "Home - main screen",
+    "home.button.continue.title": "Continue",
+
+    "password-recovery.title": "Password Recovery",
+    "password-recovery.button.continue.title": "Continue",
+
+    "sms-validation.title": "SMS Validation",
+    "sms-validation.button.continue.title": "Continue",
+
+    "profile.title": "Profile",
+    "profile.button.settings.title": "Settings",
+
+    "security-settings.title": "Privacy and security",
+    "security-settings.label.two-factor-authentication": "Two-factor authentication (2FA)",
+    "security-settings.label.biometric-authentication": "Biometric authentication",
+    "security-settings.label.change-password": "Change password",
+    "security-settings.placeholder.old-password": "Old password",
+    "security-settings.placeholder.new-password": "New password",
+    "security-settings.placeholder.confirm-password": "Confirm new password",
+    "security-settings.button.save-password.title": "Save password",
+    "security-settings.label.deactivate-after-inactivity": "Deactivate app after 6+ months of inactivity",
+
+    "favorite-routes.label.favorite-routes": "Favorite routes",
+    "favorite-routes.placeholder.search-route": "Search route",
+    "favorite-routes.label.route-number": "Route number",
+    "favorite-routes.label.route-name": "Route name",
+    "favorite-routes.label.custom": "Custom",
+    "favorite-routes.label.route-loading": "Loading routes...",
+    "favorite-routes.label.retry": "Retry",
+    "favorite-routes.label.no-favorites": "No favorite routes found",
+
+    "route-details.label.loading": "Loading route details...",
+    "route-details.label.route-number": "Route number",
+    "route-details.label.route-name": "Route name",
+    "route-details.label.retry": "Retry",
+    "route-details.label.start": "Start",
+    "route-details.label.end": "End",
+    "route-details.label.not-found": "Route not found",
+    "route-details.label.view-favorites": "View favorites",
+    "route-details.label.add-favorite": "Add to favorites",
+    "route-details.label.remove-favorite": "Remove from favorites",
+    "route-details.label.route-info": "Route information",
+
+    "routes-list.title": "Routes",
+    "routes-list.label.favorites": "Favorites",
+    "routes-list.label.routes": "Routes",
+    "routes-list.placeholder.search-route": "Search route",
+    "routes-list.label.route-number": "Route number",
+    "routes-list.label.route-name": "Route name",
+    "routes-list.label.loading": "Loading routes...",
+    "routes-list.label.retry": "Retry",
+    "routes-list.label.no-routes": "No routes found",
+
+    "about.title": "About",
+    "about.button.home.title": "Home",
+    "about.button.contact.title": "Contact",
+
+    "welcome.title": "Welcome",
+    "welcome.button.about.title": "About",
+    "welcome.button.login.title": "Login",
+    "welcome.button.routes.title": "Routes",
+    "welcome.button.home.title": "Home",
+    
+    "login.title": "Login",
+    "login.button.login.title": "LOG IN",
+    "login.button.password-recovery.title": "PASSWORD RECOVERY",
+    "login.button.registration.title": "REGISTRATION",
+
+    "settings.title": "Settings",
+    "settings.label.show-tickets-in-my-region": "Show tickets in my region",
+    "settings.label.marketing-messages": "Marketing messages",
+    "settings.label.push-notifications": "Push notifications",
+    "settings.label.auto-ticket-download": "Automatic ticket download",
+    "settings.button.privacy-and-security.title": "PRIVACY AND SECURITY",
+    "settings.button.change-language.title": "CHANGE LANGUAGE"
+}

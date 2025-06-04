@@ -1,7 +1,10 @@
 import { View, Text, Button, SafeAreaView } from "react-native";
+import { useTranslation } from "react-i18next";
 import { WelcomeViewModel } from "./WelcomeViewModel";
 
 export function WelcomeScreen({ viewModel }: { viewModel: WelcomeViewModel }) {
+  const { t } = useTranslation();
+
   return (
     <SafeAreaView>
       <View>
@@ -13,12 +16,12 @@ export function WelcomeScreen({ viewModel }: { viewModel: WelcomeViewModel }) {
             marginVertical: 24,
           }}
         >
-          Vitaj
+          {t("welcome.title")}
         </Text>
-        <Button title="About" onPress={() => viewModel.onAboutButton()} />
-        <Button title="Login" onPress={() => viewModel.onLoginButton()} />
-        <Button title="Routes" onPress={() => viewModel.onRoutesButton()} />
-        <Button title="Home" onPress={() => viewModel.onHomeButton()} />
+        <Button title={t('welcome.link.about.title')} onPress={() => viewModel.onAboutButton()} />
+        <Button title={t('welcome.link.login.title')} onPress={() => viewModel.onLoginButton()} />
+        <Button title={t('welcome.link.routes.title')} onPress={() => viewModel.onRoutesButton()} />
+        <Button title={t('welcome.link.home.title')} onPress={() => viewModel.onHomeButton()} />
       </View>
     </SafeAreaView>
   );

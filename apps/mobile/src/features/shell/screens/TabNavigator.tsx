@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import { HomeTabStack } from "../navigation/tab stacks/HomeTabStack";
@@ -19,6 +20,7 @@ export const TabNavigator: React.FC<TabNavigatorProps> = ({
   controller,
   queryClient,
 }) => {
+  const { t } = useTranslation();
   return (
     <Tab.Navigator
       initialRouteName="HomeTab"
@@ -43,13 +45,13 @@ export const TabNavigator: React.FC<TabNavigatorProps> = ({
     >
       <Tab.Screen
         name="HomeTab"
-        options={{ title: "Domov" }}
+        options={{ title: t("home.title") }}
         children={() => <HomeTabStack controller={controller} />}
       />
 
       <Tab.Screen
         name="RoutesTab"
-        options={{ title: "Hľadať" }}
+        options={{ title: t("routes-list.title") }}
         children={() => (
           <RoutesTabStack controller={controller} queryClient={queryClient} />
         )}
@@ -57,7 +59,7 @@ export const TabNavigator: React.FC<TabNavigatorProps> = ({
 
       <Tab.Screen
         name="ProfileTab"
-        options={{ title: "Profil" }}
+        options={{ title: t("profile.title") }}
         children={() => <ProfileTabStack controller={controller} />}
       />
     </Tab.Navigator>

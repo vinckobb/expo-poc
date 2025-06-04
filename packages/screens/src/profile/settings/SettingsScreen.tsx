@@ -1,7 +1,10 @@
 import { View, Text, Button, SafeAreaView, Switch } from "react-native";
+import { useTranslation } from "react-i18next";
 import { SettingsViewModel } from "./SettingsViewModel";
 
 export function SettingsScreen({ viewModel }: { viewModel: SettingsViewModel }) {
+  const { t, i18n } = useTranslation();
+  
   return (
     <SafeAreaView>
       <View style={{ padding: 16 }}>
@@ -13,7 +16,7 @@ export function SettingsScreen({ viewModel }: { viewModel: SettingsViewModel }) 
             marginVertical: 24,
           }}
         >
-          Nastavenia
+          {t("settings.title")}
         </Text>
         
         <View style={{ marginBottom: 20 }}>
@@ -23,7 +26,7 @@ export function SettingsScreen({ viewModel }: { viewModel: SettingsViewModel }) 
             alignItems: 'center',
             paddingVertical: 12 
           }}>
-            <Text style={{ fontSize: 16 }}>Zobraziť len lístky v mojom regióne</Text>
+            <Text style={{ fontSize: 16 }}>{t("settings.label.show-tickets-in-my-region")}</Text>
             <Switch 
               value={viewModel.showLocalTicketsOnly}
               onValueChange={viewModel.setShowLocalTicketsOnly}
@@ -36,7 +39,7 @@ export function SettingsScreen({ viewModel }: { viewModel: SettingsViewModel }) 
             alignItems: 'center',
             paddingVertical: 12 
           }}>
-            <Text style={{ fontSize: 16 }}>Marketingové správy</Text>
+            <Text style={{ fontSize: 16 }}>{t("settings.label.marketing-messages")}</Text>
             <Switch 
               value={viewModel.marketingMessages}
               onValueChange={viewModel.setMarketingMessages}
@@ -49,7 +52,7 @@ export function SettingsScreen({ viewModel }: { viewModel: SettingsViewModel }) 
             alignItems: 'center',
             paddingVertical: 12 
           }}>
-            <Text style={{ fontSize: 16 }}>Push notifikácie</Text>
+            <Text style={{ fontSize: 16 }}>{t("settings.label.push-notifications")}</Text>
             <Switch 
               value={viewModel.pushNotifications}
               onValueChange={viewModel.setPushNotifications}
@@ -62,7 +65,7 @@ export function SettingsScreen({ viewModel }: { viewModel: SettingsViewModel }) 
             alignItems: 'center',
             paddingVertical: 12 
           }}>
-            <Text style={{ fontSize: 16 }}>Automatické získavanie lístkov</Text>
+            <Text style={{ fontSize: 16 }}>{t("settings.label.auto-ticket-download")}</Text>
             <Switch 
               value={viewModel.autoTicketDownload}
               onValueChange={viewModel.setAutoTicketDownload}
@@ -72,8 +75,15 @@ export function SettingsScreen({ viewModel }: { viewModel: SettingsViewModel }) 
         
         <View style={{ marginTop: 20 }}>
           <Button 
-            title="Súkromie a bezpečnosť" 
+            title={t("settings.button.privacy-and-security.title")} 
             onPress={() => viewModel.onSecuritySettingsButton()} 
+          />
+        </View>
+
+        <View style={{ marginTop: 20 }}>
+          <Button 
+            title={t("settings.button.change-language.title")} 
+            onPress={() => i18n.changeLanguage(i18n.language === "en" ? "sk" : "en")} 
           />
         </View>
       </View>

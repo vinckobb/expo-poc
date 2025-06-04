@@ -1,7 +1,9 @@
 import { View, Text, Button, SafeAreaView } from "react-native";
+import { useTranslation } from "react-i18next";
 import { ProfileViewModel } from "./ProfileViewModel";
 
 export function ProfileScreen({ viewModel }: { viewModel: ProfileViewModel }) {
+  const { t } = useTranslation();
   return (
     <SafeAreaView>
       <View>
@@ -13,7 +15,7 @@ export function ProfileScreen({ viewModel }: { viewModel: ProfileViewModel }) {
             marginVertical: 24,
           }}
         >
-          Profil
+          {t("profile.title")}
         </Text>
         
         <View
@@ -41,8 +43,8 @@ export function ProfileScreen({ viewModel }: { viewModel: ProfileViewModel }) {
         >
           Ján Novák
         </Text>
-        
-        <Button title="Nastavenia" onPress={() => viewModel.onSettingsButton()} />
+
+        <Button title={t("profile.button.settings.title")} onPress={() => viewModel.onSettingsButton()} />
       </View>
     </SafeAreaView>
   );

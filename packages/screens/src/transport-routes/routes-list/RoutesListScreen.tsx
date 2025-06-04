@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   ActivityIndicator,
 } from "react-native";
+import { useTranslation } from "react-i18next";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { useUnit } from "effector-react";
 import { RoutesListViewModel } from "./RoutesListViewModel";
@@ -19,6 +20,7 @@ export function RoutesListScreen({
 }: {
   viewModel: RoutesListViewModel;
 }) {
+  const { t } = useTranslation();
   const routes = useUnit(viewModel.$routes);
   const isLoading = useUnit(viewModel.$isLoading);
   const showLoader = useUnit(viewModel.$showLoader);
@@ -33,7 +35,7 @@ export function RoutesListScreen({
           onPress={() => viewModel.events.openFavorites()}
           style={{ marginRight: 16 }}
         >
-          <Text style={{ color: "#007AFF", fontSize: 16 }}>Obľúbené</Text>
+          <Text style={{ color: "#007AFF", fontSize: 16 }}>{t('routes-list.label.favorites')}</Text>
         </TouchableOpacity>
       ),
     });
@@ -87,11 +89,11 @@ export function RoutesListScreen({
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>Trasy</Text>
+        <Text style={styles.title}>{t('routes-list.label.routes')}</Text>
 
         <TextInput
           style={styles.searchInput}
-          placeholder="Hľadať trasu"
+          placeholder={t('routes-list.placeholder.search-route')}
           value={filter.searchText}
           onChangeText={handleSearch}
         />
@@ -104,7 +106,7 @@ export function RoutesListScreen({
             ]}
             onPress={() => handleSortChange("number")}
           >
-            <Text>Číslo</Text>
+            <Text>{t('routes-list.label.route-number')}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -114,7 +116,7 @@ export function RoutesListScreen({
             ]}
             onPress={() => handleSortChange("name")}
           >
-            <Text>Názov</Text>
+            <Text>{t('routes-list.label.route-name')}</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -122,7 +124,7 @@ export function RoutesListScreen({
       {showLoader ? (
         <View style={styles.loaderContainer}>
           <ActivityIndicator size="large" />
-          <Text style={styles.loaderText}>Načítavam trasy...</Text>
+          <Text style={styles.loaderText}>{t('routes-list.label.loading')}</Text>
         </View>
       ) : error ? (
         <View style={styles.errorContainer}>
@@ -131,7 +133,7 @@ export function RoutesListScreen({
             style={styles.retryButton}
             onPress={() => viewModel.events.retry()}
           >
-            <Text style={styles.retryButtonText}>Skúsiť znova</Text>
+            <Text style={styles.retryButtonText}>{t('routes-list.label.retry')}</Text>
           </TouchableOpacity>
         </View>
       ) : (
@@ -144,7 +146,7 @@ export function RoutesListScreen({
           refreshing={isLoading && showLoader}
           onRefresh={() => viewModel.events.refreshed()}
           ListEmptyComponent={
-            <Text style={styles.emptyText}>Nenašli sa žiadne trasy</Text>
+            <Text style={styles.emptyText}>{t('routes-list.label.no-routes')}</Text>
           }
         />
       )}
