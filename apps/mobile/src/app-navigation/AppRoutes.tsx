@@ -105,7 +105,8 @@ export default function AppRoutes({ di }: AppRoutesProps) {
 
       {Flows.Shell.createFlowScreens<RootStackParamList>(
         Stack,
-        shellFlowDelegate
+        shellFlowDelegate,
+        di
       )}
 
       {Flows.Login.createFlowScreens<RootStackParamList>(

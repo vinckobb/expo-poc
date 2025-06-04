@@ -7,18 +7,18 @@ import { RoutesTabStack } from "../navigation/tab stacks/RoutesTabStack";
 import { ProfileTabStack } from "../navigation/tab stacks/ProfileTabStack";
 import { ShellFlowController } from "../navigation/ShellFlowController";
 import { ShellTabParamList } from "../navigation/types/ShellTabParamList";
-import { QueryClient } from "@tanstack/react-query";
+import { DIContainer } from "@monorepo/di";
 
 const Tab = createBottomTabNavigator<ShellTabParamList>();
 
 interface TabNavigatorProps {
   controller: ShellFlowController;
-  queryClient: QueryClient;
+  di: DIContainer;
 }
 
 export const TabNavigator: React.FC<TabNavigatorProps> = ({
   controller,
-  queryClient,
+  di,
 }) => {
   const { t } = useTranslation();
   return (
@@ -53,7 +53,7 @@ export const TabNavigator: React.FC<TabNavigatorProps> = ({
         name="RoutesTab"
         options={{ title: t("routes-list.title") }}
         children={() => (
-          <RoutesTabStack controller={controller} queryClient={queryClient} />
+          <RoutesTabStack controller={controller} di={di} />
         )}
       />
 

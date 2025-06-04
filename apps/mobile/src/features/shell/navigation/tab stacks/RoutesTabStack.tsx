@@ -1,8 +1,8 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { DIContainer } from "@monorepo/di";
 import * as Flows from "../../../../app-navigation/AppFlows";
 import { ShellFlowController } from "../ShellFlowController";
-import { QueryClient } from "@tanstack/react-query";
 
 export type RoutesTabStackParamList = {} & Flows.TransportRoutes.ParamList;
 
@@ -10,13 +10,13 @@ const Stack = createNativeStackNavigator<RoutesTabStackParamList>();
 
 interface RoutesTabStackProps {
   controller: ShellFlowController;
-  queryClient: QueryClient;
+  di: DIContainer;
 }
 
 export const RoutesTabStack: React.FC<RoutesTabStackProps> = ({
   // GUARD: Possible bad solution [@dmitry.kovalev]
   controller,
-  queryClient,
+  di,
 }) => {
   const transportRoutesFlowDelegate: Flows.TransportRoutes.Delegate = {
     openHome: () => {
@@ -31,7 +31,7 @@ export const RoutesTabStack: React.FC<RoutesTabStackProps> = ({
       {Flows.TransportRoutes.createFlowScreens<RoutesTabStackParamList>(
         Stack,
         transportRoutesFlowDelegate,
-        { queryClient: queryClient }
+        { routesService: di.services.routesService }
       )}
     </Stack.Navigator>
   );
